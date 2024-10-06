@@ -1,0 +1,20 @@
+<div class="form-create" [formGroup]="form">
+  <h1 class="tittle">{{title}}</h1>
+  <app-text-component [content]="textName"></app-text-component>
+  <app-input
+  [placeholder]="placeholder"
+  [control]="categoryName"
+  maxLengthTextSpan='El nombre no puede tener más de 50 caracteres'
+  requiredTextSpan="El campo es requerido"
+  ></app-input>
+
+  <app-text-component [content]="textDescription"></app-text-component>
+  <app-input
+  [placeholder]="placeholder"
+  [control]="categoryDescription"
+  maxLengthTextSpan='La descripción no puede tener más de 90 caracteres'
+  requiredTextSpan="El campo es requerido"
+  ></app-input>
+  <app-toast></app-toast>
+  <app-button class= "button-create" [content]="contentButton" (action)="onSubmit()"></app-button>
+</div>

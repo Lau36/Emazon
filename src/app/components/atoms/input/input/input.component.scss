@@ -1,0 +1,23 @@
+@import "../../../utils/colors.scss";
+.input-create{
+  border-color: $grayColor;
+  border-width: 0.1px;
+  border-radius: 10px;
+  height: 50px;
+  width: 94%;
+  transition: border-color 0.3s;
+  outline: none;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.input-error {
+  border-color: $redColor;
+}
+
+.span-class-input{
+  color: $redColor;
+  font-size: 14px;
+  margin-top: 4px;
+  display: block;
+}

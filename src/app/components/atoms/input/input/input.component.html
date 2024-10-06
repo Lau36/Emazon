@@ -1,0 +1,14 @@
+<input
+  class="input-create"
+  [ngClass]="{'input-error': control.errors && (control.touched || control.dirty)}"
+  [placeholder]="placeholder"
+  [formControl]="control"
+  type="text"
+/>
+<span class="span-class-input" *ngIf="control.errors?.['maxlength'] && (control.touched || control.dirty)">
+  {{maxLengthTextSpan}}
+</span>
+<span class="span-class-input" *ngIf="control.errors?.['required'] && (control.touched || control.dirty)">
+  {{requiredTextSpan}}
+</span>
+

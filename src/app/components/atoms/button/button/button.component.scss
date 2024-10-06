@@ -1,0 +1,22 @@
+
+@import "../../../utils/colors.scss";
+
+.button-create{
+  background-color: $backgroundHeaderColor;
+  color: $whiteColor;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  width: 100%;
+
+  &:hover{
+    background-color: $hoverButtonColor;
+  }
+
+  &:active{
+    background-color: $clickColor;
+  }
+}
