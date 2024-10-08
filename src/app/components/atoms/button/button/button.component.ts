@@ -9,6 +9,7 @@ export class ButtonComponent implements OnInit {
 
   @Input() content: string = "";
   @Output() action = new EventEmitter<void>();
+  @Input() isDisabled: boolean = true;
 
   handleClick(){
     this.action.emit();

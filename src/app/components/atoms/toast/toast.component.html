@@ -1,3 +1,5 @@
-<div class="toast" *ngIf="isVisible">
+<div class="toast"
+[ngClass]="{'toast-error': error == true}"
+>
   {{ message }}
 </div>

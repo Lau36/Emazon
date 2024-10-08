@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ADMIN } from 'src/app/components/utils/constants';
+import { ADMIN } from '../../../utils/constants';
 
 @Component({
   selector: 'app-header',

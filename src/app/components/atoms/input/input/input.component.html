@@ -3,7 +3,10 @@
   [ngClass]="{'input-error': control.errors && (control.touched || control.dirty)}"
   [placeholder]="placeholder"
   [formControl]="control"
-  type="text"
+  [style.width]="width"
+  [style.height]="height"
+  [style.font-size]="fontSize"
+  [type]="type"
 />
 <span class="span-class-input" *ngIf="control.errors?.['maxlength'] && (control.touched || control.dirty)">
   {{maxLengthTextSpan}}

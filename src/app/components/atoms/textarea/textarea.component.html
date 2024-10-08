@@ -1,0 +1,16 @@
+<textarea
+  class="textarea"
+  [ngClass]="{'error': control.errors && (control.touched || control.dirty)}"
+  [placeholder]="placeholder"
+  [formControl]="control"
+  [style.width]="width"
+  [style.height]="height"
+  [style.font-size]="fontSize"
+  ></textarea>
+
+<span class="span-class" *ngIf="control.errors?.['maxlength'] && (control.touched || control.dirty)">
+  {{maxLengthTextSpan}}
+</span>
+<span class="span-class" *ngIf="control.errors?.['required'] && (control.touched || control.dirty)">
+  {{requiredTextSpan}}
+</span>

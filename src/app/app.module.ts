@@ -16,6 +16,8 @@ import { IconComponent } from './components/atoms/icon/icon/icon.component';
 import { FooterComponent } from './components/molecules/footer/footer.component';
 import { IconsComponent } from './components/atoms/icons/icons.component';
 import { ToastComponent } from './components/atoms/toast/toast.component';
+import { LoaderComponent } from './components/atoms/loader/loader.component';
+import { TextareaComponent } from './components/atoms/textarea/textarea.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ToastComponent } from './components/atoms/toast/toast.component';
     IconComponent,
     FooterComponent,
     IconsComponent,
-    ToastComponent
+    ToastComponent,
+    LoaderComponent,
+    TextareaComponent
   ],
   imports: [
     BrowserModule,

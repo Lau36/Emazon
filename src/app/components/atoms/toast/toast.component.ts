@@ -6,19 +6,26 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./toast.component.scss']
 })
 export class ToastComponent implements OnInit {
-  message: string = '';
+  @Input() error: boolean = false;
+  @Input() message: string = '';
   isVisible: boolean = false;
 
   constructor() {}
 
-  ngOnInit(): void {}
-
-  show(message: string): void {
-    this.message = message;
-    this.isVisible = true;
-
+  ngOnInit(): void {
     setTimeout(() => {
-      this.isVisible = false;
+      // this.isVisible = false;
     }, 3000);
   }
+
+
+
+  // show(message: string): void {
+  //   this.message = message;
+  //   this.isVisible = true;
+
+  //   setTimeout(() => {
+  //     this.isVisible = false;
+  //   }, 3000);
+  // }
 }

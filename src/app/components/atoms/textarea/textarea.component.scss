@@ -1,6 +1,6 @@
-@import "../../../utils/colors.scss";
-.input-create{
+@import "../../utils/colors.scss";
 
+.textarea{
   border-color: $grayColor;
   border-width: 0.1px;
   border-radius: 10px;
@@ -9,13 +9,15 @@
   transition: border-color 0.3s;
   outline-color: $backgroundHeaderColor;
   padding: 10px;
+  resize: none;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
 }
 
-.input-error {
+.error {
   border-color: $redColor;
 }
 
-.span-class-input{
+.span-class{
   color: $redColor;
   font-size: 14px;
   margin-top: 4px;
