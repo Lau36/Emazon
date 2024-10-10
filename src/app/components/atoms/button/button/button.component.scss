@@ -19,4 +19,9 @@
   &:active{
     background-color: $clickColor;
   }
+
+  &:disabled {
+    background-color: $grayColor;
+    cursor: not-allowed;
+  }
 }
