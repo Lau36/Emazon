@@ -1,0 +1,23 @@
+<div>
+
+  <h1>Categorías por pagina </h1>
+  <app-dropdown
+  [options]="optionsSize"
+  (optionChange) = "onPageSizeSelected($event)"
+  ></app-dropdown>
+  <h1> Ordenar por </h1>
+  <app-dropdown
+  [options]="optionsSort"
+  (optionChange) = "onPageSortDirectionSelected($event)"
+  ></app-dropdown>
+
+  <app-table  [data]="data" [columns]="tableColumns"></app-table>
+  <div class="pagination-controls">
+    <app-button [content]="back" (action)="previousPage()" [isDisabled]="currentPage === 0"></app-button>
+    <span>Página {{currentPage + 1}} de {{totalPages}}</span>
+    <app-button [content]="next" (action)="nextPage()" [isDisabled]="currentPage >= totalPages - 1"></app-button>
+  </div>
+</div>
+
+
+

@@ -8,7 +8,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class FormCreateComponent {
 
-  @Input() form!: FormGroup; // Recibir el formulario desde CreateCategory
+  @Input() form!: FormGroup;
   @Input() categoryName: any;
   @Input() categoryDescription: any;
   @Input() title: string = "";
@@ -28,7 +28,7 @@ export class FormCreateComponent {
   @Output() submitForm: EventEmitter<void> = new EventEmitter<void>();
 
   onSubmit() {
-    this.submitForm.emit(); // Emitir el evento hacia CreateCategory
+    this.submitForm.emit(); 
   }
 
 }

@@ -18,6 +18,10 @@ import { IconsComponent } from './components/atoms/icons/icons.component';
 import { ToastComponent } from './components/atoms/toast/toast.component';
 import { LoaderComponent } from './components/atoms/loader/loader.component';
 import { TextareaComponent } from './components/atoms/textarea/textarea.component';
+import { ListCategoriesComponent } from './components/pages/list-categories/list-categories.component';
+import { TableComponent } from './components/atoms/table/table.component';
+import { PaginationComponent } from './components/molecules/pagination/pagination.component';
+import { DropdownComponent } from './components/atoms/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { TextareaComponent } from './components/atoms/textarea/textarea.componen
     IconsComponent,
     ToastComponent,
     LoaderComponent,
-    TextareaComponent
+    TextareaComponent,
+    ListCategoriesComponent,
+    PaginationComponent,
+    TableComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,

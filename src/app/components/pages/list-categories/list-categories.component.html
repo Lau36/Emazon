@@ -1,0 +1,13 @@
+<app-header></app-header>
+<app-button content="Crear categoría" (action)="navigateToCreateCategory()"></app-button>
+<app-pagination
+(changePageSizeAction) = "onPageSizeChange($event)"
+(changePageSortDirectionAction) = " onPageSortDirectionChange($event)"
+(previousPageAction)="previusPage()"
+(nextPageAction)="nextPage()"
+[data]="categoriesList"
+[currentPage]="this.responseListCategories.currentPage"
+[totalPages]="this.responseListCategories.totalPages"
+[totalElements]="this.responseListCategories.totalElements"
+></app-pagination>
+
