@@ -1,7 +1,7 @@
 import { listCategories, responseListCategories } from './../../../models/interfaces';
 import { CategoryService } from 'src/app/services/category.service';
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-categories',

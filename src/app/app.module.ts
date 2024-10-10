@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryService } from './services/category.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AtomsModule } from './components/atoms/atoms.module';
+import { MoleculesModule } from './components/molecules/molecules.module';
+import { PagesModule } from './components/pages/pages.module';
 
 
 @NgModule({
