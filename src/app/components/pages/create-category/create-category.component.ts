@@ -1,5 +1,5 @@
 import { createCategory } from './../../../models/interfaces';
-import { CategoryService } from 'src/app/services/category.service';
+import { CategoryService } from '../../../services/category.service';
 import { Component, OnInit } from '@angular/core';
 import { CREATE, CREATE_CATEGORY, DESCRIPTION, NAME, PLACEHOLDER_REGULAR_INPUT, CATEGORY_CREATED, EXCEEDES_MAXIMUN_CHARACTERS_CATEGORY_NAME, EXCEEDES_MAXIMUN_CHARACTERS_CATEGORY_DESCRIPTION, REQUIRED_FIELD } from '../../utils/constants';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -58,7 +58,7 @@ export class CreateCategoryComponent implements OnInit {
       this.isLoading = true;
 
       this.categoryService.createCategory(this.createCategory).subscribe({
-        next: (response) => {
+        next: () => {
           this.isLoading = false;
           this.mistakeOcurred = false;
           this.showToast = true;
