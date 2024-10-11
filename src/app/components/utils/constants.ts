@@ -9,4 +9,6 @@ export const REQUIRED_FIELD = "El campo es requerido";
 export const EXCEEDES_MAXIMUN_CHARACTERS_CATEGORY_NAME= "El nombre no puede tener más de 50 caracteres";
 export const EXCEEDES_MAXIMUN_CHARACTERS_CATEGORY_DESCRIPTION= "La descripción no puede tener más de 90 caracteres";
 export const CATEGORY_CREATED ="Categoria creada correctamente";
+export const BACK = "Anterior";
+export const NEXT = "Siguiente";
 

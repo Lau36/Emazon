@@ -8,6 +8,8 @@ import { TextComponentComponent } from './text-component/text-component.componen
 import { TextareaComponent } from './textarea/textarea.component';
 import { ToastComponent } from './toast/toast.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TableComponent } from './table/table.component';
+import { DropdownComponent } from './dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoaderComponent,
     TextComponentComponent,
     TextareaComponent,
-    ToastComponent
+    ToastComponent,
+    TableComponent,
+    DropdownComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +35,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoaderComponent,
     TextComponentComponent,
     TextareaComponent,
-    ToastComponent
+    ToastComponent,
+    TableComponent,
+    DropdownComponent
   ]
 })
 export class AtomsModule {}
