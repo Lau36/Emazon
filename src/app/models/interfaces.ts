@@ -3,6 +3,11 @@ export interface createCategory{
   categoryDescription: string;
 }
 
+export interface createBrand{
+  name: string;
+  description: string;
+}
+
 export interface listCategories{
   page: number;
   size: number;
