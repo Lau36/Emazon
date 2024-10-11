@@ -1,13 +1,23 @@
-<app-header></app-header>
-<app-button content="Crear categoría" (action)="navigateToCreateCategory()"></app-button>
-<app-pagination
-(changePageSizeAction) = "onPageSizeChange($event)"
-(changePageSortDirectionAction) = " onPageSortDirectionChange($event)"
-(previousPageAction)="previusPage()"
-(nextPageAction)="nextPage()"
-[data]="categoriesList"
-[currentPage]="this.responseListCategories.currentPage"
-[totalPages]="this.responseListCategories.totalPages"
-[totalElements]="this.responseListCategories.totalElements"
-></app-pagination>
+<div class="list-category-container">
+  <app-header></app-header>
+  <div class="pagination-categories-container">
+    <div class="button-create-category-container">
+      <app-button content="Crear categoría" (action)="navigateToCreateCategory()"></app-button>
+    </div>
+  <div class="pagination-container">
+    <app-pagination
+    (changePageSizeAction) = "onPageSizeChange($event)"
+    (changePageSortDirectionAction) = " onPageSortDirectionChange($event)"
+    (previousPageAction)="previusPage()"
+    (nextPageAction)="nextPage()"
+    [data]="categoriesList"
+    [currentPage]="this.responseListCategories.currentPage"
+    [totalPages]="this.responseListCategories.totalPages"
+    [totalElements]="this.responseListCategories.totalElements"
+    [tableColumns] = "tableColumns"
+    ></app-pagination>
+  </div>
+</div>
+</div>
+
 

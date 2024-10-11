@@ -11,17 +11,15 @@ export class PaginationComponent implements OnInit {
 
   @Output() previousPageAction = new EventEmitter<void>();
   @Output() nextPageAction = new EventEmitter<void>();
-  @Input() data: any[] = []
+  @Input() data: string[] = []
+  @Input() tableColumns: {field:string, header:string}[] = [];
   @Input() currentPage: number = 0;
   @Input() totalPages: number = 0;
   @Input() totalElements: number = 0;
   @Output() changePageSizeAction = new EventEmitter<any>();
   @Output() changePageSortDirectionAction = new EventEmitter<any>();
+  @Input() tableContainerHeight: string = '20%';
 
-  tableColumns = [
-    { field: 'categoryName', header: 'Nombre de la categoría' },
-    { field: 'categoryDescription', header: 'Descripción' }
-  ];
 
   optionsSize: number[] = [5, 10, 15, 20];
   optionsSort: string[] = ['asc', 'desc'];

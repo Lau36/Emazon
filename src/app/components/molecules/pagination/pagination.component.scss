@@ -1,5 +1,36 @@
-.pagination-controls {
+@import"../../utils/colors.scss";
+
+.pagination-container{
+  padding: 15px;
+  height: 55vh;
   display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
+  flex-direction: column;
+
+  .pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  .table-container-pagination{
+    margin-top: 5px;
+    overflow-y: auto;
+    flex-grow: 1;
+  }
+
+  .control-table-container{
+    display: flex;
+    justify-content: flex-end;
+
+    .text-pagination{
+      font-weight: none;
+      margin: 0;
+      margin-right: 1%;
+      margin-left: 20px;
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+
+  }
 }
+
