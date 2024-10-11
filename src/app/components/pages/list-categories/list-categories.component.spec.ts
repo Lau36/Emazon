@@ -30,8 +30,8 @@ describe('ListCategoriesComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ListCategoriesComponent ],
       providers: [
-        {provive: CategoryService, useValue: categoryServiceMock},
-        {provive: Router, useValue: routerMock}
+        {provide: CategoryService, useValue: categoryServiceMock},
+        {provide: Router, useValue: routerMock}
       ],
       imports:[
         RouterTestingModule
