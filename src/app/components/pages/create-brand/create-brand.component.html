@@ -1,0 +1,25 @@
+<div class="container-create-brand">
+  <app-header></app-header>
+
+  <div class="form-create-brand ">
+    <app-form-create
+      [form]="form"
+      [title]="title"
+      [textName]="textName"
+      [textDescription]="textDescription"
+      [placeholder]="placeholder"
+      [contentButton]="contentButton"
+      [categoryName] = "name"
+      [categoryDescription]="description"
+      [categoryNameValidation]="categoryNameValidation"
+      [categoryDescriptionValidation]="categoryDescriptionValidation"
+      [required]="required"
+      [isLoading]="isLoading"
+      [showToast]="showToast"
+      [mistakeOcurred]="mistakeOcurred"
+      [message]="message"
+      [isDisabled]="form.invalid || isLoading"
+      (submitForm)="onSubmit()"
+    ></app-form-create>
+  </div>
+</div>

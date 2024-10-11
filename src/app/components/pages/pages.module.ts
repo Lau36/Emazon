@@ -5,15 +5,16 @@ import { MoleculesModule } from '../molecules/molecules.module';
 import { AtomsModule } from '../atoms/atoms.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
+import { CreateBranchComponent } from './create-brand/create-brand.component';
 
 @NgModule({
-  declarations: [CreateCategoryComponent, ListCategoriesComponent],
+  declarations: [CreateCategoryComponent, ListCategoriesComponent, CreateBranchComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MoleculesModule,
     AtomsModule
   ],
-  exports: [CreateCategoryComponent, ListCategoriesComponent]
+  exports: [CreateCategoryComponent, ListCategoriesComponent, CreateBranchComponent]
 })
 export class PagesModule {}

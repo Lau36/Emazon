@@ -1,0 +1,17 @@
+@import "../../utils/colors.scss";
+
+.container-create-brand{
+  background-color: $backgroundHeaderColor;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .form-create-brand{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+
+}
