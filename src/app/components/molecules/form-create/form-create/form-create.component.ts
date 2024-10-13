@@ -26,7 +26,7 @@ export class FormCreateComponent {
   @Input() isDisabled: boolean = false;
 
   @Output() submitForm: EventEmitter<void> = new EventEmitter<void>();
-  
+
 
   onSubmit() {
     this.submitForm.emit();

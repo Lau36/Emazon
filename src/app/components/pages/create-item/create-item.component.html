@@ -1,0 +1,23 @@
+<div class="container-create-category">
+  <div class="form-create-category">
+    <app-form-create-item
+      [form]="form"
+      [title]="title"
+      [textName]="textName"
+      [textDescription]="textDescription"
+      [placeholder]="placeholder"
+      [contentButton]="contentButton"
+      [categoryName] = "categoryName"
+      [categoryDescription]="categoryDescription"
+      [categoryNameValidation]="categoryNameValidation"
+      [categoryDescriptionValidation]="categoryDescriptionValidation"
+      [required]="required"
+      [isLoading]="isLoading"
+      [showToast]="showToast"
+      [mistakeOcurred]="mistakeOcurred"
+      [message]="message"
+      [isDisabled]="form.invalid || isLoading"
+      (submitForm)="onSubmit()"
+    ></app-form-create-item>
+  </div>
+</div>

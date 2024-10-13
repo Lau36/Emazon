@@ -7,6 +7,7 @@ import { AtomsModule } from '../atoms/atoms.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ModalComponent } from './modal/modal.component';
+import { FormCreateItemComponent } from './form-create-item/form-create-item.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ModalComponent } from './modal/modal.component';
     FormCreateComponent,
     FooterComponent,
     PaginationComponent,
-    ModalComponent
+    ModalComponent,
+    FormCreateItemComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { ModalComponent } from './modal/modal.component';
     FormCreateComponent,
     FooterComponent,
     PaginationComponent,
-    ModalComponent
+    ModalComponent,
+    FormCreateItemComponent
   ]
 })
 export class MoleculesModule {}

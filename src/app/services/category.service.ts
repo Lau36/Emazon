@@ -28,4 +28,9 @@ export class CategoryService {
     .set('sortDirection', data.sortDirection);
     return this.Http.get(this.urlMicroserviceStock+'/', {headers, params});
   }
+
+  listCategories(): Observable<any>{
+    const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.token);
+    return this.Http.get(this.urlMicroserviceStock, {headers});
+  }
 }

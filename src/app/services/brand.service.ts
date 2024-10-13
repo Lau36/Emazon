@@ -27,4 +27,10 @@ export class BrandService {
     return this.Http.get(this.urlMicroserviceStock+'/', {headers, params});
   }
 
+  listBrands(): Observable<any>{
+    const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.token);
+    return this.Http.get(this.urlMicroserviceStock, {headers});
+  }
+
+
 }

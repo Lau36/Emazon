@@ -7,9 +7,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { CreateBrandComponent } from './create-brand/create-brand.component';
 import { ListBrandsComponent } from './list-brands/list-brands.component';
+import { CreateItemComponent } from './create-item/create-item.component';
 
 @NgModule({
-  declarations: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent],
+  declarations: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, CreateItemComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
