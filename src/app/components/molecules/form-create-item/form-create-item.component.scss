@@ -1,0 +1,24 @@
+@import "../../utils/colors.scss";
+.form-create{
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  background-color: $whiteColor;
+  border-radius: 10px;
+  width: 400px;
+
+  .tittle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button-container{
+    margin-top: 2vh;
+  }
+}
+.options-container{
+  width: 20%;
+  height: 200px;
+  overflow-y: auto;
+}

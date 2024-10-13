@@ -26,23 +26,46 @@
     fontSize="0.9rem"
   ></app-texttarea>
 
-  <app-text-component content="Seleccionar una marca"></app-text-component>
+  <app-text-component [content]="textAmount"></app-text-component>
+  <app-input
+    [placeholder]="placeholder"
+    [control]="amount"
+    [requiredTextSpan]=required
+    width = 23.5rem
+    height = 1rem
+    fontSize="0.8rem"
+    type="number"
+  ></app-input>
+
+  <app-text-component [content]="textPrice"></app-text-component>
+  <app-input
+    [placeholder]="placeholder"
+    [control]="price"
+    [requiredTextSpan]=required
+    width = 23.5rem
+    height = 1rem
+    fontSize="0.8rem"
+  ></app-input>
+
+  <app-text-component [content]="textBrands"></app-text-component>
   <select (change)="onBrandChange($event)">
+    <option>Seleccione...</option>
     <option *ngFor="let brand of brands" [value]="brand.id">{{ brand.name }}</option>
   </select>
-  <!-- <div *ngIf="form.get('brand')?.invalid && form.get('brand')?.touched">
-    Seleccionar una marca es obligatorio.
-  </div> -->
 
-  <app-text-component content="Seleccionar cateogorias"></app-text-component>
-  <div *ngFor="let category of categories">
-    <input
-      type="checkbox"
-      [value]="category.id"
-      (change)="toggleCategorySelection(category.id)"
-      [checked]="form.get('categories')?.value.includes(category.id)">
-    {{ category.categoryName }}
+  <app-text-component [content]="textCategories"></app-text-component>
+  <div class="options-container">
+    <div  *ngFor="let category of categories">
+      <input
+        type="checkbox"
+        [value]="category.id"
+        (change)="toggleCategorySelection(category.id)"
+        [disabled]="category.isDisabled"
+        [checked]="form.get('categories')?.value.includes(category.id)">
+      {{ category.categoryName }}
+    </div>
   </div>
+
 
   <app-toast
   *ngIf="showToast"
@@ -50,7 +73,7 @@
   [error] = mistakeOcurred
   ></app-toast>
   <div class="button-container">
-    <app-button [content]="contentButton" (action)="onSubmit()" [isDisabled]="isDisabled"></app-button>
+    <app-button [content]="contentButton" (action)="onSubmit()" [isDisabled]="false"></app-button>
   </div>
 
 </div>

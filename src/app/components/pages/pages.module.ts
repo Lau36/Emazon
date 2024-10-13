@@ -17,6 +17,6 @@ import { CreateItemComponent } from './create-item/create-item.component';
     MoleculesModule,
     AtomsModule
   ],
-  exports: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent]
+  exports: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, CreateItemComponent]
 })
 export class PagesModule {}
