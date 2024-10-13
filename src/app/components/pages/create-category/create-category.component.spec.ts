@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { CreateCategoryComponent } from './create-category.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CategoryService } from '../../../services/category.service';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { createCategory } from '../../../models/interfaces';
 
 describe.only('CreateCategoryComponent', () => {
@@ -14,7 +14,7 @@ describe.only('CreateCategoryComponent', () => {
   beforeEach(async () => {
 
     categoryServiceMock = {
-      createCategory: jest.fn().mockReturnValue({ subscribe: jest.fn() })
+      createCategory: jest.fn()
     }
 
     await TestBed.configureTestingModule({
@@ -61,14 +61,19 @@ describe.only('CreateCategoryComponent', () => {
     expect(categoryDescription.valid).toBeTruthy();
   });
 
-  it('should call createCategory service when form is valid', () => {;
-    const onSubmit = jest.spyOn(component, 'onSubmit')
+  it('should call createCategory service when form is valid', () => {
+    (categoryServiceMock.createCategory as jest.Mock).mockReturnValue(of({}));
+
     component.form.get('categoryName')?.setValue('Test category');
     component.form.get('categoryDescription')?.setValue('Test category description');
 
-    component.onSubmit();
-    expect(onSubmit).toHaveBeenCalled();
+    expect(component.form.get('categoryName')?.valid).toBeTruthy();
+    expect(component.form.get('categoryDescription')?.valid).toBeTruthy();
     expect(component.form.valid).toBeTruthy();
+
+    component.onSubmit();
+    expect(categoryServiceMock.createCategory).toHaveBeenCalled();
+
   });
 
   it('should not call service when form is invalid', () => {
@@ -82,7 +87,10 @@ describe.only('CreateCategoryComponent', () => {
     expect(categoryServiceMock.createCategory).not.toHaveBeenCalled();
   });
 
-  it('should call createCategory method from CategoryService on valid submit', () => {
+  it('should call createCategory method from CategoryService on valid submit', fakeAsync(() => {
+
+    (categoryServiceMock.createCategory as jest.Mock).mockReturnValue(of({}));
+
     component.form.get('categoryName')?.setValue('Test Category');
     component.form.get('categoryDescription')?.setValue('Test Description');
 
@@ -93,6 +101,36 @@ describe.only('CreateCategoryComponent', () => {
       categoryDescription: 'Test Description'
     });
 
-  });
+    tick();
+
+    expect(component.isLoading).toBeFalsy();
+    expect(component.showToast).toBeTruthy();
+    expect(component.mistakeOcurred).toBeFalsy();
+
+    tick(3000),
+    expect(component.showToast).toBeFalsy();
+  }));
+
+  it('should on error ocurred', fakeAsync(() => {
+    const errorRespone = {error: {message: "Error ocurred"}};
+
+    (categoryServiceMock.createCategory as jest.Mock).mockReturnValue(throwError(()=>errorRespone))
+
+    component.form.get('categoryName')?.setValue('Test Category');
+    component.form.get('categoryDescription')?.setValue('Test Description');
+
+    component.onSubmit();
+
+    expect(categoryServiceMock.createCategory).toHaveBeenCalled();
+    tick();
+
+    expect(component.isLoading).toBeFalsy();
+    expect(component.showToast).toBeTruthy();
+    expect(component.mistakeOcurred).toBeTruthy();
+    expect(component.message).toBe("Error ocurred");
+
+    tick(3000),
+    expect(component.showToast).toBeFalsy();
+  }));
 
 });

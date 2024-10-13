@@ -4,8 +4,7 @@ import { CreateCategoryComponent } from './components/pages/create-category/crea
 import { ListCategoriesComponent } from './components/pages/list-categories/list-categories.component';
 
 const routes: Routes = [
-  {path: "Admin/Category", component: CreateCategoryComponent},
-  {path: "Admin/Category/List", component: ListCategoriesComponent}
+  {path: "Admin/Category", component: ListCategoriesComponent}
 ];
 
 @NgModule({

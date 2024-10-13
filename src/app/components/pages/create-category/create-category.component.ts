@@ -1,6 +1,6 @@
 import { createCategory } from './../../../models/interfaces';
 import { CategoryService } from '../../../services/category.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CREATE, CREATE_CATEGORY, DESCRIPTION, NAME, PLACEHOLDER_REGULAR_INPUT, CATEGORY_CREATED, EXCEEDES_MAXIMUN_CHARACTERS_CATEGORY_NAME, EXCEEDES_MAXIMUN_CHARACTERS_CATEGORY_DESCRIPTION, REQUIRED_FIELD } from '../../utils/constants';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -10,6 +10,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./create-category.component.scss']
 })
 export class CreateCategoryComponent implements OnInit {
+
+  @Output() categoryCreated: EventEmitter<void> = new EventEmitter<void>();
 
   title: string = CREATE_CATEGORY;
   textName: string = NAME;
@@ -65,10 +67,11 @@ export class CreateCategoryComponent implements OnInit {
           this.message = CATEGORY_CREATED;
           setTimeout(() => {
             this.showToast = false;
+            this.categoryCreated.emit();
           }, 3000);
           this.form.reset();
         },
-        error: (error) => {
+        error: (error) => { 
           this.isLoading = false;
           this.mistakeOcurred = true;
           this.showToast = true;
