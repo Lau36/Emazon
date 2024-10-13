@@ -5,9 +5,7 @@ import { ListCategoriesComponent } from './components/pages/list-categories/list
 import { CreateBranchComponent } from './components/pages/create-brand/create-brand.component';
 
 const routes: Routes = [
-  {path: "Admin/Category", component: CreateCategoryComponent},
-  {path: "Admin/Category/List", component: ListCategoriesComponent},
-  {path: "Admin/Branch", component: CreateBranchComponent}
+  {path: "Admin/Category", component: ListCategoriesComponent}
 ];
 
 @NgModule({

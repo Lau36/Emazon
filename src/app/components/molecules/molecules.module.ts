@@ -6,13 +6,15 @@ import { FooterComponent } from './footer/footer.component';
 import { AtomsModule } from '../atoms/atoms.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaginationComponent } from './pagination/pagination.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FormCreateComponent,
     FooterComponent,
-    PaginationComponent
+    PaginationComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     HeaderComponent,
     FormCreateComponent,
     FooterComponent,
-    PaginationComponent
+    PaginationComponent,
+    ModalComponent
   ]
 })
 export class MoleculesModule {}

@@ -91,9 +91,20 @@ describe('ListCategoriesComponent', () => {
     expect(categoryServiceMock.listCategoriesPaginated).toHaveBeenCalled();
   });
 
-  it('should navigate to create category page', () => {
-    component.navigateToCreateCategory();
-    expect(routerMock.navigate).toHaveBeenCalledWith(['Admin/Category']);
+  it('should show modal', () => {
+    const openModal = jest.spyOn(component, 'openModal');
+    component.openModal();
+    expect(openModal).toHaveBeenCalled();
+    expect(component.isModalVisible).toBeTruthy();
+  });
+
+  it('should close modal', () => {
+    const closeModal = jest.spyOn(component, 'closeModal');
+    const getCategories = jest.spyOn(component, 'getCategories');
+    component.closeModal();
+    expect(closeModal).toHaveBeenCalled();
+    expect(getCategories).toHaveBeenCalled();
+    expect(component.isModalVisible).toBeFalsy();
   });
 
 
