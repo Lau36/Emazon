@@ -14,6 +14,8 @@ export class ListCategoriesComponent implements OnInit {
 
   response: any[] = []
 
+  isModalVisible: boolean = false;
+
   tableColumns = [
     { field: 'categoryName', header: 'Nombre de la categoría' },
     { field: 'categoryDescription', header: 'Descripción' }
@@ -86,10 +88,14 @@ export class ListCategoriesComponent implements OnInit {
     }
   }
 
-  navigateToCreateCategory(){
-    this.router.navigate(['Admin/Category']);
+  openModal(){
+    this.isModalVisible = true;
   }
 
+  closeModal(){
+    this.isModalVisible = false;
+    this.getCategories();
+  }
 
 
 }

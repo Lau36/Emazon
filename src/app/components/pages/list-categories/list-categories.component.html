@@ -2,7 +2,10 @@
   <app-header></app-header>
   <div class="pagination-categories-container">
     <div class="button-create-category-container">
-      <app-button content="Crear categoría" (action)="navigateToCreateCategory()"></app-button>
+      <app-button content="Crear categoría" (action)="openModal()"></app-button>
+      <app-modal [isVisible]="isModalVisible" (close)="closeModal()">
+      <app-create-category (categoryCreated)="closeModal()"></app-create-category>
+      </app-modal>
     </div>
   <div class="pagination-container">
     <app-pagination

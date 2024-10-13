@@ -6,10 +6,8 @@ import { CreateBranchComponent } from './components/pages/create-brand/create-br
 import { ListBrandsComponent } from './components/pages/list-brands/list-brands.component';
 
 const routes: Routes = [
-  {path: "Admin/Category", component: CreateCategoryComponent},
-  {path: "Admin/Category/List", component: ListCategoriesComponent},
-  {path: "Admin/Brand/List", component: ListBrandsComponent},
-  {path: "Admin/Brand", component: CreateBranchComponent}
+  {path: "Admin/Category", component: ListCategoriesComponent},
+  {path: "Admin/Branch", component: CreateBranchComponent}
 ];
 
 @NgModule({
