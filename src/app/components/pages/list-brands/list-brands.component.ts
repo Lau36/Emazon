@@ -12,7 +12,9 @@ export class ListBrandsComponent implements OnInit {
 
   brandList: any[] = [];
 
-  response: any[] = []
+  response: any[] = [];
+
+  isModalVisible: boolean = false;
 
   tableColumns = [
     { field: 'name', header: 'Nombre de la marca' },
@@ -86,8 +88,13 @@ export class ListBrandsComponent implements OnInit {
     }
   }
 
-  navigateToCreateBrand(){
-    this.router.navigate(['Admin/Brand']);
+  openModal(){
+    this.isModalVisible = true;
+  }
+
+  closeModal(){
+    this.isModalVisible = false;
+    this.getBrands();
   }
 
 

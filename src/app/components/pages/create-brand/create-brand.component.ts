@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BRAND_CREATED, CREATE, CREATE_BRAND, DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_NAME, NAME, PLACEHOLDER_REGULAR_INPUT, REQUIRED_FIELD } from '../../utils/constants';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { createBrand } from '../../../models/interfaces';
@@ -9,7 +9,9 @@ import { BrandService } from '../../../services/brand.service';
   templateUrl: './create-brand.component.html',
   styleUrls: ['./create-brand.component.scss']
 })
-export class CreateBranchComponent implements OnInit {
+export class CreateBrandComponent implements OnInit {
+
+  @Output() brandCreated: EventEmitter<void> = new EventEmitter<void>();
 
   title: string = CREATE_BRAND;
   textName: string = NAME;
@@ -65,6 +67,7 @@ export class CreateBranchComponent implements OnInit {
           this.message = BRAND_CREATED;
           setTimeout(() => {
             this.showToast = false;
+            this.brandCreated.emit();
           }, 3000);
           this.form.reset();
         },

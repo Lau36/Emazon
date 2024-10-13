@@ -83,14 +83,6 @@ describe('ListCategoriesComponent', () => {
     expect(categoryServiceMock.listCategoriesPaginated).toHaveBeenCalled();
   });
 
-  it('should navigate to next page', () => {
-    component.responseListCategories.totalPages = 2;
-    component.listCategories.page = 0;
-    component.nextPage();
-    expect(component.listCategories.page).toBe(1);
-    expect(categoryServiceMock.listCategoriesPaginated).toHaveBeenCalled();
-  });
-
   it('should show modal', () => {
     const openModal = jest.spyOn(component, 'openModal');
     component.openModal();

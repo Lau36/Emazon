@@ -82,9 +82,21 @@ describe('ListBrandsComponent', () => {
     expect(brandServiceMock.listBrandsPaginated).toHaveBeenCalled();
   });
 
-  it('should navigate to create brand page', () => {
-    component.navigateToCreateBrand();
-    expect(routerMock.navigate).toHaveBeenCalledWith(['Admin/Brand']);
+  it('should show modal to create brand', () => {
+    const openModal = jest.spyOn(component, 'openModal');
+    component.openModal();
+    expect(openModal).toHaveBeenCalled();
+    expect(component.isModalVisible).toBeTruthy();
   });
+
+  it('should close modal', () => {
+    const closeModal = jest.spyOn(component, 'closeModal');
+    const getBrands = jest.spyOn(component, 'getBrands');
+    component.closeModal();
+    expect(closeModal).toHaveBeenCalled();
+    expect(getBrands).toHaveBeenCalled();
+    expect(component.isModalVisible).toBeFalsy();
+  });
+
 
 });

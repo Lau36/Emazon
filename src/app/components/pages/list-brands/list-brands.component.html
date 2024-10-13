@@ -2,7 +2,10 @@
   <app-header></app-header>
   <div class="pagination-brands-container">
     <div class="button-create-brand-container">
-      <app-button content="Crear marca" (action)="navigateToCreateBrand()"></app-button>
+      <app-button content="Crear marca" (action)="openModal()"></app-button>
+      <app-modal [isVisible]="isModalVisible" (close)="closeModal()">
+        <app-create-branch (brandCreated)="closeModal()"></app-create-branch>
+      </app-modal>
     </div>
   <div class="pagination-container">
     <app-pagination

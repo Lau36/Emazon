@@ -1,20 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
-import { CreateBranchComponent } from './create-brand.component';
+import { CreateBrandComponent } from './create-brand.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { BrandService } from '../../../services/brand.service';
+import { of, throwError } from 'rxjs';
 
 describe('CreateBranchComponent', () => {
-  let component: CreateBranchComponent;
-  let fixture: ComponentFixture<CreateBranchComponent>;
+  let component: CreateBrandComponent;
+  let fixture: ComponentFixture<CreateBrandComponent>;
   let brandServiceMock: Partial<BrandService>;
 
   beforeEach(async () => {
     brandServiceMock = {
-      createBrand: jest.fn().mockReturnValue({ subscribe: jest.fn() })
+      createBrand: jest.fn()
     }
     await TestBed.configureTestingModule({
-      declarations: [ CreateBranchComponent ],
+      declarations: [ CreateBrandComponent ],
       imports:[
         ReactiveFormsModule
       ],
@@ -24,7 +25,7 @@ describe('CreateBranchComponent', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CreateBranchComponent);
+    fixture = TestBed.createComponent(CreateBrandComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -60,13 +61,17 @@ describe('CreateBranchComponent', () => {
   });
 
   it('should call createbrandservice when form is valid', () => {;
-    const onSubmit = jest.spyOn(component, 'onSubmit')
+    (brandServiceMock.createBrand as jest.Mock).mockReturnValue(of({}));
+
     component.form.get('name')?.setValue('Test Brand');
     component.form.get('description')?.setValue('Test brand description');
 
+    expect(component.form.get('name')?.valid).toBeTruthy();
+    expect(component.form.get('description')?.valid).toBeTruthy();
+
     component.onSubmit();
-    expect(onSubmit).toHaveBeenCalled();
-    expect(component.form.valid).toBeTruthy();
+    expect(brandServiceMock.createBrand).toHaveBeenCalled();
+
   });
 
   it('should not call service brand when form is invalid', () => {
@@ -79,7 +84,8 @@ describe('CreateBranchComponent', () => {
     expect(brandServiceMock.createBrand).not.toHaveBeenCalled();
   });
 
-  it('should call createbrandmethod from BrandService on valid submit', () => {
+  it('should call createbrandmethod from BrandService on valid submit', fakeAsync(() => {
+    (brandServiceMock.createBrand as jest.Mock).mockReturnValue(of({}));
     component.form.get('name')?.setValue('Test Brand');
     component.form.get('description')?.setValue('Test Description');
 
@@ -90,5 +96,36 @@ describe('CreateBranchComponent', () => {
       description: 'Test Description'
     });
 
-  });
+    tick();
+    expect(component.isLoading).toBeFalsy();
+    expect(component.showToast).toBeTruthy();
+    expect(component.mistakeOcurred).toBeFalsy();
+
+    tick(3000);
+    expect(component.showToast).toBeFalsy();
+
+  }));
+
+  it('should on error ocurred', fakeAsync(() => {
+    const errorRespone = {error: {message: "Error ocurred"}};
+
+    (brandServiceMock.createBrand as jest.Mock).mockReturnValue(throwError(()=>errorRespone))
+
+    component.form.get('name')?.setValue('Test Category');
+    component.form.get('description')?.setValue('Test Description');
+
+    component.onSubmit();
+
+    expect(brandServiceMock.createBrand).toHaveBeenCalled();
+    tick();
+
+    expect(component.isLoading).toBeFalsy();
+    expect(component.showToast).toBeTruthy();
+    expect(component.mistakeOcurred).toBeTruthy();
+    expect(component.message).toBe("Error ocurred");
+
+    tick(3000),
+    expect(component.showToast).toBeFalsy();
+  }));
+
 });
