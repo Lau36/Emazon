@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { AMOUNT, CREATE, DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_NAME, ITEM_CREATED, NAME, PLACEHOLDER_REGULAR_INPUT, PRICE, REQUIRED_FIELD } from './../../utils/constants';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { CREATE_ITEM } from '../../utils/constants';
+import { createItem } from 'src/app/models/interfaces';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ItemService } from '../../../services/item.service';
+import { CategoryService } from '../../../services/category.service';
+import { BrandService } from '../../../services/brand.service';
 
 @Component({
   selector: 'app-create-item',
@@ -7,65 +14,158 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateItemComponent implements OnInit {
 
-  @Output() categoryCreated: EventEmitter<void> = new EventEmitter<void>();
+  @Output() itemCreated: EventEmitter<void> = new EventEmitter<void>();
 
-  title: string = CREATE_CATEGORY;
+  title: string = CREATE_ITEM;
   textName: string = NAME;
   textDescription: string = DESCRIPTION;
+  textPrice: string = PRICE;
+  textAmount: string = AMOUNT;
+  textCategories: string = "Selecciona las categorías";
+  textBrand: string = "Selecciona una marca";
+
   placeholder: string = PLACEHOLDER_REGULAR_INPUT;
   contentButton: string = CREATE;
 
   form!: FormGroup;
   isLoading: boolean = false;
+  categoriesDisabled: boolean = false;
   showToast: boolean = false;
   mistakeOcurred: boolean = false;
   message: string = '';
-  categoryNameValidation: string = EXCEEDES_MAXIMUN_CHARACTERS_CATEGORY_NAME;
-  categoryDescriptionValidation: string = EXCEEDES_MAXIMUN_CHARACTERS_CATEGORY_DESCRIPTION;
+  nameValidation: string = EXCEEDES_MAXIMUN_CHARACTERS_BRAND_NAME;
+  descriptionValidation: string = EXCEEDES_MAXIMUN_CHARACTERS_BRAND_DESCRIPTION;
   required: string = REQUIRED_FIELD;
 
-  createCategory: createCategory = {
-    categoryName: '',
-    categoryDescription: ''
+  createItem: createItem ={
+    name: '',
+    description: '',
+    price: 0,
+    amount: 0,
+    idCategories: [],
+    idBrand: 0
   }
+
+  maxCategories = 3;
+  brands: {id:number, name:string, description:string}[] = [];
+  categories: {id:number, categoryName:string, categoryDescription:string, isDisabled:boolean}[] = [];
+  selectedBrand: number = 0;
+  selectedCategories: number[] = [];
 
   constructor(
     private fb: FormBuilder,
-    private categoryService: CategoryService
+    private itemService: ItemService,
+    private categoryService: CategoryService,
+    private brandService: BrandService
   ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      categoryName: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-      categoryDescription: new FormControl('', [Validators.required, Validators.maxLength(90)]),
+      name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+      description: new FormControl('', [Validators.required, Validators.maxLength(90)]),
+      price: new FormControl('', [Validators.required, Validators.maxLength(90)]),
+      amount: new FormControl('', [Validators.required, Validators.maxLength(90)]),
+      brand: [''],
+      categories: [[]]
     });
+
+    this.loadBrands();
+    this.loadCategories();
   }
 
-  get categoryName() {
-    return this.form.get('categoryName') as FormControl;
+  get name() {
+    return this.form.get('name') as FormControl;
   }
 
-  get categoryDescription() {
-    return this.form.get('categoryDescription') as FormControl;
+  get description() {
+    return this.form.get('description') as FormControl;
   }
 
-  onSubmit() {
+  get price() {
+    return this.form.get('price') as FormControl;
+  }
+
+  get amount() {
+    return this.form.get('amount') as FormControl;
+  }
+
+  onBrandSelected(brandId: number){
+    this.selectedBrand = brandId;
+  }
+
+  onCategorieSelected(categoryId: number){
+    const index = this.selectedCategories.indexOf(categoryId)
+    if(index === -1){
+      if(this.selectedCategories.length < this.maxCategories){
+        this.selectedCategories.push(categoryId)
+      }
+    }else{
+      this.selectedCategories.splice(index, 1)
+    }
+
+    this.form.get('categories')?.setValue(this.selectedCategories);
+
+    this.categories = this.categories.map(category => {
+      if (this.selectedCategories.length >= this.maxCategories) {
+        return {
+          ...category,
+          isDisabled: !this.selectedCategories.includes(category.id)
+        };
+      } else {
+        return { ...category, isDisabled: false};
+      }
+    });
+
+  }
+
+  loadCategories(){
+    this.categoryService.listCategories().subscribe({
+    next: (respose) =>{
+      this.categories = respose;
+    },
+    error: (error) =>{
+      console.log("Ocurrio un error", error)
+    }
+    })
+  }
+
+  loadBrands(){
+    this.brandService.listBrands().subscribe({
+    next: (respose) =>{
+      this.brands = respose;
+    },
+    error: (error) =>{
+      console.log("Ocurrio un error", error)
+    }
+    })
+  }
+
+  onSubmit(){
+    this.createItem = {
+      name: this.name.value,
+      description: this.description.value,
+      price: Number(this.price.value),
+      amount: Number(this.amount.value),
+      idBrand: this.selectedBrand,
+      idCategories: this.selectedCategories
+    }
+    console.log("Así se manda todo", this.createItem);
+
     if (this.form.valid) {
-      this.createCategory.categoryName = this.categoryName.value;
-      this.createCategory.categoryDescription = this.categoryDescription.value;
       this.isLoading = true;
-
-      this.categoryService.createCategory(this.createCategory).subscribe({
+      this.itemService.createItem(this.createItem).subscribe({
         next: () => {
           this.isLoading = false;
           this.mistakeOcurred = false;
           this.showToast = true;
-          this.message = CATEGORY_CREATED;
+          this.message = ITEM_CREATED;
           setTimeout(() => {
             this.showToast = false;
-            this.categoryCreated.emit();
+            this.itemCreated.emit();
           }, 3000);
-          this.form.reset();
+          this.loadBrands();
+          this.loadCategories();
+          // this.form.reset();
         },
         error: (error) => {
           this.isLoading = false;
@@ -77,12 +177,8 @@ export class CreateItemComponent implements OnInit {
           }, 3000);
         }
       });
+
     }
   }
-
-  // constructor() { }
-
-  // ngOnInit(): void {
-  // }
 
 }

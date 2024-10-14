@@ -1,23 +1,39 @@
-<div class="container-create-category">
-  <div class="form-create-category">
+<div class="container-create-item">
+  <div class="form-create-item">
     <app-form-create-item
       [form]="form"
       [title]="title"
       [textName]="textName"
       [textDescription]="textDescription"
+      [textPrice]="textPrice"
+      [textAmount]="textAmount"
+      [textCategories]="textCategories"
+      [textBrands]="textBrand"
+
       [placeholder]="placeholder"
       [contentButton]="contentButton"
-      [categoryName] = "categoryName"
-      [categoryDescription]="categoryDescription"
-      [categoryNameValidation]="categoryNameValidation"
-      [categoryDescriptionValidation]="categoryDescriptionValidation"
+
+      [name] = "name"
+      [description]="description"
+      [price]="price"
+      [amount]="amount"
+
+      [nameValidation]="nameValidation"
+      [descriptionValidation]="descriptionValidation"
       [required]="required"
+
       [isLoading]="isLoading"
       [showToast]="showToast"
       [mistakeOcurred]="mistakeOcurred"
       [message]="message"
       [isDisabled]="form.invalid || isLoading"
+
+      [categories]="categories"
+      [brands]="brands"
+
       (submitForm)="onSubmit()"
+      (toggleCategorySelectionAction)="onCategorieSelected($event)"
+      (brandSelected)="onBrandSelected($event)"
     ></app-form-create-item>
   </div>
 </div>

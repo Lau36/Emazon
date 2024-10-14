@@ -7,14 +7,27 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class DropdownComponent implements OnInit {
 
-  @Input() options: any ;
+  @Input() options: any[] = [];
+  @Input() width: string = "100px"
   @Output() optionChange = new EventEmitter<any>();
 
   constructor() { }
 
+  getOptionValue(option: any){
+    return typeof option === 'object' ? option.id : option;
+
+  }
+
+  getOptionLabel(option: any){
+    return typeof option === 'object' ? option.name : option;
+  }
+
   action(event: any){
-    const selectedOption = event.target.value;
-    this.optionChange.emit(selectedOption);
+    const selectedValue = event.target.value;
+    const selectedOption = this.options.find(option =>{
+      this.getOptionValue(option) == selectedValue
+  });
+    this.optionChange.emit(selectedOption ? selectedOption : selectedValue);
   }
 
   ngOnInit(): void {

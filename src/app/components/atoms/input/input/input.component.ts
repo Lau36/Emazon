@@ -14,7 +14,7 @@ export class InputComponent implements OnInit{
   @Input() requiredTextSpan: string = '';
   @Input() height: string = '';
   @Input() width: string = '';
-  @Input() type: string = '';
+  @Input() type: string = 'text';
   @Input() fontSize: string = '';
 
 

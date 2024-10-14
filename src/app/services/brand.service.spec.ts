@@ -7,7 +7,8 @@ import { of } from 'rxjs';
 import { ReactiveFormsModule } from '@angular/forms';
 
 const httpClientMock = {
-  post: jest.fn()
+  post: jest.fn(),
+  get: jest.fn(),
 }
 
   const data:createBrand = {
@@ -20,6 +21,11 @@ const httpClientMock = {
     categoryName: "test",
     categoryDescription: "test create category service"
  }
+
+ const responseBrands=
+ [{ id: 1, name: 'Test', description: 'Test description' },
+   { id: 2, name: 'Test2', description: 'Test description2' }
+ ];;
 
 describe('BranchService', () => {
 
@@ -44,16 +50,23 @@ describe('BranchService', () => {
     expect(httpClientMock.post).toHaveBeenCalledWith(service.urlMicroserviceStock, data, expect.any(Object))
   });
 
-  it('create new category return response', (done) => {
+  it('create new category return response', () => {
     httpClientMock.post.mockReturnValue(of(responseMock));
     service.createBrand(data).subscribe(response => {
       expect(response).toEqual(response);
-      done();
     });
 
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should listAllBrands', (done) => {
+    httpClientMock.get.mockReturnValue(of(responseBrands));
+    service.listBrands().subscribe(response => {
+      expect(response).toEqual(responseBrands);
+      done();
+    });
   });
 });
