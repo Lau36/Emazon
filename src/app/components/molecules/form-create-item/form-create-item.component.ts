@@ -49,9 +49,7 @@ export class FormCreateItemComponent implements OnInit {
   }
 
   onBrandChange(event: any){
-
-    var brandId = Number(event.target.value);
-    this.brandSelected.emit(brandId);
+    this.brandSelected.emit(Number(event));
   }
 
   onSubmit() {

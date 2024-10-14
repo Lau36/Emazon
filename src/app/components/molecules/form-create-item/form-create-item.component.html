@@ -1,80 +1,97 @@
 <div class="form-create" [formGroup]="form">
-
   <app-loader *ngIf="isLoading"></app-loader>
 
   <div *ngIf="!isLoading">
-  <h1 class="tittle">{{title}}</h1>
-  <app-text-component [content]="textName"></app-text-component>
-  <app-input
-    [placeholder]="placeholder"
-    [control]="name"
-    [maxLengthTextSpan]=nameValidation
-    [requiredTextSpan]=required
-    width = 23.5rem
-    height = 1rem
-    fontSize="0.8rem"
-  ></app-input>
+    <div class="title">
+      <h1>{{ title }}</h1>
+    </div>
 
-  <app-text-component [content]="textDescription"></app-text-component>
-  <app-texttarea
-    [placeholder]="placeholder"
-    [control]="description"
-    [maxLengthTextSpan]=descriptionValidation
-    [requiredTextSpan]=required
-    width = 23.5rem
-    height = 3rem
-    fontSize="0.9rem"
-  ></app-texttarea>
+    <div class="form-row">
+      <div class="form-item">
+        <app-text-component [content]="textName"></app-text-component>
+        <app-input
+          [placeholder]="placeholder"
+          [control]="name"
+          [maxLengthTextSpan]="nameValidation"
+          [requiredTextSpan]="required"
+          width="23.5rem"
+          height="1rem"
+          fontSize="0.8rem"
+        ></app-input>
+      </div>
 
-  <app-text-component [content]="textAmount"></app-text-component>
-  <app-input
-    [placeholder]="placeholder"
-    [control]="amount"
-    [requiredTextSpan]=required
-    width = 23.5rem
-    height = 1rem
-    fontSize="0.8rem"
-    type="number"
-  ></app-input>
+      <div class="form-item">
+        <app-text-component [content]="textDescription"></app-text-component>
+        <app-texttarea
+          [placeholder]="placeholder"
+          [control]="description"
+          [maxLengthTextSpan]="descriptionValidation"
+          [requiredTextSpan]="required"
+          width="23.5rem"
+          height="3rem"
+          fontSize="0.9rem"
+        ></app-texttarea>
+      </div>
+    </div>
 
-  <app-text-component [content]="textPrice"></app-text-component>
-  <app-input
-    [placeholder]="placeholder"
-    [control]="price"
-    [requiredTextSpan]=required
-    width = 23.5rem
-    height = 1rem
-    fontSize="0.8rem"
-  ></app-input>
+    <div class="form-row">
+      <div class="form-item">
+        <app-text-component [content]="textAmount"></app-text-component>
+        <app-input
+          [placeholder]="placeholder"
+          [control]="amount"
+          [requiredTextSpan]="required"
+          width="23.5rem"
+          height="1rem"
+          fontSize="0.8rem"
+          type="number"
+        ></app-input>
+      </div>
 
-  <app-text-component [content]="textBrands"></app-text-component>
-  <select (change)="onBrandChange($event)">
-    <option>Seleccione...</option>
-    <option *ngFor="let brand of brands" [value]="brand.id">{{ brand.name }}</option>
-  </select>
+      <div class="form-item">
+        <app-text-component [content]="textPrice"></app-text-component>
+        <app-input
+          [placeholder]="placeholder"
+          [control]="price"
+          [requiredTextSpan]="required"
+          width="23.5rem"
+          height="1rem"
+          fontSize="0.8rem"
+        ></app-input>
+      </div>
+    </div>
 
-  <app-text-component [content]="textCategories"></app-text-component>
-  <div class="options-container">
-    <div  *ngFor="let category of categories">
-      <input
-        type="checkbox"
-        [value]="category.id"
-        (change)="toggleCategorySelection(category.id)"
-        [disabled]="category.isDisabled"
-        [checked]="form.get('categories')?.value.includes(category.id)">
-      {{ category.categoryName }}
+    <div class="form-row">
+      <div class="form-item">
+        <app-text-component [content]="textCategories"></app-text-component>
+        <div class="options-container">
+          <div *ngFor="let category of categories">
+            <input
+              type="checkbox"
+              id="{{category.id}}"
+              [value]="category.id"
+              (change)="toggleCategorySelection(category.id)"
+              [disabled]="category.isDisabled"
+              [checked]="form.get('categories')?.value.includes(category.id)"
+            />
+            <label for="{{category.id}}">{{ category.categoryName }}</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-item">
+        <app-text-component [content]="textBrands"></app-text-component>
+        <app-dropdown
+        width="100%"
+        [options]="brands"
+        (optionChange) = "onBrandChange($event)"
+        ></app-dropdown>
+      </div>
+    </div>
+
+    <app-toast *ngIf="showToast" [message]="message" [error]="mistakeOcurred"></app-toast>
+    <div class="button-container">
+      <app-button [content]="contentButton" (action)="onSubmit()" [isDisabled]="isDisabled"></app-button>
     </div>
   </div>
-
-
-  <app-toast
-  *ngIf="showToast"
-  [message]=message
-  [error] = mistakeOcurred
-  ></app-toast>
-  <div class="button-container">
-    <app-button [content]="contentButton" (action)="onSubmit()" [isDisabled]="false"></app-button>
-  </div>
-
-</div>
 </div>

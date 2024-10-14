@@ -27,6 +27,11 @@ const httpClientMock = {
   totalElements: 1
 };
 
+const responseCategories=
+  [{ id: 1, categoryName: 'Test', categoryDescription: 'Test description' },
+    { id: 2, categoryName: 'Test2', categoryDescription: 'Test description2' }
+  ];
+
 const params: listCategories = {
   page: 0,
   size: 5,
@@ -90,6 +95,13 @@ describe('CategoryService', () => {
         expect(error.message).toContain(errorMessage);
         done();
       }
+    });
+  });
+
+  it('should listAllCategories', () => {
+    httpClientMock.get.mockReturnValue(of(responseCategories));
+    service.listCategories().subscribe(response => {
+      expect(response).toEqual(responseListCategories);
     });
   });
 

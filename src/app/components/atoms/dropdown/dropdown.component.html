@@ -1,3 +1,5 @@
-<select  class="dropdown-container" (change)="action($event)">
-  <option class="options" *ngFor="let option of options" [value]="option">{{option}}</option>
+<select [style.width]="width" class="dropdown-container" (change)="action($event)">
+  <option disabled selected>Seleccione...</option>
+  <option class="options" *ngFor="let option of options" [value]="getOptionValue(option)">{{ getOptionLabel(option) }}</option>
 </select>
+

@@ -3,9 +3,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CREATE_ITEM } from '../../utils/constants';
 import { createItem } from 'src/app/models/interfaces';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ItemService } from 'src/app/services/item.service';
-import { CategoryService } from 'src/app/services/category.service';
-import { BrandService } from 'src/app/services/brand.service';
+import { ItemService } from '../../../services/item.service';
+import { CategoryService } from '../../../services/category.service';
+import { BrandService } from '../../../services/brand.service';
 
 @Component({
   selector: 'app-create-item',
@@ -150,7 +150,7 @@ export class CreateItemComponent implements OnInit {
       idCategories: this.selectedCategories
     }
     console.log("Así se manda todo", this.createItem);
-    
+
     if (this.form.valid) {
       this.isLoading = true;
       this.itemService.createItem(this.createItem).subscribe({
