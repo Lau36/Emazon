@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ModalComponent } from './modal/modal.component';
 import { FormCreateItemComponent } from './form-create-item/form-create-item.component';
+import { ItemsComponent } from './items/items.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormCreateItemComponent } from './form-create-item/form-create-item.com
     FooterComponent,
     PaginationComponent,
     ModalComponent,
-    FormCreateItemComponent
+    FormCreateItemComponent,
+    ItemsComponent
   ],
   imports: [
     CommonModule,

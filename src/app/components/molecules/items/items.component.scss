@@ -1,0 +1,6 @@
+.items-container{
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
+  // grid-gap: 5px;
+}

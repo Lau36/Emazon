@@ -10,6 +10,7 @@ import { ToastComponent } from './toast/toast.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from './table/table.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DropdownComponent } from './dropdown/dropdown.component';
     TextareaComponent,
     ToastComponent,
     TableComponent,
-    DropdownComponent
+    DropdownComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ import { DropdownComponent } from './dropdown/dropdown.component';
     TextareaComponent,
     ToastComponent,
     TableComponent,
-    DropdownComponent
+    DropdownComponent,
+    CardComponent
   ]
 })
 export class AtomsModule {}

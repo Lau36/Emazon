@@ -18,7 +18,18 @@ export class PaginationComponent implements OnInit {
   @Input() totalElements: number = 0;
   @Output() changePageSizeAction = new EventEmitter<any>();
   @Output() changePageSortDirectionAction = new EventEmitter<any>();
+  @Output() changePageSortByAction = new EventEmitter<any>();
   @Input() tableContainerHeight: string = '20%';
+
+  @Input() showItems: boolean = false;
+  @Input() items: {id: number, name: string, description: string, quantityInStock: number,
+    price: number, categories: {id: number, name: string}[], brand:{id: number, name: string}
+    }[] = []
+  @Input() showTable: boolean = true;
+  @Input() showSortBy: boolean = false;
+  @Input() optionsShortBytoShow: [] = [];
+  @Input() optionsShortBy: {id: string, name:string}[]  = [];
+
 
 
   optionsSize: number[] = [5, 10, 15, 20];
@@ -34,6 +45,10 @@ export class PaginationComponent implements OnInit {
 
   onPageSortDirectionSelected(option: any){
     this.changePageSortDirectionAction.emit(String(option));
+  }
+
+  onPageSortBySelected(option: any){
+    this.changePageSortByAction.emit(String(option));
   }
 
   previousPage(){

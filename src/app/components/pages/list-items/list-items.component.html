@@ -1,0 +1,28 @@
+<div class="list-items-container">
+  <app-header></app-header>
+  <div class="pagination-items-container">
+    <div class="button-create-brand-container">
+      <app-button content="Crear marca" (action)="openModal()"></app-button>
+      <app-modal [isVisible]="isModalVisible" (close)="closeModal()">
+        <app-create-branch (brandCreated)="closeModal()"></app-create-branch>
+      </app-modal>
+    </div>
+  <div class="pagination-container">
+    <app-pagination
+    (changePageSizeAction) = "onPageSizeChange($event)"
+    (changePageSortDirectionAction) = "onPageSortDirectionChange($event)"
+    (changePageSortByAction)="onPageSortByChange($event)"
+    (previousPageAction)="previusPage()"
+    (nextPageAction)="nextPage()"
+    [currentPage]="this.responsePaginatedItems.currentPage"
+    [totalPages]="this.responsePaginatedItems.totalPages"
+    [totalElements]="this.responsePaginatedItems.totalElements"
+    [items]="items"
+    [showItems]="true"
+    [showTable]="false"
+    [optionsShortBy]="options"
+    [showSortBy]="true"
+    ></app-pagination>
+  </div>
+</div>
+</div>
