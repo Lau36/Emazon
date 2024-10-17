@@ -27,7 +27,6 @@ export class DropdownComponent implements OnInit {
     const selectedOption = this.options.find(option =>{
       this.getOptionValue(option) == selectedValue
   });
-  console.log("valor que emite", selectedValue)
     this.optionChange.emit(selectedOption ? selectedOption : selectedValue);
   }
 

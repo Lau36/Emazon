@@ -7,19 +7,21 @@
   [options]="optionsSize"
   (optionChange) = "onPageSizeSelected($event)"
   ></app-dropdown>
-  <h1 class="text-pagination">Ordenar</h1>
-  <app-dropdown
-  [options]="optionsSort"
-  (optionChange) = "onPageSortDirectionSelected($event)"
-  ></app-dropdown>
-
-  <h1 *ngIf="showSortBy" class="text-pagination">Ordenar por</h1>
+  
+    <h1 class="text-pagination">Ordenar</h1>
     <app-dropdown
-    *ngIf="showSortBy"
+    [options]="optionsSort"
+    (optionChange) = "onPageSortDirectionSelected($event)"
+    ></app-dropdown>
+
+
+  <ng-container *ngIf="showSortBy" >
+    <h1 class="text-pagination">Ordenar por</h1>
+    <app-dropdown
     [options]="optionsShortBy"
     (optionChange) = "onPageSortBySelected($event)"
     ></app-dropdown>
-
+  </ng-container>
 
   </div>
 

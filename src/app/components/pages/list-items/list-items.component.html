@@ -2,9 +2,9 @@
   <app-header></app-header>
   <div class="pagination-items-container">
     <div class="button-create-brand-container">
-      <app-button content="Crear marca" (action)="openModal()"></app-button>
-      <app-modal [isVisible]="isModalVisible" (close)="closeModal()">
-        <app-create-branch (brandCreated)="closeModal()"></app-create-branch>
+      <app-button content="Crear item" (action)="openModal()"></app-button>
+      <app-modal width="900px" [isVisible]="isModalVisible" (close)="closeModal()">
+        <app-create-item (itemCreated)="closeModal()"></app-create-item>
       </app-modal>
     </div>
   <div class="pagination-container">
@@ -18,8 +18,10 @@
     [totalPages]="this.responsePaginatedItems.totalPages"
     [totalElements]="this.responsePaginatedItems.totalElements"
     [items]="items"
-    [showItems]="true"
-    [showTable]="false"
+    [showItems]="false"
+    [showTable]="true"
+    [tableColumns]="tableColumns"
+    [data]="data"
     [optionsShortBy]="options"
     [showSortBy]="true"
     ></app-pagination>

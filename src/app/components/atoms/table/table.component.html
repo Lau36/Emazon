@@ -7,7 +7,14 @@
     </thead>
         <tbody class="table-body-container">
           <tr *ngFor="let row of data">
-            <td *ngFor="let column of columns">{{row[column.field]}}</td>
+            <td *ngFor="let column of columns">
+              <div *ngIf="isAnArray(row[column.field])">
+                <span *ngFor="let tag of row['categories']" class="tag">{{ tag.name }}</span>
+              </div>
+              <div *ngIf="!isAnArray(row[column.field])">
+                {{row[column.field]}}
+              </div>
+              </td>
           </tr>
         </tbody>
   </table>

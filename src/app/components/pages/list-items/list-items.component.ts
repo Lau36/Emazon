@@ -1,4 +1,4 @@
-import { ItemService } from 'src/app/services/item.service';
+import { ItemService } from '../../../services/item.service';
 import { Component, OnInit } from '@angular/core';
 import { pagination, responsePaginatedItems } from 'src/app/models/interfaces';
 
@@ -11,6 +11,8 @@ export class ListItemsComponent implements OnInit {
 
   items: any[] = [];
 
+  data: any[] = [];
+
   response: any[] = [];
 
   isModalVisible: boolean = false;
@@ -21,6 +23,15 @@ export class ListItemsComponent implements OnInit {
     sort: 'name',
     sortDirection: 'asc'
   }
+
+  tableColumns =
+  [ {field: "name", header: "Nombre"},
+    {field: "description", header: "Descripción"},
+    {field: "price", header: "Precio"},
+    {field: "quantityInStock", header: "Cantidad"},
+    {field: "brandName", header: "Marca"},
+    {field: "categories", header: "Categorias"},
+  ]
 
   responsePaginatedItems: responsePaginatedItems = {
     items: [],
@@ -37,7 +48,9 @@ export class ListItemsComponent implements OnInit {
 
   constructor(
     private itemService: ItemService
-  ) { }
+  ) {
+
+   }
 
   ngOnInit(): void {
     this.getBrands();
@@ -47,6 +60,14 @@ export class ListItemsComponent implements OnInit {
     this.itemService.listItemsPaginated(this.pagination).subscribe({
       next: (response) => {
         this.items = response.items;
+        this.data = this.items.map( item => ({
+          ...item,
+          brandName: item.brand.name,
+          categories: item.categories
+        }));
+
+        console.log("Los items", this.data)
+
         this.responsePaginatedItems = {
           items: response.items,
           currentPage: response.currentPage,

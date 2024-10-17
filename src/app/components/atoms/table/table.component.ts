@@ -11,6 +11,10 @@ export class TableComponent implements OnInit {
 
   constructor() { }
 
+  isAnArray(array: []){
+    return Array.isArray(array);
+  }
+
   ngOnInit(): void {
   }
 
