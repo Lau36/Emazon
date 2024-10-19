@@ -1,11 +1,11 @@
-import { AMOUNT, CREATE, DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_NAME, ITEM_CREATED, NAME, PLACEHOLDER_REGULAR_INPUT, PRICE, REQUIRED_FIELD } from '../../../utils/constants';
+import { AMOUNT, CREATE, DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_NAME, ITEM_CREATED, NAME, PLACEHOLDER_REGULAR_INPUT, PRICE, REQUIRED_FIELD } from '../../../shared/constants';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CREATE_ITEM } from '../../../utils/constants';
+import { CREATE_ITEM } from '../../../shared/constants';
 import { createItem } from 'src/app/core/models/interfaces';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ItemService } from '../../../services/item.serviceee
-import { CategoryService } from '../../../services/category.serviceee
-import { BrandService } from '../../../services/brand.serviceee
+import { ItemService } from '../../../../core/services/item.service'
+import { CategoryService } from '../../../../core/services/category.service';
+import { BrandService } from '../../../../core/services/brand.service';
 
 @Component({
   selector: 'app-create-item',

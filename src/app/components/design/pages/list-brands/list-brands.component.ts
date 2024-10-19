@@ -1,4 +1,4 @@
-import { BrandService } from '../../../services/brand.serviceee
+import { BrandService } from '../../../../core/services/brand.service';
 import { pagination, responsePaginatedBrands } from '../../../../core/models/interfaces';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';

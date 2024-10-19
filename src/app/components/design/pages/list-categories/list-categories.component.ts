@@ -1,5 +1,5 @@
 import { listCategories, responseListCategories } from '../../../../core/models/interfaces';
-import { CategoryService } from '../../../services/category.serviceee
+import { CategoryService } from '../../../../core/services/category.service';
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
 

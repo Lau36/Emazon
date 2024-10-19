@@ -4,10 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CategoryService } from './services/category.service';
+import { CategoryService } from './services/category.serviceee
 import { ReactiveFormsModule } from '@angular/forms';
-import { AtomsModule } from './components/atoms/atoms.module';
-import { MoleculesModule } from './components/molecules/molecules.module';
+import { AtomsModule } from './components/design/atoms/atoms.module';
+import { MoleculesModule } from './components/design/molecules/molecules.module';
 import { PagesModule } from './components/pages/pages.module';
 
 
