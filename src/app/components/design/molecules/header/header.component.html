@@ -1,9 +1,19 @@
 <header>
-  <nav class="infoUser">
-    <app-icon
-    width="150px"
-    height="15vh"
-    ></app-icon>
-    <app-text-component color= "" [content]="userName"></app-text-component>
+  <nav class="nav-container">
+      <app-icon
+      class="nav-icon"
+      width="150px"
+      height="15vh"
+      ></app-icon>
+
+      <label class="nav-toggle">
+        <input type="checkbox" id="menu-input" class="nav-input">
+      </label>
+
+      <ul class="nav-list" >
+        <li class="nav-item" *ngFor="let element of listElementsNav">
+          <a [href]="element.path" class="nav-link">{{element.elementName}}</a>
+        </li>
+      </ul>
   </nav>
 </header>

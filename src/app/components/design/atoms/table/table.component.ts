@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
   @Input() data: any[] = [];
-  @Input() columns: {field:string, header:string}[] = [];
+  @Input() columns: {field:string, header:string, render?:any}[] = [];
 
   constructor() { }
 
