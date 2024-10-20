@@ -165,7 +165,14 @@ export class CreateItemComponent implements OnInit {
           }, 3000);
           this.loadBrands();
           this.loadCategories();
-          // this.form.reset();
+          this.form.reset({
+          name: '',
+          description: '',
+          price: '',
+          amount:'',
+          brand: [''],
+          categories: [[]],
+          });
         },
         error: (error) => {
           this.isLoading = false;
