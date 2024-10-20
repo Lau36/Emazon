@@ -24,9 +24,6 @@ export class CreateCategoryComponent implements OnInit {
   showToast: boolean = false;
   mistakeOcurred: boolean = false;
   message: string = '';
-  categoryNameValidation: string = EXCEEDES_MAXIMUN_CHARACTERS_CATEGORY_NAME;
-  categoryDescriptionValidation: string = EXCEEDES_MAXIMUN_CHARACTERS_CATEGORY_DESCRIPTION;
-  required: string = REQUIRED_FIELD;
 
   createCategory: createCategory = {
     categoryName: '',

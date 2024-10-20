@@ -8,9 +8,8 @@
   [style.font-size]="fontSize"
   ></textarea>
 
-<span class="span-class" *ngIf="control.errors?.['maxlength'] && (control.touched || control.dirty)">
-  {{maxLengthTextSpan}}
-</span>
-<span class="span-class" *ngIf="control.errors?.['required'] && (control.touched || control.dirty)">
-  {{requiredTextSpan}}
+<span class="span-class" *ngIf="control.errors && (control.touched || control.dirty)">
+  <ng-container *ngFor="let error of errorMessages()">
+    {{ error }}
+  </ng-container>
 </span>

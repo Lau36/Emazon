@@ -9,6 +9,8 @@ export class DropdownComponent implements OnInit {
 
   @Input() options: any[] = [];
   @Input() width: string = "100px"
+  @Input() messageError: string = '';
+  @Input() isAnError: boolean = false;
   @Output() optionChange = new EventEmitter<any>();
 
   constructor() { }

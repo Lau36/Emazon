@@ -65,8 +65,8 @@ export class CreateItemComponent implements OnInit {
       description: new FormControl('', [Validators.required, Validators.maxLength(90)]),
       price: new FormControl('', [Validators.required, Validators.maxLength(90)]),
       amount: new FormControl('', [Validators.required, Validators.maxLength(90)]),
-      brand: [''],
-      categories: [[]]
+      brand: new FormControl([''], Validators.required),
+      categories: new FormControl([[]], Validators.required)
     });
 
     this.loadBrands();

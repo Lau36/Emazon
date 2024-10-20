@@ -24,8 +24,6 @@ export class CreateBrandComponent implements OnInit {
   showToast: boolean = false;
   mistakeOcurred: boolean = false;
   message: string = '';
-  categoryNameValidation: string = EXCEEDES_MAXIMUN_CHARACTERS_BRAND_NAME;
-  categoryDescriptionValidation: string = EXCEEDES_MAXIMUN_CHARACTERS_BRAND_DESCRIPTION;
   required: string = REQUIRED_FIELD;
 
   createBrach: createBrand = {

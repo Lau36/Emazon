@@ -8,10 +8,12 @@
   [style.font-size]="fontSize"
   [type]="type"
 />
-<span class="span-class-input" *ngIf="control.errors?.['maxlength'] && (control.touched || control.dirty)">
-  {{maxLengthTextSpan}}
+
+<span class="span-class-input" *ngIf="control.errors && (control.touched || control.dirty)">
+  <ng-container *ngFor="let error of errorMessages()">
+    {{ error }}
+  </ng-container>
 </span>
-<span class="span-class-input" *ngIf="control.errors?.['required'] && (control.touched || control.dirty)">
-  {{requiredTextSpan}}
-</span>
+
+
 

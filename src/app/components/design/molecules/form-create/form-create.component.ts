@@ -16,14 +16,14 @@ export class FormCreateComponent {
   @Input() textDescription: string = "";
   @Input() placeholder: string = "";
   @Input() contentButton: string = "";
-  @Input() categoryNameValidation!: string;
-  @Input() categoryDescriptionValidation!: string;
   @Input() required!: string;
   @Input() isLoading: boolean = false;
   @Input() showToast: boolean = false;
   @Input() mistakeOcurred: boolean = false;
   @Input() message: string = '';
   @Input() isDisabled: boolean = false;
+  @Input() formControlError: boolean = false;
+  @Input() messageError: string = '';
 
   @Output() submitForm: EventEmitter<void> = new EventEmitter<void>();
 

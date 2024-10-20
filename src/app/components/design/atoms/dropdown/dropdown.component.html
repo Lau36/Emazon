@@ -2,4 +2,7 @@
   <option disabled selected>Selecione..</option>
   <option class="options" *ngFor="let option of options" [value]="getOptionValue(option)">{{ getOptionLabel(option) }}</option>
 </select>
+<span class="span-class-input" *ngIf="isAnError">
+  {{messageError}}
+</span>
 
