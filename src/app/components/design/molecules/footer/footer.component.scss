@@ -1,0 +1,28 @@
+@import "../../../shared/colors.scss";
+
+.footer {
+  background-color: $grayColor;
+  color: $whiteColor;
+  padding: 20px 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+  nav{
+    a {
+      color: $whiteColor;
+      margin-left: 15px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

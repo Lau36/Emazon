@@ -1,0 +1,15 @@
+<div class="items-container">
+
+  <div class="card" *ngFor="let item of items">
+    <app-card
+    [name]="item.name"
+    [description]="item.description"
+    [price]="item.price"
+    [quantityInStock]="item.quantityInStock"
+    [categories]="item.categories"
+    [brand]="item.brand"
+    ></app-card>
+  </div>
+
+
+</div>

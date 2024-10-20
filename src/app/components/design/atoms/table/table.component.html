@@ -1,0 +1,26 @@
+<div class="table-container">
+  <table class="custom-table">
+    <thead class="header-table">
+      <tr>
+        <th *ngFor="let column of columns">{{column.header}}</th>
+      </tr>
+    </thead>
+        <tbody class="table-body-container">
+          <tr *ngFor="let row of data">
+            <td *ngFor="let column of columns">
+              <ng-container *ngIf="column.render">
+                {{ column.render(row[column.field]) }}
+              </ng-container>
+
+              <ng-container *ngIf="isAnArray(row[column.field])">
+                <span *ngFor="let tag of row[column.field]" class="tag">{{ tag.name }}</span>
+              </ng-container>
+
+              <ng-container *ngIf="!isAnArray(row[column.field]) && !column.render">
+                {{row[column.field]}}
+              </ng-container>
+              </td>
+          </tr>
+        </tbody>
+  </table>
+</div>

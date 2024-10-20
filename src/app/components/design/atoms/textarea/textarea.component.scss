@@ -1,0 +1,25 @@
+@import "../../../shared/colors.scss";
+
+.textarea{
+  border-color: $grayColor;
+  border-width: 0.1px;
+  border-radius: 10px;
+  height: height;
+  width: width;
+  transition: border-color 0.3s;
+  outline-color: $backgroundHeaderColor;
+  padding: 10px;
+  resize: none;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+}
+
+.error {
+  border-color: $redColor;
+}
+
+.span-class{
+  color: $redColor;
+  font-size: 14px;
+  margin-top: 4px;
+  display: block;
+}

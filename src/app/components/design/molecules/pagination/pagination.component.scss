@@ -1,0 +1,64 @@
+@import "../../../shared/colors.scss";
+$options-scrollbar-width: px;
+$options-scrollbar-track-color: #f1f1f1;
+$options-scrollbar-thumb-color: #888;
+$options-scrollbar-thumb-hover-color: #555;
+$options-checkbox-color: purple;
+$options-checkbox-size: 16px;
+
+.pagination-container{
+  padding: 15px;
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+
+  .pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .table-container-pagination{
+    margin-top: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+
+    &::-webkit-scrollbar {
+      width: 11px;
+      margin: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius: 20px;
+      background: $options-scrollbar-track-color;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $options-scrollbar-thumb-color;
+      border-radius: 20px;
+      border: 2px solid $options-scrollbar-track-color;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: $options-scrollbar-thumb-hover-color;
+
+    }
+  }
+
+  .control-table-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .text-pagination{
+      display: flex;
+      align-items: center;
+      margin: 0;
+      margin-right: 1%;
+      margin-left: 20px;
+      font-size: 1rem;
+    }
+
+  }
+}
+

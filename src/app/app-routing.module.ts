@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListCategoriesComponent } from './components/pages/list-categories/list-categories.component';
-import { ListBrandsComponent } from './components/pages/list-brands/list-brands.component';
-import { CreateItemComponent } from './components/pages/create-item/create-item.component';
+import { ListCategoriesComponent } from './components/modules/category/pages/list-categories/list-categories.component';
+import { ListBrandsComponent } from './components/modules/brand/pages/list-brands/list-brands.component';
+import { ListItemsComponent } from './components/modules/item/pages/list-items/list-items.component';
 
 const routes: Routes = [
-  {path: "Admin/Category", component: ListCategoriesComponent},
-  {path: "Admin/Brand", component: ListBrandsComponent},
-  {path: "Admin/Item", component: CreateItemComponent}
+  {path: "admin/categorias", component: ListCategoriesComponent},
+  {path: "admin/marcas", component: ListBrandsComponent},
+  {path: "admin/articulos", component: ListItemsComponent}
 ];
 
 @NgModule({
