@@ -20,4 +20,9 @@ describe('ButtonComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit submitForm', () =>{
+    jest.spyOn(component.action, 'emit');
+    expect(component.action.emit).toHaveBeenCalled;
+  });
 });

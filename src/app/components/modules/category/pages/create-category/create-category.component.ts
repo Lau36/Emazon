@@ -24,6 +24,7 @@ export class CreateCategoryComponent implements OnInit {
   showToast: boolean = false;
   mistakeOcurred: boolean = false;
   message: string = '';
+  formFields: any[] = []
 
   createCategory: createCategory = {
     categoryName: '',
@@ -40,6 +41,28 @@ export class CreateCategoryComponent implements OnInit {
       categoryName: new FormControl('', [Validators.required, Validators.maxLength(50)]),
       categoryDescription: new FormControl('', [Validators.required, Validators.maxLength(90)]),
     });
+
+    this.formFields = [
+      {
+        typeField: 'input',
+        content: 'Nombre de la categoría',
+        placeholder: 'Escriba aquí',
+        control: this.categoryName,
+        width: '23.5rem',
+        height: '1rem',
+        fontSize: '0.8rem',
+        type: "text"
+      },
+      {
+        typeField: 'textarea',
+        content: 'Descripción de categoría',
+        placeholder: 'Escriba aquí',
+        control: this.categoryDescription,
+        width: "23.5rem",
+        height: "3rem",
+        fontSize: "0.9rem"
+      }
+    ]
   }
 
   get categoryName() {
@@ -49,6 +72,8 @@ export class CreateCategoryComponent implements OnInit {
   get categoryDescription() {
     return this.form.get('categoryDescription') as FormControl;
   }
+
+
 
   onSubmit() {
     if (this.form.valid) {

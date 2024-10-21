@@ -9,6 +9,7 @@ import { ListCategoriesComponent } from './category/pages/list-categories/list-c
 import { ListBrandsComponent } from './brand/pages/list-brands/list-brands.component';
 import { CreateItemComponent } from './item/pages/create-item/create-item.component';
 import { ListItemsComponent } from './item/pages/list-items/list-items.component';
+import { OrganismsModule } from "../design/organisms/organisms.module";
 
 
 @NgModule({
@@ -17,8 +18,9 @@ import { ListItemsComponent } from './item/pages/list-items/list-items.component
     CommonModule,
     ReactiveFormsModule,
     MoleculesModule,
-    AtomsModule
-  ],
+    AtomsModule,
+    OrganismsModule
+],
   exports: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, CreateItemComponent]
 })
 export class PagesModule {}

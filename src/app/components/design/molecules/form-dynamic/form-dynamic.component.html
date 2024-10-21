@@ -1,0 +1,20 @@
+<ng-container [ngSwitch]="field.typeField">
+  <app-input
+    *ngSwitchCase="'input'"
+    [placeholder]="field.placeholder"
+    [control]="field.control"
+    [width]="field.width"
+    [height]="field.height"
+    [fontSize]="field.fontSize"
+    [type]="field.type"
+  ></app-input>
+
+  <app-texttarea
+    *ngSwitchCase="'textarea'"
+    [placeholder]="field.placeholder"
+    [control]="field.control"
+    [width]="field.width"
+    [height]="field.height"
+    [fontSize]="field.fontSize"
+  ></app-texttarea>
+</ng-container>

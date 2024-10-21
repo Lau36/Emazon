@@ -26,7 +26,9 @@ export class CreateBrandComponent implements OnInit {
   message: string = '';
   required: string = REQUIRED_FIELD;
 
-  createBrach: createBrand = {
+  formFields: any[] = [];
+
+  createBrand: createBrand = {
     name: '',
     description: ''
   }
@@ -41,6 +43,28 @@ export class CreateBrandComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
       description: new FormControl('', [Validators.required, Validators.maxLength(120)]),
     });
+
+    this.formFields = [
+      {
+        typeField: 'input',
+        content: 'Nombre de la marca',
+        placeholder: 'Escriba aquí',
+        control: this.name,
+        width: '23.5rem',
+        height: '1rem',
+        fontSize: '0.8rem',
+        type: "text"
+      },
+      {
+        typeField: 'textarea',
+        content: 'Descripción de marca',
+        placeholder: 'Escriba aquí',
+        control: this.description,
+        width: "23.5rem",
+        height: "3rem",
+        fontSize: "0.9rem"
+      }
+    ]
   }
 
   get name() {
@@ -53,11 +77,11 @@ export class CreateBrandComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.createBrach.name = this.name.value;
-      this.createBrach.description = this.description.value;
+      this.createBrand.name = this.name.value;
+      this.createBrand.description = this.description.value;
       this.isLoading = true;
 
-      this.brandService.createBrand(this.createBrach).subscribe({
+      this.brandService.createBrand(this.createBrand).subscribe({
         next: () => {
           this.isLoading = false;
           this.mistakeOcurred = false;

@@ -10,6 +10,7 @@ import { MoleculesModule } from './components/design/molecules/molecules.module'
 import { CategoryService } from './components/core/services/category.service';
 import { PagesModule } from './components/modules/modules.module';
 import {TokenInterceptor} from './components/auth/token.interceptor';
+import { OrganismsModule } from './components/design/organisms/organisms.module';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {TokenInterceptor} from './components/auth/token.interceptor';
     ReactiveFormsModule,
     AtomsModule,
     MoleculesModule,
+    OrganismsModule,
     PagesModule
   ],
   providers: [{

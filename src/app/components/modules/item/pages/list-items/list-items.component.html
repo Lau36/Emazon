@@ -3,7 +3,7 @@
   <div class="pagination-items-container">
     <div class="button-create-brand-container">
       <app-button content="Crear item" (action)="openModal()"></app-button>
-      <app-modal width="900px" [isVisible]="isModalVisible" (close)="closeModal()">
+      <app-modal width="300px" [isVisible]="isModalVisible" (close)="closeModal()">
         <app-create-item (itemCreated)="closeModal()"></app-create-item>
       </app-modal>
     </div>

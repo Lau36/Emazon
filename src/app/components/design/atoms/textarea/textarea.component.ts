@@ -17,9 +17,7 @@ export class TextareaComponent implements OnInit {
 
   validationMessages: { [key: string]: (error: string) => string } = {
     required: () => 'Este campo es obligatorio.',
-    maxlength: (error: any) => `La longitud máxima es de ${error.requiredLength} caracteres.`,
-    minlength: (error: any) => `La longitud mínima es de ${error.requiredLength} caracteres.`,
-    email: () => 'El formato del correo no es válido.',
+    maxlength: (error: any) => `La longitud máxima es de ${error.requiredLength} caracteres.`
   };
 
   errorMessages(): string[]{
