@@ -11,14 +11,12 @@ import { CategoryService } from './components/core/services/category.service';
 import { ModulesModule} from './components/modules/modules.module';
 import {TokenInterceptor} from './components/auth/token.interceptor';
 import { OrganismsModule } from './components/design/organisms/organisms.module';
-import { CreateUserAuxPageComponent } from './components/pages/user/create-user-aux-page/create-user-aux-page.component';
 import { PagesModule } from './components/pages/pages.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CreateUserAuxPageComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

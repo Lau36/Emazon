@@ -1,0 +1,15 @@
+@import "../../../shared/colors.scss";
+
+.pagination-brands-container{
+  margin: 10vmin;
+  background-color: $whiteColor;
+  border-radius: 20px;
+
+  .button-create-brand-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0.7%;
+  }
+
+}
