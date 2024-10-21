@@ -4,7 +4,6 @@ import { CreateCategoryComponent } from './create-category.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CategoryService } from "../../../../core/services/category.service";
 import { of, throwError } from 'rxjs';
-import { createCategory } from '../../../../core/models/interfaces';
 
 describe.only('CreateCategoryComponent', () => {
   let component: CreateCategoryComponent;

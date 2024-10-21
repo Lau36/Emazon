@@ -54,3 +54,13 @@ export interface createItem{
   idCategories: number[],
   idBrand: number
 }
+
+export interface userAux{
+  name: string,
+  lastName: string,
+  identification: number,
+  phoneNumber: string,
+  birthDate: string,
+  email: string,
+  password: string
+}

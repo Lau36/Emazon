@@ -10,10 +10,11 @@ import { ListBrandsComponent } from './brand/pages/list-brands/list-brands.compo
 import { CreateItemComponent } from './item/pages/create-item/create-item.component';
 import { ListItemsComponent } from './item/pages/list-items/list-items.component';
 import { OrganismsModule } from "../design/organisms/organisms.module";
+import { CreateUserAuxComponent } from './user/create-user-aux/create-user-aux.component';
 
 
 @NgModule({
-  declarations: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, CreateItemComponent, ListItemsComponent],
+  declarations: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, CreateItemComponent, ListItemsComponent, CreateUserAuxComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -21,6 +22,6 @@ import { OrganismsModule } from "../design/organisms/organisms.module";
     AtomsModule,
     OrganismsModule
 ],
-  exports: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, CreateItemComponent]
+  exports: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, CreateItemComponent, CreateUserAuxComponent]
 })
-export class PagesModule {}
+export class ModulesModule {}

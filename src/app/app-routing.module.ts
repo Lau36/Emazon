@@ -1,3 +1,4 @@
+import { CreateUserAuxPageComponent } from './components/pages/user/create-user-aux-page/create-user-aux-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListCategoriesComponent } from './components/modules/category/pages/list-categories/list-categories.component';
@@ -7,7 +8,8 @@ import { ListItemsComponent } from './components/modules/item/pages/list-items/l
 const routes: Routes = [
   {path: "admin/categorias", component: ListCategoriesComponent},
   {path: "admin/marcas", component: ListBrandsComponent},
-  {path: "admin/articulos", component: ListItemsComponent}
+  {path: "admin/articulos", component: ListItemsComponent},
+  {path: "admin/crear/usuario/aux", component: CreateUserAuxPageComponent}
 ];
 
 @NgModule({

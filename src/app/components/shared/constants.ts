@@ -24,6 +24,7 @@ export const EXCEEDES_MAXIMUN_CATEGORIES_ASOCIATES_TO_AN_ARTICLE= "Solo puede as
 export const CATEGORY_CREATED ="Categoria creada correctamente";
 export const BRAND_CREATED ="Marca creada correctamente";
 export const ITEM_CREATED ="Artículo creado correctamente";
+export const USER_CREATED = "Usuario creado correctamente";
 
 export const BACK = "Anterior";
 export const NEXT = "Siguiente";
