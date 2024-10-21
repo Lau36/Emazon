@@ -62,6 +62,34 @@ describe('CreateItemComponent', () => {
     expect(mockCategoryService.listCategories).toHaveBeenCalled();
   });
 
+  it('should log an error to the console when the service fails', () => {
+
+    const errorResponse = new Error('Error de servicio');
+    (mockCategoryService.listCategories as jest.Mock).mockReturnValue(throwError(() => errorResponse));
+
+    const consoleSpy = jest.spyOn(console, 'log');
+
+    component.loadCategories();
+
+    expect(consoleSpy).toHaveBeenCalledWith('Ocurrio un error', errorResponse);
+
+    consoleSpy.mockRestore();
+  });
+
+  it('should log an error to the console when the service fails', () => {
+
+    const errorResponse = new Error('Error de servicio');
+    (mockBrandService.listBrands as jest.Mock).mockReturnValue(throwError(() => errorResponse));
+
+    const consoleSpy = jest.spyOn(console, 'log');
+
+    component.loadBrands();
+
+    expect(consoleSpy).toHaveBeenCalledWith('Ocurrio un error', errorResponse);
+
+    consoleSpy.mockRestore();
+  });
+
   it('should load listBrands', () => {
     expect(mockBrandService.listBrands).toHaveBeenCalled();
   });
@@ -78,6 +106,22 @@ describe('CreateItemComponent', () => {
     component.selectedCategories = [];
     component.onCategorieSelected(categoryId);
     expect(component.selectedCategories).toContain(categoryId);
+  });
+
+  it('should set isDisabled to false for all categories when selectedCategories is less than maxCategories', () =>{
+
+    component.selectedCategories = [1];
+    component.maxCategories = 3;
+    component.categories = [
+      { id: 1, categoryName: 'Category 1', categoryDescription: 'Category description 2', isDisabled: true },
+      { id: 2, categoryName: 'Category 1', categoryDescription: 'Category description 2', isDisabled: true }
+    ];
+
+    component.onCategorieSelected(1);
+
+    component.categories.forEach((category: any) => {
+      expect(category.isDisabled).toBe(false);
+    });
   });
 
   it('should eliminate a category when it is unselect', () => {
