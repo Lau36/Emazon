@@ -1,3 +1,5 @@
+@import "../../../shared/colors.scss";
+
 .modal {
   position: fixed;
   top: 0;
@@ -7,25 +9,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.6); /* Fondo oscuro */
+  background: rgba(0, 0, 0, 0.6);
   z-index: 1000;
+
+  .modal-content {
+    position: relative;
+    background: $whiteColor;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
 }
 
-.modal-content {
-  position: relative;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  // max-width: 90%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
 
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border: none;
-  background: none;
-  font-size: 20px;
-  cursor: pointer;
-}
+
+

@@ -13,7 +13,7 @@ export class CreateUserAuxComponent implements OnInit {
 
   @Output() userCreated: EventEmitter<void> = new EventEmitter<void>();
 
-  title: string = "Crear usuario";
+  title: string = "Crear auxiliar de bodega";
   contentButton: string = CREATE;
 
   form!: FormGroup;

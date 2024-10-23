@@ -1,10 +1,5 @@
 <div class="modal" *ngIf="isVisible">
-  <!-- <div class="modal-content">
-    <button class="close-button" (click)="closeModal()">X</button>
-    <ng-content></ng-content>
-  </div> -->
-
-  <div [style.width]="width"class="modal-content">
+  <div [style.width]="width" [style.height]="height" class="modal-content">
     <button class="close-button" (click)="closeModal()">X</button>
     <ng-content></ng-content>
   </div>

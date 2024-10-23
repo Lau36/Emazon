@@ -37,7 +37,7 @@ describe('TokenInterceptor', () => {
     const httpRequest = httpMock.expectOne('/test-endpoint');
     expect(httpRequest.request.headers.has('Authorization')).toBeTruthy();
     expect(httpRequest.request.headers.get('Authorization')).toBe(
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjFAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQWRtaW4iLCJVc2VyX2lkIjoxMywiaWF0IjoxNzI4OTIwNDA5LCJleHAiOjE3Mjk1MjUyMDl9._sFV8fzB5s8DT-W51suLaEmnLa0hrHahDInZZeMUDMY'
+      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjFAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQWRtaW4iLCJVc2VyX2lkIjoxMywiaWF0IjoxNzI5NTQ0OTIxLCJleHAiOjE3MzAxNDk3MjF9.EIDTWG4Tjc8eUEBMSMSCoDjDwQXUhQTkTexnQzYhh2k'
     );
 
     httpRequest.flush(dummyData);
