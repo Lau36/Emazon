@@ -1,3 +1,4 @@
+
 export interface createCategory{
   categoryName: string;
   categoryDescription: string;
@@ -64,3 +65,13 @@ export interface userAux{
   email: string,
   password: string
 }
+
+export interface auth{
+  email: string,
+  password: string
+}
+
+export interface authResponse{
+  token: string
+}
+
