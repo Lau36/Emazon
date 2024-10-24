@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { BRAND_CREATED, CREATE, CREATE_BRAND, DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_NAME, NAME, PLACEHOLDER_REGULAR_INPUT, REQUIRED_FIELD } from '../../../shared/constants';
+import { BRAND_CREATED, CREATE, CREATE_BRAND, DESCRIPTION, NAME, PLACEHOLDER_REGULAR_INPUT, REQUIRED_FIELD } from '../../../shared/constants';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { createBrand } from '../../../core/models/interfaces';
 import { BrandService } from '../../../core/services/brand.service';

@@ -11,10 +11,11 @@ import { CreateItemComponent } from './item/create-item/create-item.component';
 import { ListItemsComponent } from './item/list-items/list-items.component';
 import { OrganismsModule } from "../design/organisms/organisms.module";
 import { CreateUserAuxComponent } from './user/create-user-aux/create-user-aux.component';
+import { LoginComponent } from './login/login/login.component';
 
 
 @NgModule({
-  declarations: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, CreateItemComponent, ListItemsComponent, CreateUserAuxComponent],
+  declarations: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, CreateItemComponent, ListItemsComponent, CreateUserAuxComponent, LoginComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -22,6 +23,6 @@ import { CreateUserAuxComponent } from './user/create-user-aux/create-user-aux.c
     AtomsModule,
     OrganismsModule
 ],
-  exports: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, ListItemsComponent, CreateItemComponent, CreateUserAuxComponent]
+  exports: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, ListItemsComponent, CreateItemComponent, CreateUserAuxComponent, LoginComponent]
 })
 export class ModulesModule {}

@@ -1,3 +1,4 @@
+import { JwtPayload } from "jwt-decode";
 
 export interface createCategory{
   categoryName: string;
@@ -75,3 +76,7 @@ export interface authResponse{
   token: string
 }
 
+export interface TokenPayload extends JwtPayload{
+  role: string,
+  User_id: number
+}
