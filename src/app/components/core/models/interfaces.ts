@@ -68,7 +68,7 @@ export interface userAux{
 }
 
 export interface auth{
-  email: string,
+  email: string;
   password: string
 }
 

@@ -8,9 +8,6 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root'
 })
 export class RoleGuard implements CanActivate {
-  constructor(
-    private router: Router,
-  ){}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -20,6 +17,9 @@ export class RoleGuard implements CanActivate {
         const userRole = jwtDecode<TokenPayload>(token).role
         if(userRole === expectedRole){
           return true;
+        }
+        else{
+          return false;
         }
       }
       return false

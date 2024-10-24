@@ -1,12 +1,12 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { jwtDecode, JwtPayload } from 'jwt-decode';
-import { auth, TokenPayload } from 'src/app/components/core/models/interfaces';
-import { AuthService } from 'src/app/components/core/services/auth.service';
-import { ROLE_ADMIN, ROLE_CUSTOMER } from 'src/app/components/shared/Roles';
-import { PLACEHOLDER_REGULAR_INPUT } from 'src/app/components/shared/constants';
-import { CORRECT_LOGIN, EMAIL, PASSWORD } from 'src/app/components/shared/constants/login';
+import { auth, TokenPayload } from '../../../core/models/interfaces';
+import { AuthService } from '../../../core/services/auth.service';
+import { ROLE_ADMIN, ROLE_AUX, ROLE_CUSTOMER } from '../../../shared/Roles';
+import { PLACEHOLDER_REGULAR_INPUT } from '../../../shared/constants';
+import { CORRECT_LOGIN, EMAIL, PASSWORD } from '../../../shared/constants/login';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -114,7 +114,7 @@ export class LoginComponent implements OnInit {
     if(role === ROLE_CUSTOMER){
       this.router.navigate(['/'])
     }
-    if(role === ROLE_CUSTOMER){
+    if(role === ROLE_AUX){
       this.router.navigate(['/warehouse'])
     }
   }
@@ -125,7 +125,6 @@ export class LoginComponent implements OnInit {
       const tokenDecoded = jwtDecode<TokenPayload>(token);
       this.navigation(tokenDecoded.role)
     }
-
   }
 
 }
