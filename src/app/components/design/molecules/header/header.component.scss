@@ -5,15 +5,13 @@ header {
   width: 100%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
-  .nav-container:has(.nav-input:checked) {
+  .nav:has(.nav__toggle__input:checked) {
     --icon-toggle-img: url("../../../../../assets/burgerMenuIconClose.svg");
     --transform-menu-links: translate(0);
   }
 
-  .nav-container {
-    
+  .nav{
     margin: 0 auto;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -22,12 +20,12 @@ header {
     --icon-toggle-img: url("../../../../../assets/burgerMenuIcon.svg");
     --transform-menu-links: translate(-100%);
 
-    .nav-icon, 
-    .nav-toggle {
+    .nav__icon,
+    .nav__toggle {
       z-index: 10;
     }
 
-    .nav-toggle {
+    .nav__toggle {
       width: 30px;
       height: 30px;
       background-image: var(--icon-toggle-img);
@@ -36,11 +34,11 @@ header {
       transition: background-image 0.5s;
     }
 
-    .nav-input {
+    .nav__toggle__input {
       display: none;
     }
 
-    .nav-list {
+    .nav__list {
       transform: var(--transform-menu-links);
       position: fixed;
       inset: 0;
@@ -57,41 +55,42 @@ header {
       transition: transform 0.5s;
     }
 
-    .nav-link {
-      color: #00000000;
+    .nav__list__item__link {
       text-decoration: none;
-      display: inline-block;
+      color: $blackColor;
       padding: 10px 15px;
+      // color: #00000000;
+      // text-decoration: none;
+      // display: inline-block;
+      // padding: 10px 15px;
     }
   }
 }
 
 @media (min-width: 764px) {
 
-  .nav-container {
+  .nav{
     --transform-menu-links: translate(0);
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .nav-toggle {
+  .nav__toggle {
     display: none;
   }
 
-  .nav-list {
+  .nav__list {
     position: static;
     display: flex;
     gap: 1rem;
     padding: 0;
     transform: none;
-    margin-left: auto;  
+    margin-left: auto;
     background-color: transparent;
   }
 
-  .nav-link {
+  .nav__list__item__link {
     padding: 0.5rem 1rem;
-    color: $blackColor;
-    text-decoration: none;
   }
 }
