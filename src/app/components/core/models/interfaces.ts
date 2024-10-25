@@ -1,3 +1,5 @@
+import { JwtPayload } from "jwt-decode";
+
 export interface createCategory{
   categoryName: string;
   categoryDescription: string;
@@ -63,4 +65,18 @@ export interface userAux{
   birthDate: string,
   email: string,
   password: string
+}
+
+export interface auth{
+  email: string;
+  password: string
+}
+
+export interface authResponse{
+  token: string
+}
+
+export interface TokenPayload extends JwtPayload{
+  role: string,
+  User_id: number
 }

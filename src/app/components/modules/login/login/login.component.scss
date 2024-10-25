@@ -1,10 +1,9 @@
-@import "../../../shared/colors.scss";
 
-.container-create-brand{
+.login{
   display: flex;
   flex-direction: column;
 
-  .form-create-brand{
+  .login__form{
     flex: 1;
     display: flex;
     justify-content: center;

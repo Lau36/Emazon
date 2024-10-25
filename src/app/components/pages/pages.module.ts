@@ -6,6 +6,7 @@ import { MoleculesModule } from '../design/molecules/molecules.module';
 import { ItemDashboardPageComponent } from './item/item-dashboard-page/item-dashboard-page.component';
 import { BrandDashboardPageComponent } from './brand/brand-dashboard-page/brand-dashboard-page.component';
 import { CategoryDashboardPageComponent } from './category/category-dashboard-page/category-dashboard-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 
 
@@ -14,7 +15,8 @@ import { CategoryDashboardPageComponent } from './category/category-dashboard-pa
     CreateUserAuxPageComponent,
     ItemDashboardPageComponent,
     BrandDashboardPageComponent,
-    CategoryDashboardPageComponent
+    CategoryDashboardPageComponent,
+    LoginPageComponent
   ],
   imports: [
     CommonModule,
