@@ -6,9 +6,11 @@
       height="15vh"
       ></app-icon>
 
+
       <label class="nav__toggle">
-        <input type="checkbox" id="menu-input" class="nav__toggle__input">
+        <input type="checkbox" class="nav__toggle__input" aria-label="Toggle Menu">
       </label>
+
 
       <ul class="nav__list" >
         <li class="nav__list__item" *ngFor="let element of listElementsNav">
@@ -17,3 +19,4 @@
       </ul>
   </nav>
 </header>
+

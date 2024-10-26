@@ -8,16 +8,7 @@ import { ADMIN } from '../../../shared/constants';
   encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent implements OnInit {
-
-
-
-  userName: string = ADMIN;
-  // listElementsNav: {navName: string, path:string}[] = []
-  listElementsNav: {elementName: string, path:string}[] = [
-    {elementName: "Categorias", path:"/admin/categorias"},
-    {elementName: "Marcas", path:"/admin/marcas"},
-    {elementName: "Artículos", path:"/admin/articulos"}
-  ]
+  listElementsNav: {elementName: string, path:string}[] = []
 
   constructor() { }
 
