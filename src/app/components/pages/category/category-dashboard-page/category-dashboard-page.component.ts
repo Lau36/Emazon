@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { listElementsNavAdmin } from 'src/app/components/utils/adminHeader';
 
 @Component({
   selector: 'app-category-dashboard-page',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-dashboard-page.component.scss']
 })
 export class CategoryDashboardPageComponent implements OnInit {
+  header = listElementsNavAdmin;
 
   constructor() { }
 

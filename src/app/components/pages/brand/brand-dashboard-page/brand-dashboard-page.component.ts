@@ -1,3 +1,4 @@
+import { listElementsNavAdmin } from './../../../utils/adminHeader';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./brand-dashboard-page.component.scss']
 })
 export class BrandDashboardPageComponent implements OnInit {
+
+  header = listElementsNavAdmin;
 
   constructor() { }
 

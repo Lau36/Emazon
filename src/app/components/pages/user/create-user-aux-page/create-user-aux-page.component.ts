@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { listElementsNavAdmin } from 'src/app/components/utils/adminHeader';
 
 @Component({
   selector: 'app-create-user-aux-page',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-user-aux-page.component.scss']
 })
 export class CreateUserAuxPageComponent implements OnInit {
+  header = listElementsNavAdmin;
 
   constructor() { }
 
