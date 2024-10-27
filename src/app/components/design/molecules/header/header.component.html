@@ -16,6 +16,18 @@
         <li class="nav__list__item" *ngFor="let element of listElementsNav">
           <a [href]="element.path" class="nav__list__item__link">{{element.elementName}}</a>
         </li>
+
+        <li class="nav__list__logout">
+          <a class="logout__icon">
+            <button (click)="logout()">
+              <app-icon
+              icon="../../../../../assets/log-outIcon.svg"
+              width="35px"
+              height="15vh">
+              </app-icon>
+            </button>
+          </a>
+        </li>
       </ul>
   </nav>
 </header>

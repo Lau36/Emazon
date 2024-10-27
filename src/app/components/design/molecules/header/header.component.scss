@@ -1,16 +1,20 @@
 @import "../../../shared/colors.scss";
 
+@mixin shadow(){
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 header {
   background-color: $whiteColor;
   width: 100%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  @include shadow();
 
   .nav:has(.nav__toggle__input:checked) {
     --icon-toggle-img: url("../../../../../assets/burgerMenuIconClose.svg");
     --transform-menu-links: translate(0);
   }
 
-  .nav{
+  .nav {
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -44,22 +48,33 @@ header {
       position: fixed;
       inset: 0;
       align-content: center;
-
       text-align: center;
-
       list-style: none;
       background-color: $whiteColor;
       z-index: 5;
       transition: transform 0.5s;
+      margin: 0 auto;
     }
 
-    .nav__list__item{
+    .nav__list__item {
       padding: 1.5rem 10%;
 
       .nav__list__item__link {
         text-decoration: none;
         color: $blackColor;
         padding: 10px 15px;
+
+        &:hover {
+          color: $darckPurpleColor;
+        }
+      }
+    }
+
+    .nav__list__logout{
+      .logout__icon button{
+        background: none;
+        border: none;
+        cursor: pointer;
       }
     }
   }

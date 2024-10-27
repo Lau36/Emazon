@@ -9,6 +9,7 @@ export class IconComponent implements OnInit {
 
   @Input() width: string = '300px';
   @Input() height: string = 'auto';
+  @Input() icon: string = "../../../../../assets/EmazonIcon.svg";
 
   constructor() { }
 
