@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         content: EMAIL,
         placeholder: PLACEHOLDER_REGULAR_INPUT,
         control: this.email,
-        width: '23.5rem',
+        width: '20rem',
         height: '1rem',
         fontSize: '0.8rem',
         type: "text"
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
         content: PASSWORD,
         placeholder: PLACEHOLDER_REGULAR_INPUT,
         control: this.password,
-        width: "23.5rem",
+        width: '20rem',
         height: "1rem",
         fontSize: "0.8rem",
         type: 'password'

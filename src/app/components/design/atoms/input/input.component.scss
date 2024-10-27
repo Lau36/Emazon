@@ -1,13 +1,12 @@
 @import "../../../shared/colors.scss";
 .input-create{
-
   border: 1px solid #b8b6b6;
   border-radius: 10px;
   height: height;
   width: width;
   transition: border-color 0.3s;
   outline-color: $backgroundHeaderColor;
-  padding: 10px;
+  padding: 10px 2px;
 }
 
 .input-error {
