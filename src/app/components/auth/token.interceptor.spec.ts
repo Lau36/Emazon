@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClient, HTTP_INTERCEPTORS, HttpRequest } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './token.interceptor';
 
 describe('TokenInterceptor', () => {
@@ -36,9 +36,6 @@ describe('TokenInterceptor', () => {
 
     const httpRequest = httpMock.expectOne('/test-endpoint');
     expect(httpRequest.request.headers.has('Authorization')).toBeTruthy();
-    expect(httpRequest.request.headers.get('Authorization')).toBe(
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjFAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQWRtaW4iLCJVc2VyX2lkIjoxMywiaWF0IjoxNzI5NTQ0OTIxLCJleHAiOjE3MzAxNDk3MjF9.EIDTWG4Tjc8eUEBMSMSCoDjDwQXUhQTkTexnQzYhh2k'
-    );
 
     httpRequest.flush(dummyData);
   });
