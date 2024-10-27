@@ -1,24 +1,25 @@
-@import "../../../shared/colors.scss";
+@use "../../../shared/colors.scss" as colors;
+@use "../../../shared/globalStyles.scss" as style;
 
 .textarea{
-  border-color: $grayColor;
+  font-family: style.$fontApp;
+  border-color: colors.$grayColor;
   border-width: 0.1px;
   border-radius: 10px;
   height: height;
   width: width;
   transition: border-color 0.3s;
-  outline-color: $backgroundHeaderColor;
+  outline-color: colors.$backgroundHeaderColor;
   padding: 10px;
   resize: none;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
 }
 
 .error {
-  border-color: $redColor;
+  border-color: colors.$redColor;
 }
 
 .span-class{
-  color: $redColor;
+  color: colors.$redColor;
   font-size: 14px;
   margin-top: 4px;
   display: block;

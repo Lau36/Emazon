@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { listElementsNavAdmin } from 'src/app/components/utils/adminHeader';
+import { listElementsNavAdmin } from '../../../utils/adminHeader';
 
 @Component({
   selector: 'app-category-dashboard-page',
