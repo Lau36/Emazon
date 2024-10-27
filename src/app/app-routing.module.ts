@@ -23,7 +23,7 @@ function createAdminRoute(path: string, component: any): Route {
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: 'login', component: LoginPageComponent },
-  
+
   createAdminRoute('admin/categorias', CategoryDashboardPageComponent),
   createAdminRoute('admin/marcas', BrandDashboardPageComponent),
   createAdminRoute('admin/articulos', ItemDashboardPageComponent),
