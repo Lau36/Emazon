@@ -5,7 +5,7 @@ import { auth, TokenPayload } from '../../../core/models/interfaces';
 import { AuthService } from '../../../core/services/auth.service';
 import { ROLE_ADMIN, ROLE_AUX, ROLE_CUSTOMER } from '../../../shared/Roles';
 import { PLACEHOLDER_REGULAR_INPUT } from '../../../shared/constants';
-import { CORRECT_LOGIN, EMAIL, PASSWORD } from '../../../shared/constants/login';
+import { CORRECT_LOGIN, EMAIL, LOGIN, PASSWORD } from '../../../shared/constants/login';
 import { jwtDecode } from 'jwt-decode';
 
 @Component({
@@ -21,12 +21,12 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) { }
 
-  title: string = 'Iniciar sesión';
+  title: string = LOGIN;
   form!: FormGroup;
   isLoading: boolean = false;
   showToast: boolean = false;
   mistakeOcurred: boolean = false;
-  contentButton: string = 'Iniciar sesión';
+  contentButton: string = LOGIN;
   message: string = '';
 
   formFields: any[] = [];
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         content: EMAIL,
         placeholder: PLACEHOLDER_REGULAR_INPUT,
         control: this.email,
-        width: '23.5rem',
+        width: '20rem',
         height: '1rem',
         fontSize: '0.8rem',
         type: "text"
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
         content: PASSWORD,
         placeholder: PLACEHOLDER_REGULAR_INPUT,
         control: this.password,
-        width: "23.5rem",
+        width: '20rem',
         height: "1rem",
         fontSize: "0.8rem",
         type: 'password'

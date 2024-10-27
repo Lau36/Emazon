@@ -1,12 +1,12 @@
-<div class="form-create-container" [formGroup]="form">
+<div class="form" [formGroup]="form">
   <app-loader *ngIf="isLoading"></app-loader>
 
   <div *ngIf="!isLoading">
     <h1 class="tittle">{{title}}</h1>
 
-    <div class="form-fields-container" [ngClass]="{'multi-column': formFields.length > 4}">
+    <div class="form__fields" [ngClass]="{'form__multi-column': formFields.length > 4}">
     <ng-container *ngFor="let field of formFields">
-      <div class="form-item">
+      <div class="fields__item">
         <app-text-component [content]="field.content"></app-text-component>
         <app-form-dynamic [field]="field"></app-form-dynamic>
       </div>
@@ -15,7 +15,7 @@
 
     <app-toast *ngIf="showToast" [message]="message" [error]="mistakeOcurred"></app-toast>
 
-    <div class="button-container">
+    <div class="form__button">
       <app-button [content]="contentButton" (action)="onSubmit()" [isDisabled]="isDisabled"></app-button>
     </div>
   </div>

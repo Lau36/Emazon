@@ -1,0 +1,7 @@
+@mixin display($display, $justify-content, $alignItems){
+  display: $display;
+  justify-content: $justify-content;
+  align-items: $alignItems;
+}
+
+$fontApp: "Poppins", sans-serif;

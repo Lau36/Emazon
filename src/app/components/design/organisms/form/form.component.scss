@@ -1,41 +1,41 @@
-@import "../../../shared/colors.scss";
+@use "../../../shared/colors.scss" as colors;
+@use "../../../shared/globalStyles.scss" as styles;
 
-.form-create-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $whiteColor;
+.form{
+  @include styles.display(flex, center, center);
+  background-color: colors.$whiteColor;
   border-radius: 10px;
+  width: 100%;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
   overflow: hidden;
 
   .tittle{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include styles.display(flex, center, center);
   }
 
-  .form-fields-container {
+  .form__fields {
     width: 100%;
     display: flex;
     flex-direction: column;
 
-    &.multi-column {
+    &.form__multi-column {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
       justify-content: space-between;
       margin-bottom: 1.5rem;
     }
-    .form-item {
+
+    .fields__item {
       margin-bottom: 1.5rem;
       width: 100%;
     }
   }
 
-  .button-container{
+  .form__button{
     margin-top: 2vh;
     display: flex;
     justify-content: center;
@@ -48,12 +48,16 @@
 
 @media(max-width: 750px){
 
-  .form-create-container{
-    width: 70%;
-    display: flex;
+  .form{
+    width: 100%;
+    padding: 20px;
 
-    .form-fields-container {
-      &.multi-column {
+    .title{
+      font-size: 1rem;
+    }
+
+    .form__fields{
+      &.form__multi-column{
         display: flex;
         flex-direction: column;
       }

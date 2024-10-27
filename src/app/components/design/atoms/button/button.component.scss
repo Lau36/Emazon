@@ -1,9 +1,11 @@
 
-@import "../../../shared/colors.scss";
+@use "../../../shared/colors.scss" as colors;
+@use "../../../shared/globalStyles.scss" as style;
 
 .button-create{
-  background-color: $backgroundHeaderColor;
-  color: $whiteColor;
+  font-family: style.$fontApp;
+  background-color: colors.$backgroundHeaderColor;
+  color: colors.$whiteColor;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
@@ -13,15 +15,15 @@
   width: 100%;
 
   &:hover{
-    background-color: $hoverButtonColor;
+    background-color: colors.$hoverButtonColor;
   }
 
   &:active{
-    background-color: $clickColor;
+    background-color: colors.$clickColor;
   }
 
   &:disabled {
-    background-color: $grayColor;
+    background-color: colors.$grayColor;
     cursor: not-allowed;
   }
 }

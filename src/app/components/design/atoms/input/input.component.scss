@@ -1,21 +1,23 @@
-@import "../../../shared/colors.scss";
-.input-create{
+@use "../../../shared/colors.scss" as colors;
+@use "../../../shared/globalStyles.scss" as style;
 
+.input-create{
   border: 1px solid #b8b6b6;
   border-radius: 10px;
   height: height;
   width: width;
   transition: border-color 0.3s;
-  outline-color: $backgroundHeaderColor;
-  padding: 10px;
+  outline-color: colors.$backgroundHeaderColor;
+  padding: 10px 2px;
+  font-family: style.$fontApp;
 }
 
 .input-error {
-  border-color: $redColor;
+  border-color: colors.$redColor;
 }
 
 .span-class-input{
-  color: $redColor;
+  color: colors.$redColor;
   font-size: 14px;
   margin-top: 4px;
   display: block;

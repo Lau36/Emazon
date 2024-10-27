@@ -1,13 +1,7 @@
-
+@use "../../../shared/globalStyles.scss" as styles;
 .login{
-  display: flex;
-  flex-direction: column;
-
   .login__form{
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include styles.display(flex, center, center);
     padding: 30px;
   }
 

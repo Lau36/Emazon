@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { ADMIN } from '../../../shared/constants';
 import { Router } from '@angular/router';
-import { removeToken } from 'src/app/components/utils/removeToken';
+import { removeToken } from '../../../utils/removeToken';
 
 @Component({
   selector: 'app-header',

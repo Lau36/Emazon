@@ -1,45 +1,52 @@
-import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClient, HTTP_INTERCEPTORS, HttpRequest } from '@angular/common/http';
+import { HttpHandler, HttpRequest } from '@angular/common/http';
+import { getToken } from '../utils/getToken';
 import { TokenInterceptor } from './token.interceptor';
 
+jest.mock('../utils/getToken'); // Mock de la función getToken
+
 describe('TokenInterceptor', () => {
-  let httpMock: HttpTestingController;
-  let httpClient: HttpClient;
+  let interceptor: TokenInterceptor;
+  let mockHandler: HttpHandler;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [
-        {
-          provide: HTTP_INTERCEPTORS,
-          useClass: TokenInterceptor,
-          multi: true
-        }
-      ]
-    });
-
-    httpMock = TestBed.inject(HttpTestingController);
-    httpClient = TestBed.inject(HttpClient);
+    interceptor = new TokenInterceptor();
+    mockHandler = {
+      handle: jest.fn(),
+    };
   });
 
-  afterEach(() => {
-    httpMock.verify();
+  it('should not add token for login requests', () => {
+    const request = new HttpRequest('GET', '/api/login');
+    (mockHandler.handle as jest.Mock).mockReturnValueOnce('test-response');
+
+    const result = interceptor.intercept(request, mockHandler);
+
+    expect(mockHandler.handle).toHaveBeenCalledWith(request);
+    expect(result).toBe('test-response');
   });
 
-  it('should add an Authorization header for all request', () => {
-    const dummyData = { message: 'test' };
+  it('should add token to the header if token exists and URL does not contain login', () => {
+    const request = new HttpRequest('GET', '/api/data');
+    const token = 'test-token';
+    (getToken as jest.Mock).mockReturnValue(token);
 
-    httpClient.get('/test-endpoint').subscribe(response => {
-      expect(response).toEqual(dummyData);
+    const clonedRequest = request.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`,
+      },
     });
 
-    const httpRequest = httpMock.expectOne('/test-endpoint');
-    expect(httpRequest.request.headers.has('Authorization')).toBeTruthy();
-    expect(httpRequest.request.headers.get('Authorization')).toBe(
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjFAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQWRtaW4iLCJVc2VyX2lkIjoxMywiaWF0IjoxNzI5NTQ0OTIxLCJleHAiOjE3MzAxNDk3MjF9.EIDTWG4Tjc8eUEBMSMSCoDjDwQXUhQTkTexnQzYhh2k'
-    );
+    interceptor.intercept(request, mockHandler);
 
-    httpRequest.flush(dummyData);
+    expect(mockHandler.handle).toHaveBeenCalledWith(clonedRequest);
+  });
+
+  it('should not add token if no token exists', () => {
+    const request = new HttpRequest('GET', '/api/data');
+    (getToken as jest.Mock).mockReturnValue(null);
+
+    interceptor.intercept(request, mockHandler);
+
+    expect(mockHandler.handle).toHaveBeenCalledWith(request); 
   });
 });
