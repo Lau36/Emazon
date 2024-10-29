@@ -15,14 +15,9 @@ export class RoleGuard implements CanActivate {
       const token = localStorage.getItem('token');
       if(token){
         const userRole = jwtDecode<TokenPayload>(token).role
-        if(userRole === expectedRole){
-          return true;
-        }
-        else{
-          return false;
-        }
+        return userRole === expectedRole;
       }
-      return false
+      return false;
 
   }
 

@@ -7,6 +7,7 @@ import { ROLE_ADMIN, ROLE_AUX, ROLE_CUSTOMER } from '../../../shared/Roles';
 import { PLACEHOLDER_REGULAR_INPUT } from '../../../shared/constants';
 import { CORRECT_LOGIN, EMAIL, LOGIN, PASSWORD } from '../../../shared/constants/login';
 import { jwtDecode } from 'jwt-decode';
+import { hideToast } from 'src/app/components/utils/helpers/hideToast';
 
 @Component({
   selector: 'app-login',
@@ -83,48 +84,48 @@ export class LoginComponent implements OnInit {
       this.isLoading = true;
       this.authService.auth(this.login).subscribe({
         next: (response) => {
+          this.authService.setToken(response.token);
           this.isLoading = false;
-          this.mistakeOcurred = false;
           this.showToast = true;
           this.message = CORRECT_LOGIN
-          setTimeout(() => {
-            localStorage.setItem('token', response.token)
-            this.tokenDecoded();
-            this.showToast = false;
-          }, 2000);
-          this.form.reset();
+          this.decodeTokenToNavigate();
+          this.mistakeOcurred = false;
+          hideToast(this.showToast);
         },
         error: (error) => {
           this.isLoading = false;
           this.mistakeOcurred = true;
           this.showToast = true;
           this.message = error.error.message;
-          setTimeout(() => {
-            this.showToast = false;
-          }, 2000);
+          hideToast(this.showToast);
         }
-      })
+      });
+
     }
   }
+
 
   navigation(role: string){
-    if(role === ROLE_ADMIN){
-      this.router.navigate(['/admin/categorias'])
-    }
-    if(role === ROLE_CUSTOMER){
-      this.router.navigate(['/'])
-    }
-    if(role === ROLE_AUX){
-      this.router.navigate(['/warehouse'])
+    switch(role){
+      case ROLE_ADMIN:
+        this.router.navigate(['/admin/categorias']);
+      break;
+
+      case ROLE_AUX:
+        this.router.navigate(['/warehouse']);
+      break;
+
+      case ROLE_CUSTOMER:
+        this.router.navigate(['/customer']);
+      break;
     }
   }
 
-  tokenDecoded(){
-    const token = localStorage.getItem('token')
+  decodeTokenToNavigate(){
+    const token = this.authService.getToken();
     if(token){
       const tokenDecoded = jwtDecode<TokenPayload>(token);
       this.navigation(tokenDecoded.role)
     }
   }
-
 }
