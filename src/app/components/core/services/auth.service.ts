@@ -14,4 +14,16 @@ export class AuthService {
   auth(data: auth): Observable<authResponse>{
     return this.Http.post<authResponse>(userMicroservice + '/Auth', data);
   }
+
+  setToken(token: string){
+    return localStorage.setItem('token', token);
+  }
+
+  getToken(){
+    return localStorage.getItem('token');
+  }
+
+  removeToken(){
+    return localStorage.removeItem('token');
+  }
 }
