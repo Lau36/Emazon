@@ -1,7 +1,7 @@
 <div class="pagination-categories-container">
   <div class="button-create-category-container">
       <app-button content="Crear categoría" (action)="openModal()"></app-button>
-      <app-modal [isVisible]="isModalVisible" (close)="closeModal()">
+      <app-modal width="22%" [isVisible]="isModalVisible" (close)="closeModal()">
       <app-create-category (categoryCreated)="closeModal()"></app-create-category>
       </app-modal>
     </div>

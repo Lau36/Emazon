@@ -1,6 +1,6 @@
-<select  class="dropdown-container" (change)="action($event)">
+<select  class="dropdown" (change)="action($event)">
   <option disabled selected>Selecione..</option>
-  <option class="options" *ngFor="let option of options" [value]="getOptionValue(option)">{{ getOptionLabel(option) }}</option>
+  <option class="dropdown__options" *ngFor="let option of options" [value]="getOptionValue(option)">{{ getOptionLabel(option) }}</option>
 </select>
 <span class="span-class-input" *ngIf="isAnError">
   {{messageError}}

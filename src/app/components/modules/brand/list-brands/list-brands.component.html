@@ -1,21 +1,21 @@
 <div class="pagination-brands-container">
   <div class="button-create-brand-container">
-      <app-button content="Crear marca" (action)="openModal()"></app-button>
-      <app-modal [isVisible]="isModalVisible" (close)="closeModal()">
-        <app-create-branch (brandCreated)="closeModal()"></app-create-branch>
-      </app-modal>
-    </div>
+    <app-button content="Crear marca" (action)="openModal()"></app-button>
+    <app-modal width="22%" [isVisible]="isModalVisible" (close)="closeModal()">
+      <app-create-branch (brandCreated)="closeModal()"></app-create-branch>
+    </app-modal>
+  </div>
   <div class="pagination-container">
     <app-pagination
-    (changePageSizeAction) = "onPageSizeChange($event)"
-    (changePageSortDirectionAction) = " onPageSortDirectionChange($event)"
-    (previousPageAction)="previusPage()"
-    (nextPageAction)="nextPage()"
-    [data]="brandList"
-    [currentPage]="this.responsePaginatedBrands.currentPage"
-    [totalPages]="this.responsePaginatedBrands.totalPages"
-    [totalElements]="this.responsePaginatedBrands.totalElements"
-    [tableColumns] = "tableColumns"
+      (changePageSizeAction)="onPageSizeChange($event)"
+      (changePageSortDirectionAction)="onPageSortDirectionChange($event)"
+      (previousPageAction)="previusPage()"
+      (nextPageAction)="nextPage()"
+      [data]="brandList"
+      [currentPage]="this.responsePaginatedBrands.currentPage"
+      [totalPages]="this.responsePaginatedBrands.totalPages"
+      [totalElements]="this.responsePaginatedBrands.totalElements"
+      [tableColumns]="tableColumns"
     ></app-pagination>
   </div>
 </div>

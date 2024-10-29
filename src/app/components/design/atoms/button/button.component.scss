@@ -2,7 +2,7 @@
 @use "../../../shared/colors.scss" as colors;
 @use "../../../shared/globalStyles.scss" as style;
 
-.button-create{
+.button{
   font-family: style.$fontApp;
   background-color: colors.$backgroundHeaderColor;
   color: colors.$whiteColor;

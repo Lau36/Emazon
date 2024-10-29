@@ -1,7 +1,7 @@
 @use "../../../shared/colors.scss" as colors;
 @use "../../../shared/globalStyles.scss" as style;
 
-.dropdown-container{
+.dropdown{
   display: flex;
   align-items: center;
   font-family: style.$fontApp;
