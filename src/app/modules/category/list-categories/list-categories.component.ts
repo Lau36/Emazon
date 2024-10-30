@@ -1,7 +1,7 @@
-import { listCategories, responseListCategories } from '../../../shared/models/interfaces';
+import {categoriesListresponse } from '../../../shared/interfaces/category';
+import { pagination } from '../../../shared/models/pagination';
 import { CategoryService } from '../../../shared/services/category.service';
 import { Component, OnInit } from '@angular/core';
-import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-categories',
@@ -10,9 +10,7 @@ import {  Router } from '@angular/router';
 })
 export class ListCategoriesComponent implements OnInit {
 
-  categoriesList: any[] = [];
-
-  response: any[] = []
+  categoriesList: {id: number, categoryName: string, categoryDescription: string}[] = [];
 
   isModalVisible: boolean = false;
 
@@ -21,14 +19,14 @@ export class ListCategoriesComponent implements OnInit {
     { field: 'categoryDescription', header: 'Descripción' }
   ];
 
-  listCategories: listCategories = {
+  listCategories: pagination = {
     page: 0,
     size: 5,
     sort: 'categoryName',
     sortDirection: 'asc'
   }
 
-  responseListCategories: responseListCategories = {
+  responseListCategories: categoriesListresponse = {
     categories: [],
     currentPage: 0,
     totalPages: 0,
@@ -36,8 +34,7 @@ export class ListCategoriesComponent implements OnInit {
   }
 
   constructor(
-    private CategoryService: CategoryService,
-    private router: Router
+    private CategoryService: CategoryService
   ) { }
 
   ngOnInit(): void {

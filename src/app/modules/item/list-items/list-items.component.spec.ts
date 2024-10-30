@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListItemsComponent } from './list-items.component';
-import { ItemService } from '../../../../shared/services/item.service';
+import { ItemService } from '../../../shared/services/item.service';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 

@@ -1,8 +1,10 @@
-import {  createCategory, listCategories } from '../models/interfaces';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import {  createCategory } from '../models/category';
+import { HttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { CategoryService } from './category.service';
 import { of, throwError } from 'rxjs';
+import { stockMicroservice } from '../constants/microservicesUrl';
+import { pagination } from '../models/pagination';
 
 const httpClientMock = {
   post: jest.fn(),
@@ -32,7 +34,7 @@ const responseCategories=
     { id: 2, categoryName: 'Test2', categoryDescription: 'Test description2' }
   ];
 
-const params: listCategories = {
+const params: pagination = {
   page: 0,
   size: 5,
   sort: 'categoryName',
@@ -57,7 +59,7 @@ describe('CategoryService', () => {
 
   it('create new category http have been called', () => {
     service.createCategory(data);
-    expect(httpClientMock.post).toHaveBeenCalledWith(service.urlMicroserviceStock, data)
+    expect(httpClientMock.post).toHaveBeenCalledWith(stockMicroservice+'/categories', data)
   });
 
   it('create new category return response', (done) => {
@@ -71,7 +73,7 @@ describe('CategoryService', () => {
 
   it('listCategoriesPaginated http have been called', () => {
     service.listCategoriesPaginated(params);
-    expect(httpClientMock.get).toHaveBeenCalledWith(`${service.urlMicroserviceStock}/`, {
+    expect(httpClientMock.get).toHaveBeenCalledWith(`${stockMicroservice}/categories/`, {
       params: expect.any(Object)
     });
   });

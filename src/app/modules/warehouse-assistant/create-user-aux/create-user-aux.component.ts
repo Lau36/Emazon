@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CREATE, USER_CREATED } from '../../../shared/constants/constants';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { userAux } from '../../../shared/models/interfaces';
+import { user } from '../../../shared/models/user';
 import { UserService } from '../../../shared/services/user.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class CreateUserAuxComponent implements OnInit {
   message: string = '';
   formFields: any[] = []
 
-  createUser: userAux = {
+  createUser: user = {
     name: '',
     lastName: '',
     identification: 0,

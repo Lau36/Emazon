@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { userAux } from '../models/interfaces';
 import { Observable } from 'rxjs';
+import { userCreatedResponse } from '../interfaces/user';
+import { user } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class UserService {
 
   constructor(private Http: HttpClient) { }
 
-  createUserAux(data: userAux): Observable<any>{
-    return this.Http.post(this.urlMicroserviceUser, data)
+  createUserAux(data: user): Observable<userCreatedResponse>{
+    return this.Http.post<userCreatedResponse>(this.urlMicroserviceUser, data)
   }
 }

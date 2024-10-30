@@ -1,8 +1,10 @@
-import { listCategories } from '../models/interfaces';
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import { Observable, throwError } from 'rxjs';
-import { createCategory } from '../models/interfaces';
+import {HttpClient, HttpParams} from "@angular/common/http";
+import { Observable } from 'rxjs';
+import { createCategory } from '../models/category';
+import { categoryCreatedresponse, categoriesListresponse } from '../interfaces/category';
+import { pagination } from '../models/pagination';
+import { stockMicroservice } from '../constants/microservicesUrl';
 
 @Injectable({
   providedIn: 'root'
@@ -10,23 +12,22 @@ import { createCategory } from '../models/interfaces';
 
 export class CategoryService {
 
-  urlMicroserviceStock: string = "http://localhost:9090/categories";
   constructor(private Http: HttpClient){ }
 
-  createCategory(data: createCategory): Observable<any>{
-    return this.Http.post(this.urlMicroserviceStock, data);
+  createCategory(data: createCategory): Observable<categoryCreatedresponse>{
+    return this.Http.post<categoryCreatedresponse>(stockMicroservice+'/categories', data);
   }
 
-  listCategoriesPaginated(data: listCategories): Observable<any>{
+  listCategoriesPaginated(data: pagination): Observable<categoriesListresponse>{
     const params = new HttpParams()
     .set('page', data.page)
     .set('size', data.size)
     .set('sort', data.sort)
     .set('sortDirection', data.sortDirection);
-    return this.Http.get(this.urlMicroserviceStock+'/', {params});
+    return this.Http.get<categoriesListresponse>(stockMicroservice+'/categories/', {params});
   }
 
-  listCategories(): Observable<any>{
-    return this.Http.get(this.urlMicroserviceStock);
+  listCategories(): Observable<categoryCreatedresponse[]>{
+    return this.Http.get<categoryCreatedresponse[]>(stockMicroservice+'/categories');
   }
 }

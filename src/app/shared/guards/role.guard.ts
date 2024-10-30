@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { TokenPayload } from '../models/interfaces';
+import { TokenPayload } from '../models/tokenPayLoad';
 import { jwtDecode } from 'jwt-decode';
 
 @Injectable({

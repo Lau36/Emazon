@@ -2,8 +2,9 @@ import { TestBed } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
-import { auth, authResponse } from '../models/interfaces';
 import { of, throwError } from 'rxjs';
+import { auth } from '../models/auth';
+import { authResponse } from '../interfaces/login';
 
 const httpClientMock = {
   post: jest.fn()

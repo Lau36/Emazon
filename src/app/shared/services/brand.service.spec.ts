@@ -1,9 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 
 import { BrandService } from './brand.service';
-import { createBrand } from '../models/interfaces';
+import { createBrand } from '../models/brand';
 import { HttpClient } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
+import { stockMicroservice, userMicroservice } from '../constants/microservicesUrl';
 
 const httpClientMock = {
   post: jest.fn(),
@@ -60,7 +61,8 @@ describe('BranchService', () => {
 
   it('create new brand http have been called', () => {
     service.createBrand(data);
-    expect(httpClientMock.post).toHaveBeenCalledWith(service.urlMicroserviceStock, data)
+    expect(httpClientMock.post).toHaveBeenCalledWith(stockMicroservice + '/brands', data);
+
   });
 
   it('create new brand return response', () => {

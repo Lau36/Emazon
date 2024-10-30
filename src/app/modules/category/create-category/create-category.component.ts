@@ -1,4 +1,4 @@
-import { createCategory } from '../../../shared/models/interfaces';
+import { createCategory } from '../../../shared/models/category';
 import { CategoryService } from '../../../shared/services/category.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CREATE, CREATE_CATEGORY, DESCRIPTION, NAME, PLACEHOLDER_REGULAR_INPUT, CATEGORY_CREATED, EXCEEDES_MAXIMUN_CHARACTERS_CATEGORY_NAME, EXCEEDES_MAXIMUN_CHARACTERS_CATEGORY_DESCRIPTION, REQUIRED_FIELD } from '../../../shared/constants/constants';

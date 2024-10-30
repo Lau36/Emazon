@@ -1,7 +1,6 @@
-import { AppRoutingModule } from '../../app-routing.module';
-import { auth, authResponse, TokenPayload } from '../../shared/models/interfaces';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
+import {  TokenPayload } from '../../shared/models/tokenPayLoad';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import { AuthService } from '../../shared/services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -9,6 +8,8 @@ import { Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { ROLE_ADMIN, ROLE_AUX, ROLE_CUSTOMER } from '../../shared/constants/Roles';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
+import { auth } from '../../shared/models/auth';
+import { authResponse } from '../../shared/interfaces/login';
 
 jest.mock('jwt-decode', () => ({
   jwtDecode: jest.fn()
@@ -84,6 +85,8 @@ describe('LoginComponent', () => {
 
     tick();
     expect(authServiceMock.auth).toHaveBeenCalledTimes(1);
+    component.decodeTokenToNavigate();
+    expect(routerMock.navigate).toHaveBeenCalledWith(['/admin/categorias'])
     expect(component.isLoading).toBeFalsy();
     expect(component.mistakeOcurred).toBeFalsy();
     expect(component.showToast).toBeTruthy();
@@ -91,9 +94,6 @@ describe('LoginComponent', () => {
     (jwtDecode as jest.Mock).mockReturnValue(mockTokenPayload);
 
     tick(2000);
-
-    component.tokenDecoded();
-    expect(routerMock.navigate).toHaveBeenCalledWith(['/admin/categorias'])
     expect(component.showToast).toBeFalsy();
   }));
 
@@ -117,7 +117,7 @@ describe('LoginComponent', () => {
     (jwtDecode as jest.Mock).mockReturnValue(mockTokenPayload);
     localStorage.setItem('token', 'adminToken');
 
-    component.tokenDecoded();
+    component.decodeTokenToNavigate();
 
     expect(routerMock.navigate).toHaveBeenCalledWith(['/admin/categorias']);
   });
@@ -128,7 +128,7 @@ describe('LoginComponent', () => {
     (jwtDecode as jest.Mock).mockReturnValue(mockTokenPayloadAux);
     localStorage.setItem('token', 'auxToken');
 
-    component.tokenDecoded();
+    component.decodeTokenToNavigate();
 
     expect(routerMock.navigate).toHaveBeenCalledWith(['/warehouse']);
   });
@@ -138,7 +138,7 @@ describe('LoginComponent', () => {
     (jwtDecode as jest.Mock).mockReturnValue(mockTokenPayloadCustomer);
     localStorage.setItem('token', 'customerToken');
 
-    component.tokenDecoded();
+    component.decodeTokenToNavigate();
 
     expect(routerMock.navigate).toHaveBeenCalledWith(['/']);
   });

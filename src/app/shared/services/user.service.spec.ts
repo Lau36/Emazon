@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 
 import { UserService } from './user.service';
-import { userAux } from '../models/interfaces';
+import { user } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 
 const httpClientMock = {
   post: jest.fn()
 }
 
-const data: userAux = {
+const data: user = {
   name: 'Test name',
   lastName: 'Test last name',
   identification: 1109667890,
