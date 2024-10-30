@@ -1,0 +1,15 @@
+@use "../../../styles/colors.scss" as colors;
+@use "../../../styles/globalStyles.scss" as style;
+
+.pagination-items-container{
+  height: 100%;
+  margin: 10vmin;
+  background-color: colors.$whiteColor;
+  border-radius: 20px;
+
+  .button-create-brand-container{
+    @include style.display(flex, flex-end, flex-end);
+    padding: 0.7%;
+  }
+
+}

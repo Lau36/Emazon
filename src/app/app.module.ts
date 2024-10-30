@@ -5,18 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AtomsModule } from './components/design/atoms/atoms.module';
-import { MoleculesModule } from './components/design/molecules/molecules.module';
-import { CategoryService } from './components/core/services/category.service';
-import { ModulesModule} from './components/modules/modules.module';
-import {TokenInterceptor} from './components/auth/token.interceptor';
-import { OrganismsModule } from './components/design/organisms/organisms.module';
-import { PagesModule } from './components/pages/pages.module';
+import { AtomsModule } from './design/atoms/atoms.module';
+import { MoleculesModule } from './design/molecules/molecules.module';
+import { CategoryService } from './shared/services/category.service';
+import { ModulesModule} from './modules/modules.module';
+import {TokenInterceptor} from './shared/interceptor/token.interceptor';
+import { OrganismsModule } from './design/organisms/organisms.module';
+import { PagesModule } from './pages/pages.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

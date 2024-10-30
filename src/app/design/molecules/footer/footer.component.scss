@@ -1,0 +1,28 @@
+@use "../../../styles/colors.scss" as colors;
+
+.footer {
+  background-color: colors.$grayColor;
+  color: colors.$whiteColor;
+  padding: 20px 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+  nav{
+    a {
+      color: colors.$whiteColor;
+      margin-left: 15px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

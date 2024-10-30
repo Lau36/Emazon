@@ -1,0 +1,6 @@
+@use "../../../styles/globalStyles.scss" as style;
+
+.form-create-user{
+  @include style.display(flex, center, center);
+  padding: 60px;
+}
