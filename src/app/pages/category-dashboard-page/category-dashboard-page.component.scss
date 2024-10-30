@@ -1,0 +1,6 @@
+@use "../../styles/colors.scss" as colors;
+
+.list-categories-container{
+  background-color: colors.$darckPurpleColor;
+  min-height: 100vh;
+}

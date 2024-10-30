@@ -1,0 +1,6 @@
+@use "../../styles/colors.scss" as colors;
+
+.create-user{
+  background-color: colors.$darckPurpleColor;
+  min-height: 100vh;
+}

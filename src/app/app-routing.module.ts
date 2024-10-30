@@ -1,13 +1,13 @@
-import { CreateUserAuxPageComponent } from './components/pages/user/create-user-aux-page/create-user-aux-page.component';
+import { CreateUserAuxPageComponent } from './pages/create-user-aux-page/create-user-aux-page.component';
 import { NgModule } from '@angular/core';
 import { Route, RouterModule, Routes } from '@angular/router';
-import { BrandDashboardPageComponent } from './components/pages/brand/brand-dashboard-page/brand-dashboard-page.component';
-import { CategoryDashboardPageComponent } from './components/pages/category/category-dashboard-page/category-dashboard-page.component';
-import { ItemDashboardPageComponent } from './components/pages/item/item-dashboard-page/item-dashboard-page.component';
-import { LoginPageComponent } from './components/pages/login-page/login-page.component';
-import { AuthGuard } from './components/guards/auth.guard';
-import { RoleGuard } from './components/guards/role.guard';
-import { ROLE_ADMIN } from './components/shared/Roles';
+import { BrandDashboardPageComponent } from './pages/brand-dashboard-page/brand-dashboard-page.component';
+import { CategoryDashboardPageComponent } from './pages/category-dashboard-page/category-dashboard-page.component';
+import { ItemDashboardPageComponent } from './pages/item-dashboard-page/item-dashboard-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { AuthGuard } from './shared/guards/auth.guard';
+import { RoleGuard } from './shared/guards/role.guard';
+import { ROLE_ADMIN } from './shared/constants/Roles';
 
 
 

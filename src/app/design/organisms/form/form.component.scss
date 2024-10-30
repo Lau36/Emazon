@@ -1,0 +1,67 @@
+@use "../../../styles/colors.scss" as colors;
+@use "../../../styles/globalStyles.scss" as style;
+
+.form{
+  @include style.display(flex, center, center);
+  background-color: colors.$whiteColor;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  .tittle{
+    @include style.display(flex, center, center);
+  }
+
+  .form__fields {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &.form__multi-column {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .fields__item {
+      margin-bottom: 1.5rem;
+      width: 100%;
+    }
+  }
+
+  .form__button{
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+
+    app-button{
+      width: 100%;
+    }
+  }
+}
+
+@media(max-width: 750px){
+
+  .form{
+    width: 100%;
+    padding: 20px;
+
+    .title{
+      font-size: 1rem;
+    }
+
+    .form__fields{
+      &.form__multi-column{
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+}
