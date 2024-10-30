@@ -120,8 +120,11 @@ export class CreateItemComponent implements OnInit {
 
   loadCategories(){
     this.categoryService.listCategories().subscribe({
-    next: (respose) =>{
-      this.categories = respose;
+    next: (response) =>{
+      this.categories = response.map(category => ({
+        ...category,
+        isDisabled: false
+      }));
     },
     error: (error) =>{
       console.log("Ocurrio un error", error)
@@ -149,7 +152,6 @@ export class CreateItemComponent implements OnInit {
       idBrand: this.selectedBrand,
       idCategories: this.selectedCategories
     }
-    console.log("Así se manda todo", this.createItem);
 
     if (this.form.valid) {
       this.isLoading = true;

@@ -1,9 +1,6 @@
 import { JwtPayload } from "jwt-decode";
 
-export interface createCategory{
-  categoryName: string;
-  categoryDescription: string;
-}
+
 
 export interface createBrand{
   name: string;

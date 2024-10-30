@@ -1,6 +1,13 @@
 export interface responseListCategories{
-  categories: any[];
+  categories: responseCreateCategory[];
   currentPage: number;
   totalPages: number;
   totalElements: number;
 }
+
+export interface responseCreateCategory{
+  id: number;
+  categoryName: string;
+  categoryDescription: string;
+}
+
