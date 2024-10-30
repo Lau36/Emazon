@@ -4,16 +4,16 @@ import { Observable } from 'rxjs';
 import { pagination } from '../models/pagination';
 import { createItem } from '../models/item';
 import { itemCreatedResponse, itemsPaginatedResponse } from '../interfaces/item';
+import { stockMicroservice } from '../constants/microservicesUrl';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
-  urlMicroserviceStock: string = "http://localhost:9090/Item";
   constructor(private Http: HttpClient){ }
 
   createItem(data: createItem): Observable<itemCreatedResponse>{
-    return this.Http.post<itemCreatedResponse>(this.urlMicroserviceStock, data);
+    return this.Http.post<itemCreatedResponse>(stockMicroservice+'/Item', data);
   }
 
   listItemsPaginated(data: pagination): Observable<itemsPaginatedResponse>{
@@ -22,6 +22,6 @@ export class ItemService {
     .set('size', data.size)
     .set('sort', data.sort)
     .set('sortDirection', data.sortDirection);
-    return this.Http.get<itemsPaginatedResponse>(this.urlMicroserviceStock, {params});
+    return this.Http.get<itemsPaginatedResponse>(stockMicroservice+'/Item', {params});
   }
 }

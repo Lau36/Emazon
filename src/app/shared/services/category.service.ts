@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { createCategory } from '../models/category';
 import { categoryCreatedresponse, categoriesListresponse } from '../interfaces/category';
 import { pagination } from '../models/pagination';
+import { stockMicroservice } from '../constants/microservicesUrl';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,10 @@ import { pagination } from '../models/pagination';
 
 export class CategoryService {
 
-  urlMicroserviceStock: string = "http://localhost:9090/categories";
   constructor(private Http: HttpClient){ }
 
   createCategory(data: createCategory): Observable<categoryCreatedresponse>{
-    return this.Http.post<categoryCreatedresponse>(this.urlMicroserviceStock, data);
+    return this.Http.post<categoryCreatedresponse>(stockMicroservice+'/categories', data);
   }
 
   listCategoriesPaginated(data: pagination): Observable<categoriesListresponse>{
@@ -24,10 +24,10 @@ export class CategoryService {
     .set('size', data.size)
     .set('sort', data.sort)
     .set('sortDirection', data.sortDirection);
-    return this.Http.get<categoriesListresponse>(this.urlMicroserviceStock+'/', {params});
+    return this.Http.get<categoriesListresponse>(stockMicroservice+'/categories/', {params});
   }
 
   listCategories(): Observable<categoryCreatedresponse[]>{
-    return this.Http.get<categoryCreatedresponse[]>(this.urlMicroserviceStock);
+    return this.Http.get<categoryCreatedresponse[]>(stockMicroservice+'/categories');
   }
 }
