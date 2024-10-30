@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { TokenPayload } from '../../shared/models/interfaces';
+import { TokenPayload } from '../../shared/models/tokenPayLoad';
 import { AuthService } from '../../shared/services/auth.service';
 import { ROLE_ADMIN, ROLE_AUX, ROLE_CUSTOMER } from '../../shared/constants/Roles';
 import { PLACEHOLDER_REGULAR_INPUT } from '../../shared/constants/constants';

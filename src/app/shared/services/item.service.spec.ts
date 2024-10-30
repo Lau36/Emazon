@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ItemService } from './item.service';
 import { HttpClient } from '@angular/common/http';
-import { createItem } from '../models/interfaces';
+import { createItem } from '../models/tokenPayLoad';
 import { of, throwError } from 'rxjs';
 
 const httpClientMock = {

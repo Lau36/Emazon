@@ -1,4 +1,4 @@
-import { TokenPayload } from '../models/interfaces';
+import { TokenPayload } from '../models/tokenPayLoad';
 import { TestBed } from '@angular/core/testing';
 
 import { RoleGuard } from './role.guard';

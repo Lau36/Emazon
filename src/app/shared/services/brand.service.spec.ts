@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { BrandService } from './brand.service';
-import { createBrand } from '../models/interfaces';
+import { createBrand } from '../models/tokenPayLoad';
 import { HttpClient } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
 

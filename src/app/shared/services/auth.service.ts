@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {authResponse } from '../interfaces/login';
 import { Observable } from 'rxjs';
-import { userMicroservice } from './microservicesUrl';
+import { userMicroservice } from '../constants/microservicesUrl';
 import { auth } from '../models/auth';
 
 @Injectable({

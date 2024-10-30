@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { UserService } from './user.service';
-import { userAux } from '../models/interfaces';
+import { userAux } from '../models/tokenPayLoad';
 import { HttpClient } from '@angular/common/http';
 
 const httpClientMock = {
