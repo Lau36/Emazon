@@ -1,24 +1,10 @@
 import { JwtPayload } from "jwt-decode";
 
-
-
-export interface createBrand{
-  name: string;
-  description: string;
-}
-
 export interface listCategories{
   page: number;
   size: number;
   sort: string;
   sortDirection: string;
-}
-
-export interface responsePaginatedBrands{
-  brands: {id:number, name:string, description:string}[];
-  currentPage: number;
-  totalPages: number;
-  totalElements: number;
 }
 
 

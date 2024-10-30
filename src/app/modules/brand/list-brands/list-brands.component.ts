@@ -1,5 +1,5 @@
+import { brandsPaginatedResponse } from './../../../shared/interfaces/brand';
 import { BrandService } from '../../../shared/services/brand.service';
-import { responsePaginatedBrands } from '../../../shared/models/interfaces';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { pagination } from '../../../shared/models/pagination';
@@ -29,7 +29,7 @@ export class ListBrandsComponent implements OnInit {
     sortDirection: 'asc'
   }
 
-  responsePaginatedBrands: responsePaginatedBrands = {
+  responsePaginatedBrands: brandsPaginatedResponse = {
     brands: [],
     currentPage: 0,
     totalPages: 0,
