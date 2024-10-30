@@ -1,4 +1,5 @@
-import { listCategories, responseListCategories } from '../../../shared/models/interfaces';
+import { responseListCategories } from '../../../shared/interfaces/category';
+import { listCategories } from '../../../shared/models/interfaces';
 import { CategoryService } from '../../../shared/services/category.service';
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';

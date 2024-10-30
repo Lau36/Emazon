@@ -1,6 +1,7 @@
 import { ItemService } from '../../../shared/services/item.service'
 import { Component, OnInit } from '@angular/core';
-import { pagination, responsePaginatedItems } from 'src/app/shared/models/interfaces';
+import { pagination } from '../../../shared/models/pagination';
+import { responsePaginatedItems } from '../../../shared/interfaces/item';
 
 @Component({
   selector: 'app-list-items',

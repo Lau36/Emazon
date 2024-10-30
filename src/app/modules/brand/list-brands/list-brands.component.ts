@@ -1,7 +1,8 @@
 import { BrandService } from '../../../shared/services/brand.service';
-import { pagination, responsePaginatedBrands } from '../../../shared/models/interfaces';
+import { responsePaginatedBrands } from '../../../shared/models/interfaces';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { pagination } from '../../../shared/models/pagination';
 
 @Component({
   selector: 'app-list-brands',

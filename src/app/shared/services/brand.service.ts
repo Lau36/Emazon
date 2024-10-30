@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { createBrand, pagination } from '../models/interfaces';
+import { createBrand} from '../models/interfaces';
 import { Observable } from 'rxjs';
+import { pagination } from '../models/pagination';
 
 @Injectable({
   providedIn: 'root'
