@@ -1,7 +1,7 @@
 import { AMOUNT, CREATE, DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_NAME, ITEM_CREATED, NAME, PLACEHOLDER_REGULAR_INPUT, PRICE, REQUIRED_FIELD } from '../../../shared/constants/constants';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CREATE_ITEM } from '../../../shared/constants/constants';
-import { createItem } from 'src/app/shared/models/interfaces';
+import { createItem } from '../../../shared/models/item';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ItemService } from '../../../shared/services/item.service'
 import { CategoryService } from '../../../shared/services/category.service';
@@ -120,8 +120,11 @@ export class CreateItemComponent implements OnInit {
 
   loadCategories(){
     this.categoryService.listCategories().subscribe({
-    next: (respose) =>{
-      this.categories = respose;
+    next: (response) =>{
+      this.categories = response.map(category => ({
+        ...category,
+        isDisabled: false
+      }));
     },
     error: (error) =>{
       console.log("Ocurrio un error", error)
@@ -149,7 +152,6 @@ export class CreateItemComponent implements OnInit {
       idBrand: this.selectedBrand,
       idCategories: this.selectedCategories
     }
-    console.log("Así se manda todo", this.createItem);
 
     if (this.form.valid) {
       this.isLoading = true;

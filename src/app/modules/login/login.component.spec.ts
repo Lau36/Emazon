@@ -1,5 +1,5 @@
 import { AppRoutingModule } from '../../app-routing.module';
-import { auth, authResponse, TokenPayload } from '../../shared/models/interfaces';
+import { auth, authResponse, TokenPayload } from '../../shared/models/tokenPayLoad';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';

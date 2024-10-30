@@ -11,7 +11,7 @@ export class PaginationComponent implements OnInit {
 
   @Output() previousPageAction = new EventEmitter<void>();
   @Output() nextPageAction = new EventEmitter<void>();
-  @Input() data: string[] = []
+  @Input() data: unknown[] = []
   @Input() tableColumns: {field:string, header:string}[] = [];
   @Input() currentPage: number = 0;
   @Input() totalPages: number = 0;

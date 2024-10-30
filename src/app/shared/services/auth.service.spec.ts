@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
-import { auth, authResponse } from '../models/interfaces';
+import { auth, authResponse } from '../models/tokenPayLoad';
 import { of, throwError } from 'rxjs';
 
 const httpClientMock = {

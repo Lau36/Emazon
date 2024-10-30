@@ -1,6 +1,7 @@
 import { ItemService } from '../../../shared/services/item.service'
 import { Component, OnInit } from '@angular/core';
-import { pagination, responsePaginatedItems } from 'src/app/shared/models/interfaces';
+import { pagination } from '../../../shared/models/pagination';
+import { itemsPaginatedResponse } from '../../../shared/interfaces/item';
 
 @Component({
   selector: 'app-list-items',
@@ -33,7 +34,7 @@ export class ListItemsComponent implements OnInit {
     {field: "categories", header: "Categorias"}
   ]
 
-  responsePaginatedItems: responsePaginatedItems = {
+  responsePaginatedItems: itemsPaginatedResponse = {
     items: [],
     currentPage: 0,
     totalPages: 0,
