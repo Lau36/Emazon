@@ -46,9 +46,7 @@ export class ListItemsComponent implements OnInit {
     {id: 'categoryName', name:'Nombre de categoría'}
   ]
 
-  constructor(
-    private itemService: ItemService
-  ){}
+  constructor(private itemService: ItemService){}
 
   ngOnInit(): void {
     this.getItems();
