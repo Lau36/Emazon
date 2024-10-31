@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { pagination } from '../models/pagination';
-import { createItem } from '../models/item';
+import { createItem, itemsWithPrice } from '../models/item';
 import { itemCreatedResponse, itemsPaginatedResponse } from '../interfaces/item';
 import { stockMicroservice } from '../constants/microservicesUrl';
 
@@ -23,5 +23,9 @@ export class ItemService {
     .set('sort', data.sort)
     .set('sortDirection', data.sortDirection);
     return this.Http.get<itemsPaginatedResponse>(stockMicroservice+'/Item', {params});
+  }
+
+  listAllItems(): Observable<itemsWithPrice[]>{
+    return this.Http.get<itemsWithPrice[]>(stockMicroservice+'/Item/GetAll');
   }
 }

@@ -6,3 +6,9 @@ export interface createItem{
   idCategories: number[],
   idBrand: number
 }
+
+export interface itemsWithPrice{
+  id: number,
+  name: string,
+  price: number,
+}

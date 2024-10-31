@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ItemService } from './item.service';
 import { HttpClient } from '@angular/common/http';
-import { createItem } from '../models/item';
+import { createItem, itemsWithPrice } from '../models/item';
 import { of, throwError } from 'rxjs';
 
 const httpClientMock = {
@@ -43,6 +43,11 @@ const pagination = {
   sort: 'itemName',
   sortDirection: 'asc'
 };
+
+const mockItems: itemsWithPrice[] = [
+  { id: 1, name: 'Item 1', price: 10 },
+  { id: 2, name: 'Item 2', price: 15 }
+];
 
 describe('ItemService', () => {
 
@@ -109,7 +114,11 @@ describe('ItemService', () => {
     });
   });
 
-
-
+  it('should listAllItems', () => {
+    httpClientMock.get.mockReturnValue(of(mockItems));
+    service.listAllItems().subscribe(response => {
+      expect(response).toEqual(mockItems);
+    });
+  });
 
 });

@@ -6,9 +6,20 @@
 
     <div class="form__fields" [ngClass]="{'form__multi-column': formFields.length > 4}">
     <ng-container *ngFor="let field of formFields">
+
       <div class="fields__item">
         <app-text-component [content]="field.content"></app-text-component>
-        <app-form-dynamic [field]="field"></app-form-dynamic>
+        <ng-container [ngSwitch]="field.typeField">
+        <app-dropdown
+          *ngSwitchCase="'dropdown'"
+          [width]="field.width"
+          [options]="data"
+          (optionChange) = "onOptionChange($event)"
+        ></app-dropdown>
+        <app-form-dynamic [field]="field"
+        *ngSwitchDefault
+        ></app-form-dynamic>
+        </ng-container>
       </div>
     </ng-container>
     </div>
