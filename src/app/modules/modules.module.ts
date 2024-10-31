@@ -12,10 +12,11 @@ import { ListItemsComponent } from './item/list-items/list-items.component';
 import { CreateUserAuxComponent } from './warehouse-assistant/create-user-aux/create-user-aux.component';
 import { LoginComponent } from './login/login.component';
 import { OrganismsModule } from '../design/organisms/organisms.module';
+import { AddSuppliesComponent } from './warehouse-assistant/add-supplies/add-supplies.component';
 
 
 @NgModule({
-  declarations: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, CreateItemComponent, ListItemsComponent, CreateUserAuxComponent, LoginComponent],
+  declarations: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, CreateItemComponent, ListItemsComponent, CreateUserAuxComponent, LoginComponent, AddSuppliesComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

@@ -7,27 +7,31 @@ import { ItemDashboardPageComponent } from './pages/item-dashboard-page/item-das
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { RoleGuard } from './shared/guards/role.guard';
-import { ROLE_ADMIN } from './shared/constants/Roles';
+import { ROLE_ADMIN, ROLE_AUX } from './shared/constants/Roles';
+import { AddSuppliesPageComponent } from './pages/add-supplies-page/add-supplies-page.component';
 
 
 
-function createAdminRoute(path: string, component: any): Route {
+function addPermissions(path: string, component: any, role: string): Route {
   return {
     path: path,
     component: component,
     canActivate: [AuthGuard, RoleGuard],
-    data: { expectedRole: ROLE_ADMIN }
+    data: { expectedRole: role }
   };
 }
+
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: 'login', component: LoginPageComponent },
 
-  createAdminRoute('admin/categorias', CategoryDashboardPageComponent),
-  createAdminRoute('admin/marcas', BrandDashboardPageComponent),
-  createAdminRoute('admin/articulos', ItemDashboardPageComponent),
-  createAdminRoute('admin/crear/usuario/aux', CreateUserAuxPageComponent),
+  addPermissions('admin/categorias', CategoryDashboardPageComponent, ROLE_ADMIN),
+  addPermissions('admin/marcas', BrandDashboardPageComponent, ROLE_ADMIN),
+  addPermissions('admin/articulos', ItemDashboardPageComponent, ROLE_ADMIN),
+  addPermissions('admin/crear/usuario/aux', CreateUserAuxPageComponent, ROLE_ADMIN),
+  addPermissions('aux-bodega/añadir/suministro', AddSuppliesPageComponent, ROLE_AUX),
 
 ];
 
