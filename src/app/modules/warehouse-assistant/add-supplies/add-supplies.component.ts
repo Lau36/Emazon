@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { PLACEHOLDER_REGULAR_INPUT } from 'src/app/shared/constants/constants';
-import { ADD, ADD_SUPPLY, ITEM, QUANTITY } from 'src/app/shared/constants/supply';
-import { addSupply } from 'src/app/shared/models/supply';
-import { SupplyService } from 'src/app/shared/services/supply.service';
+import { PLACEHOLDER_REGULAR_INPUT } from '../../../shared/constants/constants';
+import { ADD, ADD_SUPPLY, ITEM, QUANTITY } from '../../../shared/constants/supply';
+import { addSupply } from '../../../shared/models/supply';
+import { ItemService } from '../../../shared/services/item.service';
+import { SupplyService } from '../../../shared/services/supply.service';
+import { handleResponse } from '../../../utils/helpers/handleResponse';
+import { hideToast } from '../../../utils/helpers/hideToast';
 
 @Component({
   selector: 'app-add-supplies',
@@ -13,6 +16,7 @@ import { SupplyService } from 'src/app/shared/services/supply.service';
 export class AddSuppliesComponent implements OnInit {
   constructor(
     private supplyService: SupplyService,
+    private itemService: ItemService,
     private fb: FormBuilder
   ) { }
 
@@ -26,6 +30,8 @@ export class AddSuppliesComponent implements OnInit {
 
   formFields: any[] = [];
 
+  items: {id: number, name: string}[] = [];
+
   supply: addSupply = {
     itemId: 0,
     quantity: 0
@@ -33,17 +39,17 @@ export class AddSuppliesComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      itemId: [ 0, Validators.required],
-      quantity: [ 0, Validators.required]
+      itemId: new FormControl('', Validators.required),
+      quantity: new FormControl('', Validators.required)
     })
 
     this.formFields = [
       {
-        typeField: 'select',
+        typeField: 'dropdown',
         content: ITEM,
         placeholder: null,
         control: this.itemId,
-        width: '20rem',
+        width: '100%',
         height: '1rem',
         fontSize: '0.8rem',
         type: "text"
@@ -53,26 +59,60 @@ export class AddSuppliesComponent implements OnInit {
         content: QUANTITY,
         placeholder: PLACEHOLDER_REGULAR_INPUT,
         control: this.quantity,
-        width: '20rem',
+        width: '100%',
         height: "1rem",
         fontSize: "0.8rem",
         type: 'number'
       }
     ]
-  }
 
-  get itemId(){
-    return this.form.get('itemId') as FormControl;
+    this.getAllItems();
   }
 
   get quantity(){
     return this.form.get('quantity') as FormControl;
   }
+  get itemId(){
+    return this.form.get('itemId') as FormControl;
+  }
+
+  onItemSelected(itemId: number){
+    this.itemId.setValue(itemId);
+    this.itemId.markAsTouched();
+  }
 
   onSubmit(){
     if(this.form.valid){
+      this.supply = {
+        itemId: Number(this.itemId.value),
+        quantity: Number(this.quantity.value)
+      }
 
+      this.supplyService.addSupply(this.supply).subscribe({
+        next: (response) => {
+          handleResponse(this, response.message, true);
+          hideToast(this.showToast);
+        },
+        error: (error) => {
+          handleResponse(this, error.error.message, false);
+          hideToast(this.showToast);
+        },
+      })
     }
   }
 
+  getAllItems(){
+    this.itemService.listAllItems().subscribe({
+      next: (response) => {
+        this.items = response.map(item => ({
+          id: item.id,
+          name: item.name
+        }))
+
+      },
+      error: (error) => {
+        console.error('Ocurrio un error', error);
+      },
+    })
+  }
 }

@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class DropdownComponent implements OnInit {
 
-  @Input() options: any[] = [];
+  @Input() options: unknown[] = [];
   @Input() width: string = "100px"
   @Input() messageError: string = '';
   @Input() isAnError: boolean = false;

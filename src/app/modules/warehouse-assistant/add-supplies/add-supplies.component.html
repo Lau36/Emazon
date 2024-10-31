@@ -1,1 +1,18 @@
-
+<div class="form">
+  <div class="form__addSupply">
+    <app-form
+    [form]="form"
+    [title]="title"
+    [isLoading]="isLoading"
+    [contentButton]="contentButton"
+    [showToast]="showToast"
+    [mistakeOcurred]="mistakeOcurred"
+    [message]="message"
+    [isDisabled]="form.invalid || isLoading"
+    [formFields]="formFields"
+    [data] = items
+    (optionSelected)="onItemSelected($event)"
+    (submitForm)="onSubmit()"
+></app-form>
+  </div>
+</div>

@@ -24,6 +24,6 @@ import { AddSuppliesComponent } from './warehouse-assistant/add-supplies/add-sup
     AtomsModule,
     OrganismsModule
 ],
-  exports: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, ListItemsComponent, CreateItemComponent, CreateUserAuxComponent, LoginComponent]
+  exports: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, ListItemsComponent, CreateItemComponent, CreateUserAuxComponent, LoginComponent, AddSuppliesComponent]
 })
 export class ModulesModule {}

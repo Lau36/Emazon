@@ -113,7 +113,7 @@ export class LoginComponent implements OnInit {
       break;
 
       case ROLE_AUX:
-        this.router.navigate(['/warehouse']);
+        this.router.navigate(['/aux-bodega/añadir/suministro']);
       break;
 
       case ROLE_CUSTOMER:
