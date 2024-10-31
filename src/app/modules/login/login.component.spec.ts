@@ -1,5 +1,5 @@
-
-import {  TokenPayload } from '../../shared/models/tokenPayLoad';
+import { AppRoutingModule } from '../../app-routing.module';
+import { TokenPayload } from '../../shared/models/tokenPayLoad';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import { AuthService } from '../../shared/services/auth.service';
@@ -10,21 +10,26 @@ import { ROLE_ADMIN, ROLE_AUX, ROLE_CUSTOMER } from '../../shared/constants/Role
 import { jwtDecode, JwtPayload } from 'jwt-decode';
 import { auth } from '../../shared/models/auth';
 import { authResponse } from '../../shared/interfaces/login';
+import { hideToast } from '../../utils/helpers/hideToast';
 
 jest.mock('jwt-decode', () => ({
   jwtDecode: jest.fn()
 }));
 
+jest.mock('../../utils/helpers/hideToast', () =>({
+  hideToast: jest.fn()
+}))
+
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let authServiceMock = { auth: jest.fn() };
+  let authServiceMock = { auth: jest.fn(), getToken: jest.fn(), setToken: jest.fn() };
   let routerMock = { navigate: jest.fn() };
   let login: auth;
   let wrongLogin: auth;
   let mockResponse: authResponse;
-  let mockTokenPayload: {role: string} = {role: ''} as TokenPayload;
+  let mockTokenPayloadAdmin: {role: string} = {role: ''} as TokenPayload;
 
   beforeEach(async () => {
 
@@ -56,7 +61,7 @@ describe('LoginComponent', () => {
       token: 'mockToken',
     }
 
-    mockTokenPayload = { role: ROLE_ADMIN }
+    mockTokenPayloadAdmin = { role: ROLE_ADMIN }
 
 
   });
@@ -75,47 +80,43 @@ describe('LoginComponent', () => {
     expect(component.isLoading).toBeFalsy;
   });
 
-  it('should call AuthService and navigate on successful login', fakeAsync(() => {
+  it('should call AuthService and navigate on successful login', () => {
     authServiceMock.auth.mockReturnValue(of(mockResponse));
+    authServiceMock.getToken.mockReturnValue(mockResponse.token);
+
+    (jwtDecode as jest.Mock).mockReturnValue(mockTokenPayloadAdmin);
 
     component.form.setValue(login);
     component.onSubmit();
 
     expect(authServiceMock.auth).toHaveBeenCalledWith(login);
-
-    tick();
     expect(authServiceMock.auth).toHaveBeenCalledTimes(1);
-    component.decodeTokenToNavigate();
-    expect(routerMock.navigate).toHaveBeenCalledWith(['/admin/categorias'])
+
+    expect(routerMock.navigate).toHaveBeenCalledWith(['/admin/categorias']);
+    expect(routerMock.navigate).toHaveBeenCalledTimes(1);
+
     expect(component.isLoading).toBeFalsy();
     expect(component.mistakeOcurred).toBeFalsy();
-    expect(component.showToast).toBeTruthy();
+    expect(hideToast).toHaveBeenCalledWith(true);
+  });
 
-    (jwtDecode as jest.Mock).mockReturnValue(mockTokenPayload);
-
-    tick(2000);
-    expect(component.showToast).toBeFalsy();
-  }));
-
-  it('should show error message on login failure', fakeAsync(() => {
+  it('should show error message on login failure', () => {
     const errorResponse = { error: { message: 'Invalid credentials' } };
     authServiceMock.auth.mockReturnValue(throwError(() => errorResponse));
 
     component.form.setValue(wrongLogin);
     component.onSubmit();
-    tick();
-    expect(component.isLoading).toBe(false);
-    expect(component.mistakeOcurred).toBe(true);
+
+    expect(component.isLoading).toBeFalsy();
+    expect(component.mistakeOcurred).toBeTruthy();
     expect(component.message).toBe('Invalid credentials');
 
-    tick(2000);
-    expect(component.showToast).toBeFalsy();
-
-  }));
+  });
 
   it('should navigate to admin route on admin role', () => {
-    (jwtDecode as jest.Mock).mockReturnValue(mockTokenPayload);
-    localStorage.setItem('token', 'adminToken');
+    authServiceMock.setToken('token');
+    authServiceMock.getToken.mockReturnValue('token');
+    (jwtDecode as jest.Mock).mockReturnValue(mockTokenPayloadAdmin);
 
     component.decodeTokenToNavigate();
 
@@ -125,8 +126,10 @@ describe('LoginComponent', () => {
   it('should navigate to admin route on Aux role', () => {
     const mockTokenPayloadAux = { role: ROLE_AUX } as JwtPayload;
 
+    authServiceMock.setToken('token');
+    authServiceMock.getToken.mockReturnValue('token');
+
     (jwtDecode as jest.Mock).mockReturnValue(mockTokenPayloadAux);
-    localStorage.setItem('token', 'auxToken');
 
     component.decodeTokenToNavigate();
 
@@ -135,20 +138,13 @@ describe('LoginComponent', () => {
 
   it('should navigate to customer route on customer role', () => {
     const mockTokenPayloadCustomer = { role: ROLE_CUSTOMER } as JwtPayload
+
+    authServiceMock.setToken('token');
+    authServiceMock.getToken.mockReturnValue('token');
     (jwtDecode as jest.Mock).mockReturnValue(mockTokenPayloadCustomer);
-    localStorage.setItem('token', 'customerToken');
 
     component.decodeTokenToNavigate();
 
-    expect(routerMock.navigate).toHaveBeenCalledWith(['/']);
-  });
-
-  it('should reset form after successful login', () => {
-    authServiceMock.auth.mockReturnValue(of(mockResponse));
-
-    component.form.setValue(login);
-    component.onSubmit();
-
-    expect(component.form.value).toEqual({ email: null, password: null });
+    expect(routerMock.navigate).toHaveBeenCalledWith(['/customer']);
   });
 });

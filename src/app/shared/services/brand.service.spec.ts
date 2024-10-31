@@ -81,7 +81,7 @@ describe('BranchService', () => {
     httpClientMock.get.mockReturnValue(of(responseListBrands));
     service.listBrandsPaginated(params).subscribe(response => {
       expect(response).toEqual(responseListBrands);
-      done();
+      done(); 
     });
   });
 

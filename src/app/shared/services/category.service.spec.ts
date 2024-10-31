@@ -1,4 +1,4 @@
-import {  createCategory } from '../models/category';
+import {  createCategory} from '../models/category';
 import { HttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { CategoryService } from './category.service';
