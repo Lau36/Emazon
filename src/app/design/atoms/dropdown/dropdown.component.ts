@@ -17,7 +17,6 @@ export class DropdownComponent implements OnInit {
 
   getOptionValue(option: any){
     return typeof option === 'object' ? option.id : option;
-
   }
 
   getOptionLabel(option: any){

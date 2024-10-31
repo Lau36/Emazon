@@ -6,7 +6,16 @@
 
     <div class="form__fields" [ngClass]="{'form__multi-column': formFields.length > 4}">
     <ng-container *ngFor="let field of formFields">
+
       <div class="fields__item">
+        <ng-container *ngIf="field.typeField === 'select'">
+          <app-text-component [content]="field.content"></app-text-component>
+          <app-dropdown
+            width="100%"
+            [options]="data"
+            (optionChange) = "onOptionChange($event)"
+          ></app-dropdown>
+        </ng-container>
         <app-text-component [content]="field.content"></app-text-component>
         <app-form-dynamic [field]="field"></app-form-dynamic>
       </div>
