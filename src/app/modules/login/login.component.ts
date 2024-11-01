@@ -5,7 +5,7 @@ import { TokenPayload } from '../../shared/models/tokenPayLoad';
 import { AuthService } from '../../shared/services/auth.service';
 import { ROLE_ADMIN, ROLE_AUX, ROLE_CUSTOMER } from '../../shared/constants/Roles';
 import { PLACEHOLDER_REGULAR_INPUT } from '../../shared/constants/constants';
-import { CORRECT_LOGIN, EMAIL, LOGIN, PASSWORD } from '../../shared/constants/login';
+import { CORRECT_LOGIN, DONT_HAVE_ACCOUNT, EMAIL, LOGIN, PASSWORD, REGISTER } from '../../shared/constants/login';
 import { jwtDecode } from 'jwt-decode';
 import { hideToast } from '../../utils/helpers/hideToast';
 import { auth } from '../../shared/models/auth';
@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
   mistakeOcurred: boolean = false;
   contentButton: string = LOGIN;
   message: string = '';
+  createAccountMessageLink: string = REGISTER;
+  dontHaveAccountMessage: string = DONT_HAVE_ACCOUNT
 
   formFields: any[] = [];
 

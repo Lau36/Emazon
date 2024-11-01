@@ -8,6 +8,7 @@ import { BrandDashboardPageComponent } from './brand-dashboard-page/brand-dashbo
 import { CategoryDashboardPageComponent } from './category-dashboard-page/category-dashboard-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AddSuppliesPageComponent } from './add-supplies-page/add-supplies-page.component';
+import { CreateCustomerPageComponent } from './create-customer-page/create-customer-page.component';
 
 
 
@@ -18,7 +19,8 @@ import { AddSuppliesPageComponent } from './add-supplies-page/add-supplies-page.
     BrandDashboardPageComponent,
     CategoryDashboardPageComponent,
     LoginPageComponent,
-    AddSuppliesPageComponent
+    AddSuppliesPageComponent,
+    CreateCustomerPageComponent
   ],
   imports: [
     CommonModule,

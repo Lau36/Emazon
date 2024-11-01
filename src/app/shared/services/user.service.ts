@@ -3,17 +3,20 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { userCreatedResponse } from '../interfaces/user';
 import { user } from '../models/user';
+import { userMicroservice } from '../constants/microservicesUrl';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  urlMicroserviceUser: string = "http://localhost:8080/Users"
-
   constructor(private Http: HttpClient) { }
 
-  createUserAux(data: user): Observable<userCreatedResponse>{
-    return this.Http.post<userCreatedResponse>(this.urlMicroserviceUser, data)
+  createAuxUser(data: user): Observable<userCreatedResponse>{
+    return this.Http.post<userCreatedResponse>(userMicroservice, data)
+  }
+
+  createCustomerUser(data: user): Observable<userCreatedResponse>{
+    return this.Http.post<userCreatedResponse>(userMicroservice+'/Customer', data)
   }
 }

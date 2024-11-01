@@ -1,4 +1,4 @@
-@use "../../../styles/globalStyles.scss" as style;
+@use "../../styles/globalStyles.scss" as style;
 
 .form-create-user{
   @include style.display(flex, center, center);

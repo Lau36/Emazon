@@ -44,6 +44,17 @@
       width: 100%;
     }
   }
+
+  &__createAccount{
+    color: colors.$linkColor;
+    @include style.display(flex, center, center);
+    margin-top: 1vh;
+
+    &__link{
+      color: colors.$linkColor;
+      margin-left: 0.5rem;
+    }
+  }
 }
 
 @media(max-width: 750px){

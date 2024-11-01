@@ -29,5 +29,9 @@
     <div class="form__button">
       <app-button [content]="contentButton" (action)="onSubmit()" [isDisabled]="isDisabled"></app-button>
     </div>
+    <div *ngIf="showLink" class="form__createAccount">
+      <app-text-component [content]="info"></app-text-component>
+      <a [href]="pathLink" class="createAccount__link">{{contentLink}}</a>
+    </div>
   </div>
 </div>

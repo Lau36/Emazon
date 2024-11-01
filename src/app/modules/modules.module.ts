@@ -9,14 +9,14 @@ import { ListCategoriesComponent } from './category/list-categories/list-categor
 import { ListBrandsComponent } from './brand/list-brands/list-brands.component';
 import { CreateItemComponent } from './item/create-item/create-item.component';
 import { ListItemsComponent } from './item/list-items/list-items.component';
-import { CreateUserAuxComponent } from './warehouse-assistant/create-user-aux/create-user-aux.component';
 import { LoginComponent } from './login/login.component';
 import { OrganismsModule } from '../design/organisms/organisms.module';
 import { AddSuppliesComponent } from './warehouse-assistant/add-supplies/add-supplies.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 
 @NgModule({
-  declarations: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, CreateItemComponent, ListItemsComponent, CreateUserAuxComponent, LoginComponent, AddSuppliesComponent],
+  declarations: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, CreateItemComponent, ListItemsComponent, LoginComponent, AddSuppliesComponent, CreateUserComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -24,6 +24,6 @@ import { AddSuppliesComponent } from './warehouse-assistant/add-supplies/add-sup
     AtomsModule,
     OrganismsModule
 ],
-  exports: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, ListItemsComponent, CreateItemComponent, CreateUserAuxComponent, LoginComponent, AddSuppliesComponent]
+  exports: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, ListItemsComponent, CreateItemComponent, LoginComponent, AddSuppliesComponent, CreateUserComponent]
 })
 export class ModulesModule {}

@@ -9,6 +9,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { RoleGuard } from './shared/guards/role.guard';
 import { ROLE_ADMIN, ROLE_AUX } from './shared/constants/Roles';
 import { AddSuppliesPageComponent } from './pages/add-supplies-page/add-supplies-page.component';
+import { CreateCustomerPageComponent } from './pages/create-customer-page/create-customer-page.component';
 
 
 
@@ -26,6 +27,7 @@ function addPermissions(path: string, component: any, role: string): Route {
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: 'login', component: LoginPageComponent },
+  {path: 'register', component: CreateCustomerPageComponent },
 
   addPermissions('admin/categorias', CategoryDashboardPageComponent, ROLE_ADMIN),
   addPermissions('admin/marcas', BrandDashboardPageComponent, ROLE_ADMIN),

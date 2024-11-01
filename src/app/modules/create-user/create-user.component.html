@@ -2,7 +2,7 @@
   <div class="form-create-user">
     <app-form
     [form]="form"
-    [title]="title"
+    [title]="formTitle"
     [isLoading]="isLoading"
     [contentButton]="contentButton"
     [showToast]="showToast"
@@ -11,6 +11,11 @@
     [isDisabled]="form.invalid || isLoading"
     [formFields]="formFields"
     (submitForm)="onSubmit()"
+    [showLink]=infoLink.showLink
+    [contentLink]="infoLink.contentLink"
+    [info]="infoLink.info"
+    [pathLink]="infoLink.pathLink"
     ></app-form>
   </div>
 </div>
+
