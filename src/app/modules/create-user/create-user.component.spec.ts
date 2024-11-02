@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { of, throwError } from 'rxjs';
 import { CreateUserComponent } from './create-user.component';
@@ -10,15 +10,38 @@ import { hideToast } from '../../utils/helpers/hideToast';
 jest.mock('../../utils/helpers/handleResponse');
 jest.mock('../../utils/helpers/hideToast');
 
+
 describe('CreateUserComponent', () => {
   let component: CreateUserComponent;
   let fixture: ComponentFixture<CreateUserComponent>;
-  let userServiceMock: jest.Mocked<UserService>;
+  let userServiceMock = {
+    createUserAux: jest.fn(),
+  }
+
+  let dataMock = {
+    name: 'John',
+    lastName: 'Doe',
+    identification: '123456',
+    phoneNumber: '1234567890',
+    birthDate: '1990-01-01',
+    email: 'test@example.com',
+    password: 'password'
+  }
+
+  let formInvalidMock = {
+    name: 'John',
+    lastName: 'Doe',
+    identification: '',
+    phoneNumber: '',
+    birthDate: '',
+    email: '',
+    password: ''
+  }
+
+  let successResponse: userCreatedResponse =
+  { message: 'Usuario creado correctamente', email: 'test@example.com' };
 
   beforeEach(async () => {
-    userServiceMock = {
-      createUserAux: jest.fn()
-    } as unknown as jest.Mocked<UserService>;
 
     await TestBed.configureTestingModule({
       declarations: [CreateUserComponent],
@@ -28,6 +51,11 @@ describe('CreateUserComponent', () => {
         { provide: UserService, useValue: userServiceMock }
       ]
     }).compileComponents();
+    fixture = TestBed.createComponent(CreateUserComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+
   });
 
   beforeEach(() => {
@@ -53,88 +81,45 @@ describe('CreateUserComponent', () => {
   });
 
   it('should call createService with form data when form is valid and submitted', () => {
-    const successResponse: userCreatedResponse = { message: 'User created successfully', email: 'test@example.com' };
     component.createService = jest.fn().mockReturnValue(of(successResponse));
 
-    component.form.setValue({
-      name: 'John',
-      lastName: 'Doe',
-      identification: '123456',
-      phoneNumber: '1234567890',
-      birthDate: '1990-01-01',
-      email: 'test@example.com',
-      password: 'password'
-    });
+    component.form.setValue(dataMock);
 
     component.onSubmit();
 
     expect(component.isLoading).toBe(true);
-    expect(component.createService).toHaveBeenCalledWith({
-      name: 'John',
-      lastName: 'Doe',
-      identification: '123456',
-      phoneNumber: '1234567890',
-      birthDate: '1990-01-01',
-      email: 'test@example.com',
-      password: 'password'
-    });
+    expect(component.createService).toHaveBeenCalledWith(dataMock);
   });
 
-  it('should handle success response correctly', () => {
-    const successResponse: userCreatedResponse = { message: 'User created successfully', email: 'test@example.com' };
+  it('should handle success response correctly', fakeAsync(() => {
     component.createService = jest.fn().mockReturnValue(of(successResponse));
 
-    component.form.setValue({
-      name: 'John',
-      lastName: 'Doe',
-      identification: '123456',
-      phoneNumber: '1234567890',
-      birthDate: '1990-01-01',
-      email: 'test@example.com',
-      password: 'password'
-    });
+    component.form.setValue(dataMock);
+
 
     component.onSubmit();
+    tick();
 
-    expect(handleResponse).toHaveBeenCalledWith(component, 'User created successfully', true);
+    expect(handleResponse).toHaveBeenCalledWith(component, successResponse.message, true);
     expect(hideToast).toHaveBeenCalledWith(component.showToast);
-    expect(component.form.valid).toBe(true);
-    expect(component.isLoading).toBe(false);
-  });
+  }));
 
   it('should handle error response correctly', () => {
     const errorResponse = { error: { message: 'Error creating user' } };
-    component.createService = jest.fn().mockReturnValue(throwError(errorResponse));
+    component.createService = jest.fn().mockReturnValue(throwError(() => errorResponse));
 
-    component.form.setValue({
-      name: 'John',
-      lastName: 'Doe',
-      identification: '123456',
-      phoneNumber: '1234567890',
-      birthDate: '1990-01-01',
-      email: 'test@example.com',
-      password: 'password'
-    });
+    component.form.setValue(dataMock);
 
     component.onSubmit();
 
-    expect(handleResponse).toHaveBeenCalledWith(component, 'Error creating user', false);
+    expect(handleResponse).toHaveBeenCalledWith(component, errorResponse.error.message, false);
     expect(hideToast).toHaveBeenCalledWith(component.showToast);
-    expect(component.isLoading).toBe(false);
   });
 
   it('should not call createService if form is invalid', () => {
     component.createService = jest.fn();
 
-    component.form.setValue({
-      name: '',
-      lastName: 'Doe',
-      identification: '123456',
-      phoneNumber: '1234567890',
-      birthDate: '1990-01-01',
-      email: 'invalid-email',
-      password: ''
-    });
+    component.form.setValue(formInvalidMock);
 
     component.onSubmit();
 

@@ -3,6 +3,9 @@ import { TestBed } from '@angular/core/testing';
 import { UserService } from './user.service';
 import { user } from '../models/user';
 import { HttpClient } from '@angular/common/http';
+import { userMicroservice } from '../constants/microservicesUrl';
+import { userCreatedResponse } from '../interfaces/user';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 const httpClientMock = {
   post: jest.fn()
@@ -18,12 +21,19 @@ const data: user = {
   password: 'TestPassword'
 }
 
+const mockResponse: userCreatedResponse = {
+  message: 'User created successfully',
+  email: 'test1@test.com'
+}
+
 describe('UserService', () => {
   let service: UserService;
+  let httpMock: HttpTestingController;
 
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       providers: [{provide: HttpClient, useValue: httpClientMock}]
     });
     service = TestBed.inject(UserService);
@@ -37,8 +47,25 @@ describe('UserService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('create new brand http have been called', () => {
-    service.createUserAux(data);
-    expect(httpClientMock.post).toHaveBeenCalledWith(service.urlMicroserviceUser, data)
+  it('create new warehouse user http have been called', () => {
+    service.createAuxUser(data);
+    expect(httpClientMock.post).toHaveBeenCalledWith(userMicroservice, data)
   });
+
+  it('create new customer user http have been called', () => {
+    service.createCustomerUser(data);
+    expect(httpClientMock.post).toHaveBeenCalledWith(userMicroservice + '/Customer', data)
+  });
+
+  // it('should create new brand http have been called', () => {
+  //   service.createCustomerUser(data).subscribe(response => {
+  //     expect(response).toEqual(mockResponse);
+  //   });
+
+  //   const req = httpMock.expectOne(userMicroservice + '/Costumer');
+  //   expect(req.request.method).toBe('POST');
+  //   expect(req.request.body).toEqual(data);
+
+  //   req.flush(mockResponse);
+  // });
 });

@@ -29,3 +29,5 @@ export const USER_CREATED = "Usuario creado correctamente";
 export const BACK = "Anterior";
 export const NEXT = "Siguiente";
 
+export const INVALID_FORM = 'Formulario invalido';
+
