@@ -11,6 +11,10 @@
     [isDisabled]="form.invalid || isLoading"
     [formFields]="formFields"
     (submitForm)="onSubmit()"
+    [showLink]=true
+    [contentLink]="createAccountMessageLink"
+    [info]="dontHaveAccountMessage"
+    pathLink="/register"
     ></app-form>
   </div>
 </div>

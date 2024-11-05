@@ -20,6 +20,10 @@ export class FormComponent implements OnInit {
   @Output() submitForm: EventEmitter<void> = new EventEmitter<void>();
   @Output() optionSelected: EventEmitter<number> = new EventEmitter<number>();
   @Input() data: unknown[] = [];
+  @Input() showLink: boolean = false;
+  @Input() info: string = '';
+  @Input() pathLink: string = '';
+  @Input() contentLink: string = '';
 
   onSubmit() {
     this.submitForm.emit();

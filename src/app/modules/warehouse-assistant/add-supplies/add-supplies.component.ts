@@ -4,9 +4,9 @@ import { PLACEHOLDER_REGULAR_INPUT } from '../../../shared/constants/constants';
 import { ADD, ADD_SUPPLY, ITEM, QUANTITY } from '../../../shared/constants/supply';
 import { addSupply } from '../../../shared/models/supply';
 import { ItemService } from '../../../shared/services/item.service';
-import { SupplyService } from '../../../shared/services/supply.service';
 import { handleResponse } from '../../../utils/helpers/handleResponse';
 import { hideToast } from '../../../utils/helpers/hideToast';
+import { SupplyService } from '../../../shared/services/supply.service';
 
 @Component({
   selector: 'app-add-supplies',

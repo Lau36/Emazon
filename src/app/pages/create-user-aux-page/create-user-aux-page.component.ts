@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { listElementsNavAdmin } from '../../utils/adminHeader';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-create-user-aux-page',
@@ -9,7 +10,11 @@ import { listElementsNavAdmin } from '../../utils/adminHeader';
 export class CreateUserAuxPageComponent implements OnInit {
   header = listElementsNavAdmin;
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
+
+  service = this.userService.createAuxUser;
 
   ngOnInit(): void {
   }

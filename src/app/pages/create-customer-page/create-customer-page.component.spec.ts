@@ -1,25 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateUserAuxPageComponent } from './create-user-aux-page.component';
+import { CreateCustomerPageComponent } from './create-customer-page.component';
 import { UserService } from '../../shared/services/user.service';
 
-describe('CreateUserAuxPageComponent', () => {
-  let component: CreateUserAuxPageComponent;
-  let fixture: ComponentFixture<CreateUserAuxPageComponent>;
+describe('CreateCustomerPageComponent', () => {
+  let component: CreateCustomerPageComponent;
+  let fixture: ComponentFixture<CreateCustomerPageComponent>;
   let userServiceMock = {
     createUserAux: jest.fn(),
   }
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateUserAuxPageComponent ],
+      declarations: [ CreateCustomerPageComponent ],
       providers: [
         {provide: UserService, useValue: userServiceMock}
       ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CreateUserAuxPageComponent);
+    fixture = TestBed.createComponent(CreateCustomerPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

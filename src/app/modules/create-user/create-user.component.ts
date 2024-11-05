@@ -1,19 +1,33 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CREATE, USER_CREATED } from '../../../shared/constants/constants';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { user } from '../../../shared/models/user';
-import { UserService } from '../../../shared/services/user.service';
+import { Observable, of } from 'rxjs';
+import { CREATE, INVALID_FORM, USER_CREATED } from '../../shared/constants/constants';
+import { userCreatedResponse } from '../../shared/interfaces/user';
+import { user } from '../../shared/models/user';
+import { UserService } from '../../shared/services/user.service';
+import { handleResponse } from '../../utils/helpers/handleResponse';
+import { hideToast } from '../../utils/helpers/hideToast';
 
 @Component({
-  selector: 'app-create-user-aux',
-  templateUrl: './create-user-aux.component.html',
-  styleUrls: ['./create-user-aux.component.scss']
+  selector: 'app-create-user',
+  templateUrl: './create-user.component.html',
+  styleUrls: ['./create-user.component.scss']
 })
-export class CreateUserAuxComponent implements OnInit {
+export class CreateUserComponent implements OnInit {
 
-  @Output() userCreated: EventEmitter<void> = new EventEmitter<void>();
+  @Input() formTitle: string = '';
+  @Input() createService: (data: user) => Observable<userCreatedResponse> =
+  (data: user) => of({ message: '', email: '' });
 
-  title: string = "Crear auxiliar de bodega";
+  @Input() infoLink: {showLink: boolean, info: string, pathLink: string, contentLink: string} =
+  {
+    showLink: false,
+    info: '',
+    pathLink: '',
+    contentLink: ''
+  }
+
+
   contentButton: string = CREATE;
 
   form!: FormGroup;
@@ -166,30 +180,27 @@ export class CreateUserAuxComponent implements OnInit {
         password: this.password.value
       }
       this.isLoading = true;
-
-      this.userService.createUserAux(this.createUser).subscribe({
-        next: () => {
-          this.isLoading = false;
-          this.mistakeOcurred = false;
-          this.showToast = true;
-          this.message = USER_CREATED;
-          setTimeout(() => {
-            this.showToast = false;
-            this.userCreated.emit();
-          }, 3000);
-          this.form.reset();
-        },
-        error: (error) => {
-          this.isLoading = false;
-          this.mistakeOcurred = true;
-          this.showToast = true;
-          this.message = error.error.message;
-          setTimeout(() => {
-            this.showToast = false;
-          }, 3000);
-        }
-      });
+      this.handleServiceCreateUserCall(this.createService.bind(this.userService), this.createUser, USER_CREATED);
+    }else{
+      this.showToast = true;
+      this.message = INVALID_FORM;
+      hideToast(this.showToast);
     }
+  }
+
+  handleServiceCreateUserCall(service: (data: user) => Observable<userCreatedResponse>, data: user, successMessage: string) {
+    this.isLoading = true;
+    service(data).subscribe({
+      next: () => {
+        handleResponse(this,  successMessage, true);
+        hideToast(this.showToast)
+        this.form.reset();
+      },
+      error: (error) => {
+        handleResponse(this,  error.error.message, false);
+        hideToast(this.showToast)
+      }
+    });
   }
 
 }

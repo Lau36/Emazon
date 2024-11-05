@@ -1,7 +1,7 @@
 @use "../../styles/colors.scss" as colors;
 @use "../../styles/globalStyles.scss" as styles;
 
-.login{
+.register{
   background-color: colors.$darckPurpleColor;
   display: flex;
   min-height: 100vh;
@@ -35,7 +35,7 @@
 }
 
 @media (max-width: 750px) {
-  .login{
+  .register{
     @include styles.display(flex, center, center);
     flex-direction: column;
 
