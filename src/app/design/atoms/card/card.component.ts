@@ -14,6 +14,18 @@ export class CardComponent implements OnInit {
   @Input() categories: {id:number, name: string}[] = [];
   @Input() brand: {id:number, name:string} = {id: 0, name:''};
 
+  quantity: number = 1; 
+
+  increaseQuantity() {
+    this.quantity++;
+  }
+
+  decreaseQuantity() {
+    if (this.quantity > 0) {
+      this.quantity--;
+    }
+  }
+
   constructor() { }
 
   ngOnInit(): void {
