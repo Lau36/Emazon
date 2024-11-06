@@ -49,20 +49,20 @@ describe('UserService', () => {
 
   it('create new warehouse user http have been called', () => {
     service.createAuxUser(data);
-    expect(httpClientMock.post).toHaveBeenCalledWith(userMicroservice, data)
+    expect(httpClientMock.post).toHaveBeenCalledWith(userMicroservice + '/Users', data)
   });
 
   it('create new customer user http have been called', () => {
     service.createCustomerUser(data);
-    expect(httpClientMock.post).toHaveBeenCalledWith(userMicroservice + '/Customer', data)
+    expect(httpClientMock.post).toHaveBeenCalledWith(userMicroservice + '/Users/Customer', data)
   });
 
-  // it('should create new brand http have been called', () => {
+  // it('should create new customer http have been called', () => {
   //   service.createCustomerUser(data).subscribe(response => {
   //     expect(response).toEqual(mockResponse);
   //   });
 
-  //   const req = httpMock.expectOne(userMicroservice + '/Costumer');
+  //   const req = httpMock.expectOne(userMicroservice + '/Users/Customer');
   //   expect(req.request.method).toBe('POST');
   //   expect(req.request.body).toEqual(data);
 

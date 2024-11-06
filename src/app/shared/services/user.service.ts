@@ -13,7 +13,7 @@ export class UserService {
   constructor(private Http: HttpClient) { }
 
   createAuxUser(data: user): Observable<userCreatedResponse>{
-    return this.Http.post<userCreatedResponse>(userMicroservice, data)
+    return this.Http.post<userCreatedResponse>(userMicroservice + '/Users', data)
   }
 
   createCustomerUser(data: user): Observable<userCreatedResponse>{

@@ -1,7 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
-import { listElementsNavAdmin } from '../../utils/adminHeader';
 import { Component, OnInit } from '@angular/core';
-import { ROLE_ADMIN } from 'src/app/shared/constants/Roles';
+import { ROLE_ADMIN } from '../../shared/constants/Roles';
 
 @Component({
   selector: 'app-brand-dashboard-page',
