@@ -7,7 +7,7 @@
   [options]="optionsSize"
   (optionChange) = "onPageSizeSelected($event)"
   ></app-dropdown>
-  
+
     <h1 class="text-pagination">Ordenar</h1>
     <app-dropdown
     [options]="optionsSort"
@@ -29,7 +29,7 @@
     <app-table *ngIf="showTable" [data]="data" [columns]="tableColumns"></app-table>
     <app-items *ngIf="showItems" [items]="items"></app-items>
   </div>
-
+  
   <div class="pagination-controls">
     <app-button [content]="back" (action)="previousPage()" [isDisabled]="currentPage === 0"></app-button>
     <span>Página {{currentPage + 1}} de {{totalPages}}</span>

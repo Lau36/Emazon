@@ -115,11 +115,11 @@ export class LoginComponent implements OnInit {
       break;
 
       case ROLE_AUX:
-        this.router.navigate(['/aux-bodega/añadir/suministro']);
+        this.router.navigate(['/aux-bodega/categorias']);
       break;
 
       case ROLE_CUSTOMER:
-        this.router.navigate(['/customer']);
+        this.router.navigate(['/cliente/articulos']);
       break;
     }
   }

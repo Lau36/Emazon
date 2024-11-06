@@ -11,10 +11,14 @@ import { itemsPaginatedResponse } from '../../../shared/interfaces/item';
 export class ListItemsComponent implements OnInit {
 
   @Input() showCreateItem: boolean = false;
+  @Input() showItemsCard: boolean = false;
+  @Input() showItemsTable: boolean = true;
 
-  items: any[] = [];
+  items: {id: number, name: string, description: string, quantityInStock: number,
+    price: number, categories: {id: number, name: string}[], brand:{id: number, name: string}
+    }[] = []
 
-  data: any[] = [];
+  data: unknown[] = [];
 
   response: any[] = [];
 

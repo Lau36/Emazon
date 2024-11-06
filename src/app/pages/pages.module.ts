@@ -9,6 +9,7 @@ import { CategoryDashboardPageComponent } from './category-dashboard-page/catego
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AddSuppliesPageComponent } from './add-supplies-page/add-supplies-page.component';
 import { CreateCustomerPageComponent } from './create-customer-page/create-customer-page.component';
+import { ItemCardPageComponent } from './item-card-page/item-card-page.component';
 
 
 
@@ -20,7 +21,8 @@ import { CreateCustomerPageComponent } from './create-customer-page/create-custo
     CategoryDashboardPageComponent,
     LoginPageComponent,
     AddSuppliesPageComponent,
-    CreateCustomerPageComponent
+    CreateCustomerPageComponent,
+    ItemCardPageComponent
   ],
   imports: [
     CommonModule,

@@ -13,6 +13,7 @@ import { CreateCustomerPageComponent } from './pages/create-customer-page/create
 import { listElementsNavAdmin } from './utils/adminHeader';
 import { listElementsNavWarehouseAssistant } from './utils/warehouse-assistant-header';
 import { listNavCustomerHeader } from './utils/customer-header';
+import { ItemCardPageComponent } from './pages/item-card-page/item-card-page.component';
 
 
 
@@ -42,9 +43,9 @@ const routes: Routes = [
   addPermissions('aux-bodega/marcas', BrandDashboardPageComponent, ROLE_AUX, listElementsNavWarehouseAssistant),
   addPermissions('aux-bodega/articulos', ItemDashboardPageComponent, ROLE_AUX, listElementsNavWarehouseAssistant),
 
-  addPermissions('cliente/categorias', CategoryDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
-  addPermissions('cliente/marcas', BrandDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
-  addPermissions('cliente/articulos', ItemDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
+  // addPermissions('cliente/categorias', CategoryDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
+  // addPermissions('cliente/marcas', BrandDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
+  addPermissions('cliente/articulos', ItemCardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
 
 
 
