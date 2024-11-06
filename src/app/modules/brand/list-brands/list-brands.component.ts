@@ -1,6 +1,6 @@
 import { brandsPaginatedResponse } from './../../../shared/interfaces/brand';
 import { BrandService } from '../../../shared/services/brand.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { pagination } from '../../../shared/models/pagination';
 
@@ -10,6 +10,8 @@ import { pagination } from '../../../shared/models/pagination';
   styleUrls: ['./list-brands.component.scss']
 })
 export class ListBrandsComponent implements OnInit {
+
+  @Input() showCreateBrand: boolean = false;
 
   brandList: any[] = [];
 

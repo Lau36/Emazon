@@ -1,5 +1,5 @@
 <div class="pagination-brands-container">
-  <div class="button-create-brand-container">
+  <div class="button-create-brand-container" *ngIf="showCreateBrand">
     <app-button content="Crear marca" (action)="openModal()"></app-button>
     <app-modal width="22%" [isVisible]="isModalVisible" (close)="closeModal()">
       <app-create-branch (brandCreated)="closeModal()"></app-create-branch>

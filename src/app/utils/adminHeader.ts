@@ -1,7 +1,6 @@
 export const listElementsNavAdmin: {elementName: string, path:string}[] =
 [
-  {elementName: "Categorías", path:"/admin/categorias"},
-  {elementName: "Marcas", path:"/admin/marcas"},
-  {elementName: "Artículos", path:"/admin/articulos"},
-  {elementName: "Usuarios", path:"admin/crear/usuario/aux"},
+  {elementName: "Categorías", path:"/cliente/categorias"},
+  {elementName: "Marcas", path:"/cliente/marcas"},
+  {elementName: "Artículos", path:"cliente/articulos"},
 ]

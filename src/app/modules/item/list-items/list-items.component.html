@@ -1,5 +1,5 @@
 <div class="pagination-items-container">
-    <div class="button-create-brand-container">
+    <div class="button-create-brand-container" *ngIf="showCreateItem">
       <app-button content="Crear articulo" (action)="openModal()"></app-button>
       <app-modal width="800px" [isVisible]="isModalVisible" (close)="closeModal()">
         <app-create-item (itemCreated)="closeModal()"></app-create-item>

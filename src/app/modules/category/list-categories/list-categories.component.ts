@@ -1,7 +1,7 @@
 import {categoriesListresponse } from '../../../shared/interfaces/category';
 import { pagination } from '../../../shared/models/pagination';
 import { CategoryService } from '../../../shared/services/category.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-list-categories',
@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-categories.component.scss']
 })
 export class ListCategoriesComponent implements OnInit {
+
+  @Input() showCreateCategory: boolean = false;
 
   categoriesList: {id: number, categoryName: string, categoryDescription: string}[] = [];
 

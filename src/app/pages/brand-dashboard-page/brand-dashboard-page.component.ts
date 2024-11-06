@@ -1,5 +1,7 @@
+import { ActivatedRoute } from '@angular/router';
 import { listElementsNavAdmin } from '../../utils/adminHeader';
 import { Component, OnInit } from '@angular/core';
+import { ROLE_ADMIN } from 'src/app/shared/constants/Roles';
 
 @Component({
   selector: 'app-brand-dashboard-page',
@@ -8,11 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BrandDashboardPageComponent implements OnInit {
 
-  header = listElementsNavAdmin;
+  header: {elementName: string, path:string}[] =
+  [
+    {elementName: '', path: ''},
+  ];
 
-  constructor() { }
+  role: string = '';
+  showCreateBrand: boolean = false;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.header = this.route.snapshot.data['header']
+    this.role = this.route.snapshot.data['expectedRole']
+    this.showCreateBrand = this.role === ROLE_ADMIN;
   }
 
 }

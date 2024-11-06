@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { listElementsNavAdmin } from '../../utils/adminHeader';
+import { ActivatedRoute } from '@angular/router';
+import { ROLE_ADMIN } from '../../shared/constants/Roles';
 
 @Component({
   selector: 'app-item-dashboard-page',
@@ -7,11 +9,20 @@ import { listElementsNavAdmin } from '../../utils/adminHeader';
   styleUrls: ['./item-dashboard-page.component.scss']
 })
 export class ItemDashboardPageComponent implements OnInit {
-  header = listElementsNavAdmin;
+  header: {elementName: string, path:string}[] =
+  [
+    {elementName: '', path: ''},
+  ];
 
-  constructor() { }
+  role: string = '';
+  showCreateItem: boolean = false;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.header = this.route.snapshot.data['header']
+    this.role = this.route.snapshot.data['expectedRole']
+    this.showCreateItem = this.role === ROLE_ADMIN;
   }
 
 }

@@ -1,5 +1,5 @@
 import { ItemService } from '../../../shared/services/item.service'
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { pagination } from '../../../shared/models/pagination';
 import { itemsPaginatedResponse } from '../../../shared/interfaces/item';
 
@@ -9,6 +9,8 @@ import { itemsPaginatedResponse } from '../../../shared/interfaces/item';
   styleUrls: ['./list-items.component.scss']
 })
 export class ListItemsComponent implements OnInit {
+
+  @Input() showCreateItem: boolean = false;
 
   items: any[] = [];
 

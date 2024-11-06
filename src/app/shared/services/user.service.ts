@@ -17,6 +17,6 @@ export class UserService {
   }
 
   createCustomerUser(data: user): Observable<userCreatedResponse>{
-    return this.Http.post<userCreatedResponse>(userMicroservice+'/Customer', data)
+    return this.Http.post<userCreatedResponse>(userMicroservice+'/Users/Customer', data)
   }
 }
