@@ -12,11 +12,11 @@
   box-sizing: border-box;
   overflow: hidden;
 
-  .tittle{
+  &__tittle{
     @include style.display(flex, center, center);
   }
 
-  .form__fields {
+  &__fields {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -28,14 +28,14 @@
       justify-content: space-between;
       margin-bottom: 1.5rem;
     }
-
-    .fields__item {
-      margin-bottom: 1.5rem;
-      width: 100%;
-    }
   }
 
-  .form__button{
+  &__item {
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+
+  &__button{
     margin-top: 2vh;
     display: flex;
     justify-content: center;
@@ -50,9 +50,9 @@
     @include style.display(flex, center, center);
     margin-top: 1vh;
 
-    &__link{
+    &-link{
       color: colors.$linkColor;
-      margin-left: 0.5rem;
+      margin-left: 0.2rem;
     }
   }
 }
@@ -63,11 +63,11 @@
     width: 100%;
     padding: 20px;
 
-    .title{
+    &__title{
       font-size: 1rem;
     }
 
-    .form__fields{
+    &__fields{
       &.form__multi-column{
         display: flex;
         flex-direction: column;

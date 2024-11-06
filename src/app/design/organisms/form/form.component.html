@@ -2,12 +2,12 @@
   <app-loader *ngIf="isLoading"></app-loader>
 
   <div *ngIf="!isLoading">
-    <h1 class="tittle">{{title}}</h1>
+    <h1 class="form__tittle">{{title}}</h1>
 
     <div class="form__fields" [ngClass]="{'form__multi-column': formFields.length > 4}">
     <ng-container *ngFor="let field of formFields">
 
-      <div class="fields__item">
+      <div class="form__item">
         <app-text-component [content]="field.content"></app-text-component>
         <ng-container [ngSwitch]="field.typeField">
         <app-dropdown
@@ -31,7 +31,7 @@
     </div>
     <div *ngIf="showLink" class="form__createAccount">
       <app-text-component [content]="info"></app-text-component>
-      <a [href]="pathLink" class="createAccount__link">{{contentLink}}</a>
+      <a [href]="pathLink" class="form__createAccount-link">{{contentLink}}</a>
     </div>
   </div>
 </div>
