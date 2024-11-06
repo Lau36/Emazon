@@ -46,8 +46,6 @@ const routes: Routes = [
   addPermissions('cliente/marcas', BrandDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
   addPermissions('cliente/articulos', ItemDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
 
-
-
 ];
 
 @NgModule({

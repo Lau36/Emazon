@@ -119,7 +119,7 @@ export class LoginComponent implements OnInit {
       break;
 
       case ROLE_CUSTOMER:
-        this.router.navigate(['/customer']);
+        this.router.navigate(['/cliente/categorias']);
       break;
     }
   }

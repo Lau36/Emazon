@@ -87,11 +87,13 @@ export class AddSuppliesComponent implements OnInit {
         itemId: Number(this.itemId.value),
         quantity: Number(this.quantity.value)
       }
+      this.isLoading = true;
 
       this.supplyService.addSupply(this.supply).subscribe({
         next: (response) => {
           handleResponse(this, response.message, true);
           hideToast(this.showToast);
+          this.form.reset();
         },
         error: (error) => {
           handleResponse(this, error.error.message, false);
