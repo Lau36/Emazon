@@ -3,16 +3,14 @@
 @use "../../../styles/globalStyles.scss" as style;
 
 .button{
+  @include style.display(flex, center, center);
   font-family: style.$fontApp;
   background-color: colors.$backgroundHeaderColor;
   color: colors.$whiteColor;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
-  justify-content: center;
-  align-items: center;
   border-radius: 10px;
-  width: 100%;
 
   &:hover{
     background-color: colors.$hoverButtonColor;

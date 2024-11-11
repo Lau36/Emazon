@@ -23,7 +23,7 @@ export class PaginationComponent implements OnInit {
 
   @Input() showItems: boolean = false;
   @Input() items: {id: number, name: string, description: string, quantityInStock: number,
-    price: number, categories: {id: number, name: string}[], brand:{id: number, name: string}
+    price: number, categories: {id: number, name: string}[], brand:{id: number, name: string}, quantity: number
     }[] = []
   @Input() showTable: boolean = true;
   @Input() showSortBy: boolean = false;

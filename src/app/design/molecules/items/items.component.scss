@@ -1,10 +1,12 @@
 @use "../../../styles/colors.scss" as colors;
+@use "../../../styles/globalStyles.scss" as styles;
 
 .items{
   margin-top: 10px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2;
+  // gap: 0;
+  row-gap: 2%;
 
   &__card{
     background-color: colors.$whiteColor;
@@ -14,5 +16,10 @@
     width: 300px;
     max-width: 100%;
     box-sizing: border-box;
+  }
+  &__quantityControls{
+    @include styles.display(flex, space-between, center);
+    flex-direction: row;
+    margin-bottom: none;
   }
 }

@@ -15,7 +15,7 @@ export class ListItemsComponent implements OnInit {
   @Input() showItemsTable: boolean = true;
 
   items: {id: number, name: string, description: string, quantityInStock: number,
-    price: number, categories: {id: number, name: string}[], brand:{id: number, name: string}
+    price: number, categories: {id: number, name: string}[], brand:{id: number, name: string}, quantity: number
     }[] = []
 
   data: unknown[] = [];
@@ -62,7 +62,10 @@ export class ListItemsComponent implements OnInit {
   getItems(){
     this.itemService.listItemsPaginated(this.pagination).subscribe({
       next: (response) => {
-        this.items = response.items;
+        this.items = response.items.map (item => ({
+          ...item,
+          quantity: 1
+        }));
         this.data = this.items.map( item => ({
           ...item,
           brandName: item.brand.name,

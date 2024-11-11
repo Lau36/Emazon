@@ -10,12 +10,12 @@
     [brand]="item.brand"
     ></app-card>
 
-    <div class="items__quantity">
-      <h1>Cantidad: </h1>
-      <app-button content="+" (action)="increaseQuantity(item)"></app-button>
-      <span>{{quantity}}</span>
-      <app-button content="-" (action)="decreaseQuantity(item)"></app-button>
-    </div>
+      <div class="items__quantityControls">
+      <p>Cantidad:</p>
+      <app-button content="-" (action)="decreaseQuantity(item)" [isDisabled]="item.quantity == 1" width="30%"></app-button>
+      <span>{{item.quantity}}</span>
+      <app-button content="+" (action)="increaseQuantity(item)" width="30%"></app-button>
+      </div>
     <app-button content="Añadir al carrito"></app-button>
   </div>
 </div>
