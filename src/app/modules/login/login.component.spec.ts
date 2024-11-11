@@ -145,6 +145,6 @@ describe('LoginComponent', () => {
 
     component.decodeTokenToNavigate();
 
-    expect(routerMock.navigate).toHaveBeenCalledWith(['/customer']);
+    expect(routerMock.navigate).toHaveBeenCalledWith(['/cliente/categorias']);
   });
 });

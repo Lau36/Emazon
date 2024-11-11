@@ -166,8 +166,6 @@ export class CreateUserComponent implements OnInit {
   }
 
 
-
-
   onSubmit() {
     if (this.form.valid) {
       this.createUser = {
