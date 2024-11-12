@@ -16,6 +16,6 @@
       <span>{{item.quantity}}</span>
       <app-button content="+" (action)="increaseQuantity(item)" width="30%"></app-button>
       </div>
-    <app-button content="Añadir al carrito"></app-button>
+    <app-button content="Añadir al carrito" (action) = "addItemToCart(item.id, item.quantity)"></app-button>
   </div>
 </div>

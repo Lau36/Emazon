@@ -2,6 +2,10 @@ import { ItemService } from '../../../shared/services/item.service'
 import { Component, Input, OnInit } from '@angular/core';
 import { pagination } from '../../../shared/models/pagination';
 import { itemsPaginatedResponse } from '../../../shared/interfaces/item';
+import { addCart } from '../../../shared/models/cart';
+import { CartService } from '../../../shared/services/cart.service';
+import { hideToast2 } from '../../../utils/helpers/hideToast';
+import { SUCCESSFULLY_ITEM_ADDED_TO_CART } from '../../../shared/constants/cart';
 
 @Component({
   selector: 'app-list-items',
@@ -13,6 +17,9 @@ export class ListItemsComponent implements OnInit {
   @Input() showCreateItem: boolean = false;
   @Input() showItemsCard: boolean = false;
   @Input() showItemsTable: boolean = true;
+  showToast: boolean = false;
+  message: string = "";
+  mistakeOcurred: boolean = false;
 
   items: {id: number, name: string, description: string, quantityInStock: number,
     price: number, categories: {id: number, name: string}[], brand:{id: number, name: string}, quantity: number
@@ -20,7 +27,7 @@ export class ListItemsComponent implements OnInit {
 
   data: unknown[] = [];
 
-  response: any[] = [];
+  response: unknown[] = [];
 
   isModalVisible: boolean = false;
 
@@ -53,7 +60,7 @@ export class ListItemsComponent implements OnInit {
     {id: 'categoryName', name:'Nombre de categoría'}
   ]
 
-  constructor(private itemService: ItemService){}
+  constructor(private itemService: ItemService, private cartService: CartService){}
 
   ngOnInit(): void {
     this.getItems();
@@ -125,6 +132,28 @@ export class ListItemsComponent implements OnInit {
   closeModal(){
     this.isModalVisible = false;
     this.getItems();
+  }
+
+  addItemToCart(item: addCart){
+    this.cartService.addItemToCart(item).subscribe(
+      {
+        next: () => {
+          this.showToast = true;
+          this.message = SUCCESSFULLY_ITEM_ADDED_TO_CART
+          hideToast2(() => {
+            this.showToast = false;
+          });
+        },
+        error: (error) => {
+          this.showToast = true;
+          this.mistakeOcurred = true;
+          this.message = error.error.message;
+          hideToast2(() => {
+            this.showToast = false;
+          });
+        }
+      }
+    )
   }
 
 }

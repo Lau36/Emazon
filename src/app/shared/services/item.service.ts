@@ -17,6 +17,7 @@ export class ItemService {
   }
 
   listItemsPaginated(data: pagination): Observable<itemsPaginatedResponse>{
+
     const params = new HttpParams()
     .set('page', data.page)
     .set('size', data.size)

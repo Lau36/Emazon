@@ -1,14 +1,23 @@
+import { addCart } from './../../../shared/models/cart';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListItemsComponent } from './list-items.component';
 import { ItemService } from '../../../shared/services/item.service';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
+import { CartService } from '../../../shared/services/cart.service';
+import { SUCCESSFULLY_ITEM_ADDED_TO_CART } from '../../../shared/constants/cart';
 
 describe('ListItemsComponent', () => {
   let component: ListItemsComponent;
   let fixture: ComponentFixture<ListItemsComponent>;
   let itemServiceMock: Partial<ItemService>
+  let cartServiceMock: Partial<CartService>
+
+  let item: addCart = {
+    itemId: 1,
+    quantity: 1
+  }
 
   beforeEach(async () => {
     itemServiceMock = {
@@ -32,10 +41,18 @@ describe('ListItemsComponent', () => {
         })
       )
     }
+
+    cartServiceMock = {
+      addItemToCart: jest.fn().mockReturnValue(of({
+        message: SUCCESSFULLY_ITEM_ADDED_TO_CART
+      }))
+    }
     await TestBed.configureTestingModule({
       declarations: [ ListItemsComponent ],
       providers: [
-        {provide: ItemService, useValue: itemServiceMock}],
+        {provide: ItemService, useValue: itemServiceMock},
+        {provide: CartService, useValue: cartServiceMock}
+      ],
       imports:[RouterTestingModule]
     })
     .compileComponents();
@@ -61,6 +78,14 @@ describe('ListItemsComponent', () => {
     expect(component.responsePaginatedItems.currentPage).toBe(1);
     expect(component.responsePaginatedItems.totalPages).toBe(1);
     expect(component.responsePaginatedItems.totalElements).toBe(1);
+  });
+
+  it('should add item to cart', () => {
+    component.addItemToCart(item);
+    expect(cartServiceMock.addItemToCart).toHaveBeenCalledTimes(1);
+    expect(cartServiceMock.addItemToCart).toHaveBeenCalledWith(item);
+    expect(component.showToast).toBeTruthy;
+    expect(component.message).toBe("Articulo añadido al carrito exitosamente");
   });
 
   it('should change page size', () => {

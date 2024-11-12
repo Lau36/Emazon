@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { addCart } from 'src/app/shared/models/cart';
 
 @Component({
   selector: 'app-items',
@@ -18,8 +19,12 @@ export class ItemsComponent{
   brand:{id: number, name: string},
   quantity: number
   }[] = []
+  @Output() addItem = new EventEmitter<addCart>();
 
-  quantity: number = 0;
+  item: addCart = {
+    itemId: 0,
+    quantity: 0
+  }
 
   increaseQuantity(item: {
     id: number,
@@ -32,7 +37,6 @@ export class ItemsComponent{
     quantity: number
     }){
       item.quantity = item.quantity + 1;
-      console.log("Aumentando cantidad", item.quantity);
   }
 
   decreaseQuantity(item: {
@@ -47,8 +51,15 @@ export class ItemsComponent{
     }){
     if(item.quantity > 1){
       item.quantity--;
-      console.log("Disminuyendo cantidad", item.quantity);
     }
+  }
+
+  addItemToCart(itemId: number, quantity: number){
+    this.item = {
+      itemId: itemId,
+      quantity: quantity
+    }
+    this.addItem.emit(this.item);
   }
 
 }

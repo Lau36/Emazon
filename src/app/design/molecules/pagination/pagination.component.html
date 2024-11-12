@@ -23,7 +23,7 @@
 
   <div class="pagination__data" [style.height]="tableContainerHeight">
     <app-table *ngIf="showTable" [data]="data" [columns]="tableColumns"></app-table>
-    <app-items *ngIf="showItems" [items]="items"></app-items>
+    <app-items *ngIf="showItems" [items]="items" (addItem) = "addItemToCart($event)"></app-items>
   </div>
 
   <div class="pagination__controls">

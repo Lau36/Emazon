@@ -24,6 +24,8 @@
     [showSortBy]="true"
     [showItems]="showItemsCard"
     [showTable]="showItemsTable"
+    (addItemToCartAction)="addItemToCart($event)"
     ></app-pagination>
+    <app-toast *ngIf="showToast" [message]="message" [error]="mistakeOcurred"></app-toast>
   </div>
 </div>
