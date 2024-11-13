@@ -30,6 +30,7 @@ describe('AuthService', () => {
     authResponse = {
       token: 'test-token'
     }
+
   });
 
   afterEach(() => {
@@ -62,4 +63,5 @@ describe('AuthService', () => {
       }
     })
   })
+
 });

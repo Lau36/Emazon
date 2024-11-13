@@ -62,7 +62,6 @@ describe('BranchService', () => {
   it('create new brand http have been called', () => {
     service.createBrand(data);
     expect(httpClientMock.post).toHaveBeenCalledWith(stockMicroservice + '/brands', data);
-
   });
 
   it('create new brand return response', () => {
@@ -81,7 +80,7 @@ describe('BranchService', () => {
     httpClientMock.get.mockReturnValue(of(responseListBrands));
     service.listBrandsPaginated(params).subscribe(response => {
       expect(response).toEqual(responseListBrands);
-      done(); 
+      done();
     });
   });
 

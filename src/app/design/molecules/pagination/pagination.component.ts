@@ -1,6 +1,7 @@
 import { NEXT } from '../../../shared/constants/constants';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BACK } from '../../../shared/constants/constants';
+import { addCart } from 'src/app/shared/models/cart';
 
 @Component({
   selector: 'app-pagination',
@@ -23,12 +24,14 @@ export class PaginationComponent implements OnInit {
 
   @Input() showItems: boolean = false;
   @Input() items: {id: number, name: string, description: string, quantityInStock: number,
-    price: number, categories: {id: number, name: string}[], brand:{id: number, name: string}
+    price: number, categories: {id: number, name: string}[], brand:{id: number, name: string}, quantity: number
     }[] = []
   @Input() showTable: boolean = true;
   @Input() showSortBy: boolean = false;
   @Input() optionsShortBytoShow: [] = [];
   @Input() optionsShortBy: {id: string, name:string}[]  = [];
+
+  @Output() addItemToCartAction = new EventEmitter<addCart>();
 
 
 
@@ -49,6 +52,10 @@ export class PaginationComponent implements OnInit {
 
   onPageSortBySelected(option: any){
     this.changePageSortByAction.emit(String(option));
+  }
+
+  addItemToCart(item: addCart){
+    this.addItemToCartAction.emit(item);
   }
 
   previousPage(){

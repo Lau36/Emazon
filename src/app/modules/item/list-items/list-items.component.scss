@@ -1,13 +1,13 @@
 @use "../../../styles/colors.scss" as colors;
 @use "../../../styles/globalStyles.scss" as style;
 
-.pagination-items-container{
+.paginationItems{
   height: 100%;
-  margin: 10vmin;
+  margin: 1.5em 3em 3em;
   background-color: colors.$whiteColor;
   border-radius: 20px;
 
-  .button-create-brand-container{
+  &__button{
     @include style.display(flex, flex-end, flex-end);
     padding: 0.7%;
   }

@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
   @Input() name: string = '';
   @Input() description: string = '';
@@ -14,9 +14,19 @@ export class CardComponent implements OnInit {
   @Input() categories: {id:number, name: string}[] = [];
   @Input() brand: {id:number, name:string} = {id: 0, name:''};
 
+  quantity: number = 1;
+
+  increaseQuantity() {
+    this.quantity++;
+  }
+
+  decreaseQuantity() {
+    if (this.quantity > 0) {
+      this.quantity--;
+    }
+  }
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }

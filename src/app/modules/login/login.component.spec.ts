@@ -133,7 +133,7 @@ describe('LoginComponent', () => {
 
     component.decodeTokenToNavigate();
 
-    expect(routerMock.navigate).toHaveBeenCalledWith(['/aux-bodega/añadir/suministro']);
+    expect(routerMock.navigate).toHaveBeenCalledWith(['/aux-bodega/categorias']);
   });
 
   it('should navigate to customer route on customer role', () => {

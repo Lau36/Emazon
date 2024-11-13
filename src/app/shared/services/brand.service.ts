@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { createBrand} from '../models/brand';
 import { Observable } from 'rxjs';
 import { pagination } from '../models/pagination';
-import { listAllBrandsResponse, brandCreatedResponse, brandsPaginatedResponse } from '../interfaces/brand';
+import { ListAllBrandsResponse, BrandCreatedResponse, BrandsPaginatedResponse } from '../interfaces/brand';
 import { stockMicroservice } from '../constants/microservicesUrl';
 
 @Injectable({
@@ -12,21 +12,21 @@ import { stockMicroservice } from '../constants/microservicesUrl';
 export class BrandService {
   constructor(private Http: HttpClient){ }
 
-  createBrand(data: createBrand ): Observable<brandCreatedResponse>{
-    return this.Http.post<brandCreatedResponse>(stockMicroservice+'/brands', data);
+  createBrand(data: createBrand ): Observable<BrandCreatedResponse>{
+    return this.Http.post<BrandCreatedResponse>(stockMicroservice+'/brands', data);
   }
 
-  listBrandsPaginated(data: pagination): Observable<brandsPaginatedResponse>{
+  listBrandsPaginated(data: pagination): Observable<BrandsPaginatedResponse>{
     const params = new HttpParams()
     .set('page', data.page)
     .set('size', data.size)
     .set('sort', data.sort)
     .set('sortDirection', data.sortDirection);
-    return this.Http.get<brandsPaginatedResponse>(stockMicroservice+'/brands/', {params});
+    return this.Http.get<BrandsPaginatedResponse>(stockMicroservice+'/brands/', {params});
   }
 
-  listBrands(): Observable<listAllBrandsResponse[]>{
-    return this.Http.get<listAllBrandsResponse[]>(stockMicroservice+'/brands');
+  listBrands(): Observable<ListAllBrandsResponse[]>{
+    return this.Http.get<ListAllBrandsResponse[]>(stockMicroservice+'/brands');
   }
 
 
