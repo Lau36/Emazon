@@ -6,6 +6,6 @@ export function hideToast(toast: boolean){
 
 export function hideToast2(updateToastState: () => void) {
   setTimeout(() => {
-    updateToastState(); 
-  }, 2000);
+    updateToastState();
+  }, 5000);
 }

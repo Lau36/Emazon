@@ -1,16 +1,16 @@
-export interface brandsPaginatedResponse{
+export interface BrandsPaginatedResponse{
   brands: {id:number, name:string, description:string}[];
   currentPage: number;
   totalPages: number;
   totalElements: number;
 }
 
-export interface brandCreatedResponse{
+export interface BrandCreatedResponse{
   name: string;
   description: string;
 }
 
-export interface listAllBrandsResponse{
+export interface ListAllBrandsResponse{
   id: number;
   name: string;
   description: string;

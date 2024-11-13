@@ -1,4 +1,4 @@
-interface responseContext{
+export interface ResponseContext{
   isLoading: boolean;
   showToast: boolean;
   mistakeOcurred: boolean;
@@ -6,7 +6,7 @@ interface responseContext{
 }
 
 export function handleResponse(
-  context: responseContext,
+  context: ResponseContext,
   message: string,
   isSuccess: boolean
 ): void {

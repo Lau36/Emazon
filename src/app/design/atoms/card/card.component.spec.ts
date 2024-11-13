@@ -15,9 +15,20 @@ describe('CardComponent', () => {
     fixture = TestBed.createComponent(CardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should increase quantity', () => {
+    component.increaseQuantity();
+    expect(component.quantity).toBe(2)
+  });
+
+  it('should decrease quantity', () => {
+    component.decreaseQuantity();
+    expect(component.quantity).toBe(0)
   });
 });
