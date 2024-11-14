@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { addCart } from 'src/app/shared/models/cart';
+import { AddCart } from 'src/app/shared/models/cart';
 
 @Component({
   selector: 'app-items',
@@ -19,9 +19,9 @@ export class ItemsComponent{
   brand:{id: number, name: string},
   quantity: number
   }[] = []
-  @Output() addItem = new EventEmitter<addCart>();
+  @Output() addItem = new EventEmitter<AddCart>();
 
-  item: addCart = {
+  item: AddCart = {
     itemId: 0,
     quantity: 0
   }

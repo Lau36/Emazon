@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ItemService } from './item.service';
 import { HttpClient } from '@angular/common/http';
-import { createItem, itemsWithPrice } from '../models/item';
+import { CreateItem, ItemsWithPrice } from '../models/item';
 import { of, throwError } from 'rxjs';
 
 const httpClientMock = {
@@ -10,7 +10,7 @@ const httpClientMock = {
   get: jest.fn()
 }
 
-const data: createItem = {
+const data: CreateItem = {
   name: 'item name',
   description: 'item description',
   price: 10.99,
@@ -44,7 +44,7 @@ const pagination = {
   sortDirection: 'asc'
 };
 
-const mockItems: itemsWithPrice[] = [
+const mockItems: ItemsWithPrice[] = [
   { id: 1, name: 'Item 1', price: 10 },
   { id: 2, name: 'Item 2', price: 15 }
 ];

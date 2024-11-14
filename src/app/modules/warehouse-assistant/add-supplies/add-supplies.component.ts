@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PLACEHOLDER_REGULAR_INPUT } from '../../../shared/constants/constants';
 import { ADD, ADD_SUPPLY, ITEM, QUANTITY } from '../../../shared/constants/supply';
-import { addSupply } from '../../../shared/models/supply';
+import { AddSupply } from '../../../shared/models/supply';
 import { ItemService } from '../../../shared/services/item.service';
 import { handleResponse } from '../../../utils/helpers/handleResponse';
 import { hideToast } from '../../../utils/helpers/hideToast';
@@ -32,7 +32,7 @@ export class AddSuppliesComponent implements OnInit {
 
   items: {id: number, name: string}[] = [];
 
-  supply: addSupply = {
+  supply: AddSupply = {
     itemId: 0,
     quantity: 0
   }

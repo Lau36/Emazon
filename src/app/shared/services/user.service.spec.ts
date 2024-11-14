@@ -1,17 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 
 import { UserService } from './user.service';
-import { user } from '../models/user';
+import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { userMicroservice } from '../constants/microservicesUrl';
-import { userCreatedResponse } from '../interfaces/user';
+import { UserCreatedResponse } from '../interfaces/user';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 const httpClientMock = {
   post: jest.fn()
 }
 
-const data: user = {
+const data: User = {
   name: 'Test name',
   lastName: 'Test last name',
   identification: 1109667890,
@@ -21,7 +21,7 @@ const data: user = {
   password: 'TestPassword'
 }
 
-const mockResponse: userCreatedResponse = {
+const mockResponse: UserCreatedResponse = {
   message: 'User created successfully',
   email: 'test1@test.com'
 }

@@ -1,11 +1,11 @@
-export interface categoriesListresponse{
-  categories: categoryCreatedresponse[];
+export interface CategoriesListresponse{
+  categories: CategoryCreatedresponse[];
   currentPage: number;
   totalPages: number;
   totalElements: number;
 }
 
-export interface categoryCreatedresponse{
+export interface CategoryCreatedresponse{
   id: number;
   categoryName: string;
   categoryDescription: string;

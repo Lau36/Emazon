@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { createBrand} from '../models/brand';
+import { CreateBrand} from '../models/brand';
 import { Observable } from 'rxjs';
-import { pagination } from '../models/pagination';
+import { Pagination } from '../models/pagination';
 import { ListAllBrandsResponse, BrandCreatedResponse, BrandsPaginatedResponse } from '../interfaces/brand';
 import { stockMicroservice } from '../constants/microservicesUrl';
 
@@ -12,11 +12,11 @@ import { stockMicroservice } from '../constants/microservicesUrl';
 export class BrandService {
   constructor(private Http: HttpClient){ }
 
-  createBrand(data: createBrand ): Observable<BrandCreatedResponse>{
+  createBrand(data: CreateBrand ): Observable<BrandCreatedResponse>{
     return this.Http.post<BrandCreatedResponse>(stockMicroservice+'/brands', data);
   }
 
-  listBrandsPaginated(data: pagination): Observable<BrandsPaginatedResponse>{
+  listBrandsPaginated(data: Pagination): Observable<BrandsPaginatedResponse>{
     const params = new HttpParams()
     .set('page', data.page)
     .set('size', data.size)

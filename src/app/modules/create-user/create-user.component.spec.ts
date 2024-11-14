@@ -3,7 +3,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { of, throwError } from 'rxjs';
 import { CreateUserComponent } from './create-user.component';
 import { UserService } from '../../shared/services/user.service';
-import { userCreatedResponse } from '../../shared/interfaces/user';
+import { UserCreatedResponse } from '../../shared/interfaces/user';
 import { handleResponse } from '../../utils/helpers/handleResponse';
 import { hideToast } from '../../utils/helpers/hideToast';
 
@@ -38,7 +38,7 @@ describe('CreateUserComponent', () => {
     password: ''
   }
 
-  let successResponse: userCreatedResponse =
+  let successResponse: UserCreatedResponse =
   { message: 'Usuario creado correctamente', email: 'test@example.com' };
 
   beforeEach(async () => {

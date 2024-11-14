@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { ROLE_ADMIN, ROLE_AUX, ROLE_CUSTOMER } from '../../shared/constants/Roles';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
-import { auth } from '../../shared/models/auth';
-import { authResponse } from '../../shared/interfaces/login';
+import { Auth } from '../../shared/models/auth';
+import { AuthResponse } from '../../shared/interfaces/login';
 import { hideToast } from '../../utils/helpers/hideToast';
 
 jest.mock('jwt-decode', () => ({
@@ -26,9 +26,9 @@ describe('LoginComponent', () => {
   let fixture: ComponentFixture<LoginComponent>;
   let authServiceMock = { auth: jest.fn(), getToken: jest.fn(), setToken: jest.fn() };
   let routerMock = { navigate: jest.fn() };
-  let login: auth;
-  let wrongLogin: auth;
-  let mockResponse: authResponse;
+  let login: Auth;
+  let wrongLogin: Auth;
+  let mockResponse: AuthResponse;
   let mockTokenPayloadAdmin: {role: string} = {role: ''} as TokenPayload;
 
   beforeEach(async () => {

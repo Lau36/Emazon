@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BRAND_CREATED, CREATE, CREATE_BRAND, DESCRIPTION, NAME, PLACEHOLDER_REGULAR_INPUT, REQUIRED_FIELD } from '../../../shared/constants/constants';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { createBrand } from '../../../shared/models/brand';
+import { CreateBrand } from '../../../shared/models/brand';
 import { BrandService } from '../../../shared/services/brand.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class CreateBrandComponent implements OnInit {
 
   formFields: any[] = [];
 
-  createBrand: createBrand = {
+  createBrand: CreateBrand = {
     name: '',
     description: ''
   }

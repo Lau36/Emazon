@@ -1,17 +1,17 @@
-import {  createCategory} from '../models/category';
+import {  CreateCategory} from '../models/category';
 import { HttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { CategoryService } from './category.service';
 import { of, throwError } from 'rxjs';
 import { stockMicroservice } from '../constants/microservicesUrl';
-import { pagination } from '../models/pagination';
+import { Pagination } from '../models/pagination';
 
 const httpClientMock = {
   post: jest.fn(),
   get: jest.fn()
 }
 
-  const data:createCategory = {
+  const data:CreateCategory = {
     categoryName: "test",
     categoryDescription: "test create category service"
  }
@@ -34,7 +34,7 @@ const responseCategories=
     { id: 2, categoryName: 'Test2', categoryDescription: 'Test description2' }
   ];
 
-const params: pagination = {
+const params: Pagination = {
   page: 0,
   size: 5,
   sort: 'categoryName',

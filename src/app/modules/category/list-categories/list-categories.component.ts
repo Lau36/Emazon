@@ -1,5 +1,5 @@
-import {categoriesListresponse } from '../../../shared/interfaces/category';
-import { pagination } from '../../../shared/models/pagination';
+import {CategoriesListresponse } from '../../../shared/interfaces/category';
+import { Pagination } from '../../../shared/models/pagination';
 import { CategoryService } from '../../../shared/services/category.service';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -21,14 +21,14 @@ export class ListCategoriesComponent implements OnInit {
     { field: 'categoryDescription', header: 'Descripción' }
   ];
 
-  listCategories: pagination = {
+  listCategories: Pagination = {
     page: 0,
     size: 5,
     sort: 'categoryName',
     sortDirection: 'asc'
   }
 
-  responseListCategories: categoriesListresponse = {
+  responseListCategories: CategoriesListresponse = {
     categories: [],
     currentPage: 0,
     totalPages: 0,

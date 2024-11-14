@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { CREATE, INVALID_FORM, USER_CREATED } from '../../shared/constants/constants';
-import { userCreatedResponse } from '../../shared/interfaces/user';
-import { user } from '../../shared/models/user';
+import { UserCreatedResponse } from '../../shared/interfaces/user';
+import { User } from '../../shared/models/user';
 import { UserService } from '../../shared/services/user.service';
 import { handleResponse } from '../../utils/helpers/handleResponse';
 import { hideToast } from '../../utils/helpers/hideToast';
@@ -16,8 +16,8 @@ import { hideToast } from '../../utils/helpers/hideToast';
 export class CreateUserComponent implements OnInit {
 
   @Input() formTitle: string = '';
-  @Input() createService: (data: user) => Observable<userCreatedResponse> =
-  (data: user) => of({ message: '', email: '' });
+  @Input() createService: (data: User) => Observable<UserCreatedResponse> =
+  (data: User) => of({ message: '', email: '' });
 
   @Input() infoLink: {showLink: boolean, info: string, pathLink: string, contentLink: string} =
   {
@@ -37,7 +37,7 @@ export class CreateUserComponent implements OnInit {
   message: string = '';
   formFields: any[] = []
 
-  createUser: user = {
+  createUser: User = {
     name: '',
     lastName: '',
     identification: 0,
@@ -186,7 +186,7 @@ export class CreateUserComponent implements OnInit {
     }
   }
 
-  handleServiceCreateUserCall(service: (data: user) => Observable<userCreatedResponse>, data: user, successMessage: string) {
+  handleServiceCreateUserCall(service: (data: User) => Observable<UserCreatedResponse>, data: User, successMessage: string) {
     this.isLoading = true;
     service(data).subscribe({
       next: () => {

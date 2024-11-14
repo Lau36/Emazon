@@ -1,4 +1,4 @@
-export interface supplyAddedResponse{
+export interface SupplyAddedResponse{
   message: string;
   id: number;
 }

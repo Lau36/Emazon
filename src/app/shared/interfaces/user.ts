@@ -1,4 +1,4 @@
-export interface userCreatedResponse{
+export interface UserCreatedResponse{
   message: string,
   email: string,
 }

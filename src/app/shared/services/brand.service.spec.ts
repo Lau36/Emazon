@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { BrandService } from './brand.service';
-import { createBrand } from '../models/brand';
+import { CreateBrand } from '../models/brand';
 import { HttpClient } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
 import { stockMicroservice, userMicroservice } from '../constants/microservicesUrl';
@@ -11,7 +11,7 @@ const httpClientMock = {
   get: jest.fn(),
 }
 
-  const data:createBrand = {
+  const data:CreateBrand = {
     name: "test",
     description: "test create brand service"
  }

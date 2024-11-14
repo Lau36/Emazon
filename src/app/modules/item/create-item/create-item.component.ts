@@ -1,7 +1,7 @@
 import { AMOUNT, CREATE, DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_NAME, ITEM_CREATED, NAME, PLACEHOLDER_REGULAR_INPUT, PRICE, REQUIRED_FIELD } from '../../../shared/constants/constants';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CREATE_ITEM } from '../../../shared/constants/constants';
-import { createItem } from '../../../shared/models/item';
+import { CreateItem } from '../../../shared/models/item';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ItemService } from '../../../shared/services/item.service'
 import { CategoryService } from '../../../shared/services/category.service';
@@ -37,7 +37,7 @@ export class CreateItemComponent implements OnInit {
   descriptionValidation: string = EXCEEDES_MAXIMUN_CHARACTERS_BRAND_DESCRIPTION;
   required: string = REQUIRED_FIELD;
 
-  createItem: createItem ={
+  createItem: CreateItem ={
     name: '',
     description: '',
     price: 0,

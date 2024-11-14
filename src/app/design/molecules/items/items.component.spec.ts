@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ItemsComponent } from './items.component';
-import { addCart } from 'src/app/shared/models/cart';
+import { AddCart } from 'src/app/shared/models/cart';
 
 describe('ItemsComponent', () => {
   let component: ItemsComponent;

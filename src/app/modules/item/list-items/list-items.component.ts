@@ -1,8 +1,8 @@
 import { ItemService } from '../../../shared/services/item.service'
 import { Component, Input, OnInit } from '@angular/core';
-import { pagination } from '../../../shared/models/pagination';
-import { itemsPaginatedResponse } from '../../../shared/interfaces/item';
-import { addCart } from '../../../shared/models/cart';
+import { Pagination } from '../../../shared/models/pagination';
+import { ItemsPaginatedResponse } from '../../../shared/interfaces/item';
+import { AddCart } from '../../../shared/models/cart';
 import { CartService } from '../../../shared/services/cart.service';
 import { hideToast2 } from '../../../utils/helpers/hideToast';
 import { SUCCESSFULLY_ITEM_ADDED_TO_CART } from '../../../shared/constants/cart';
@@ -31,7 +31,7 @@ export class ListItemsComponent implements OnInit {
 
   isModalVisible: boolean = false;
 
-  pagination: pagination  = {
+  pagination: Pagination  = {
     page: 0,
     size: 5,
     sort: 'name',
@@ -47,7 +47,7 @@ export class ListItemsComponent implements OnInit {
     {field: "categories", header: "Categorias"}
   ]
 
-  responsePaginatedItems: itemsPaginatedResponse = {
+  responsePaginatedItems: ItemsPaginatedResponse = {
     items: [],
     currentPage: 0,
     totalPages: 0,
@@ -134,7 +134,7 @@ export class ListItemsComponent implements OnInit {
     this.getItems();
   }
 
-  addItemToCart(item: addCart){
+  addItemToCart(item: AddCart){
     this.cartService.addItemToCart(item).subscribe(
       {
         next: () => {

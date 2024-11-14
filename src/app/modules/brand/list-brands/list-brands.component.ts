@@ -2,7 +2,7 @@ import { BrandsPaginatedResponse } from './../../../shared/interfaces/brand';
 import { BrandService } from '../../../shared/services/brand.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { pagination } from '../../../shared/models/pagination';
+import { Pagination } from '../../../shared/models/pagination';
 
 @Component({
   selector: 'app-list-brands',
@@ -24,7 +24,7 @@ export class ListBrandsComponent implements OnInit {
     { field: 'description', header: 'Descripción' }
   ];
 
-  pagination: pagination  = {
+  pagination: Pagination  = {
     page: 0,
     size: 5,
     sort: 'name',

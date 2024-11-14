@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { CartService } from './cart.service';
 import { HttpClient } from '@angular/common/http';
-import { addCart } from '../models/cart';
+import { AddCart } from '../models/cart';
 import { cartMicroservice } from '../constants/microservicesUrl';
 import { addItemToCartResponse} from '../interfaces/cart';
 import { of } from 'rxjs';
@@ -14,7 +14,7 @@ describe('CartService', () => {
     post: jest.fn()
   }
 
-  const data: addCart = {
+  const data: AddCart = {
     itemId: 1,
     quantity: 1
   }

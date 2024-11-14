@@ -1,4 +1,4 @@
-export interface addCart {
+export interface AddCart{
   itemId: number,
   quantity: number;
 }

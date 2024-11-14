@@ -8,7 +8,7 @@ import { PLACEHOLDER_REGULAR_INPUT } from '../../shared/constants/constants';
 import { CORRECT_LOGIN, DONT_HAVE_ACCOUNT, EMAIL, LOGIN, PASSWORD, REGISTER } from '../../shared/constants/login';
 import { jwtDecode } from 'jwt-decode';
 import { hideToast } from '../../utils/helpers/hideToast';
-import { auth } from '../../shared/models/auth';
+import { Auth } from '../../shared/models/auth';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
   formFields: any[] = [];
 
-  login: auth = {
+  login: Auth = {
     email: '',
     password: ''
   };

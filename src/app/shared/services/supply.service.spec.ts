@@ -1,18 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 
 import { SupplyService } from './supply.service';
-import { addSupply } from '../models/supply';
-import { supplyAddedResponse } from '../interfaces/supply';
+import { AddSupply } from '../models/supply';
+import { SupplyAddedResponse } from '../interfaces/supply';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { transactionMicroservice } from '../constants/microservicesUrl';
 
-const mockData: addSupply = {
+const mockData: AddSupply = {
   itemId: 1,
   quantity: 10
 };
 
-const mockResponse: supplyAddedResponse = {
+const mockResponse: SupplyAddedResponse = {
   message: 'Supply added successfully',
   id: 1
 };

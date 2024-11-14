@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { pagination } from '../models/pagination';
-import { createItem, itemsWithPrice } from '../models/item';
-import { itemCreatedResponse, itemsPaginatedResponse } from '../interfaces/item';
+import { Pagination } from '../models/pagination';
+import { CreateItem, ItemsWithPrice } from '../models/item';
+import { ItemCreatedResponse, ItemsPaginatedResponse } from '../interfaces/item';
 import { stockMicroservice } from '../constants/microservicesUrl';
 
 @Injectable({
@@ -12,21 +12,21 @@ import { stockMicroservice } from '../constants/microservicesUrl';
 export class ItemService {
   constructor(private Http: HttpClient){ }
 
-  createItem(data: createItem): Observable<itemCreatedResponse>{
-    return this.Http.post<itemCreatedResponse>(stockMicroservice+'/Item', data);
+  createItem(data: CreateItem): Observable<ItemCreatedResponse>{
+    return this.Http.post<ItemCreatedResponse>(stockMicroservice+'/Item', data);
   }
 
-  listItemsPaginated(data: pagination): Observable<itemsPaginatedResponse>{
+  listItemsPaginated(data: Pagination): Observable<ItemsPaginatedResponse>{
 
     const params = new HttpParams()
     .set('page', data.page)
     .set('size', data.size)
     .set('sort', data.sort)
     .set('sortDirection', data.sortDirection);
-    return this.Http.get<itemsPaginatedResponse>(stockMicroservice+'/Item', {params});
+    return this.Http.get<ItemsPaginatedResponse>(stockMicroservice+'/Item', {params});
   }
 
-  listAllItems(): Observable<itemsWithPrice[]>{
-    return this.Http.get<itemsWithPrice[]>(stockMicroservice+'/Item/GetAll');
+  listAllItems(): Observable<ItemsWithPrice[]>{
+    return this.Http.get<ItemsWithPrice[]>(stockMicroservice+'/Item/GetAll');
   }
 }

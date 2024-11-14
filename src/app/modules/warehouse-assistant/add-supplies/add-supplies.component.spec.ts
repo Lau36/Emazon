@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AddSuppliesComponent } from './add-supplies.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SupplyService } from '../../../shared/services/supply.service';
-import { addSupply } from '../../../shared/models/supply';
-import { itemsWithPrice } from '../../../shared/models/item';
+import { AddSupply } from '../../../shared/models/supply';
+import { ItemsWithPrice } from '../../../shared/models/item';
 import { ItemService } from '../../../shared/services/item.service';
 import { of, throwError } from 'rxjs';
 import { handleResponse } from '../../../utils/helpers/handleResponse';
@@ -28,8 +28,8 @@ describe('AddSuppliesComponent', () => {
   }
 
 
-  const mockSupply: addSupply = {itemId: 1, quantity: 2};
-  const mockItems: itemsWithPrice[] = [{ id: 1, name: 'Item 1', price: 200 }, { id: 2, name: 'Item 2' , price: 300}];
+  const mockSupply: AddSupply = {itemId: 1, quantity: 2};
+  const mockItems: ItemsWithPrice[] = [{ id: 1, name: 'Item 1', price: 200 }, { id: 2, name: 'Item 2' , price: 300}];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

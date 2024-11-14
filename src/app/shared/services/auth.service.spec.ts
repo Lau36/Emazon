@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
-import { auth } from '../models/auth';
-import { authResponse } from '../interfaces/login';
+import { Auth } from '../models/auth';
+import { AuthResponse } from '../interfaces/login';
 
 const httpClientMock = {
   post: jest.fn()
@@ -11,8 +11,8 @@ const httpClientMock = {
 
 describe('AuthService', () => {
   let service: AuthService;
-  let data: auth;
-  let authResponse: authResponse;
+  let data: Auth;
+  let authResponse: AuthResponse;
 
   beforeEach(() => {
     TestBed.configureTestingModule({

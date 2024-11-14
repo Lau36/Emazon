@@ -1,4 +1,4 @@
-export interface createCategory{
+export interface CreateCategory{
   categoryName: string;
   categoryDescription: string;
 }

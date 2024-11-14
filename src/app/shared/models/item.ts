@@ -1,4 +1,4 @@
-export interface createItem{
+export interface CreateItem{
   name: string;
   description: string;
   amount: number,
@@ -7,7 +7,7 @@ export interface createItem{
   idBrand: number
 }
 
-export interface itemsWithPrice{
+export interface ItemsWithPrice{
   id: number,
   name: string,
   price: number,

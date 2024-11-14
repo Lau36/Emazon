@@ -1,4 +1,4 @@
-export interface addSupply {
+export interface AddSupply {
   itemId: number,
   quantity: number
 }

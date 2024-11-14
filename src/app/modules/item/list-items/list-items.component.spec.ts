@@ -1,4 +1,4 @@
-import { addCart } from './../../../shared/models/cart';
+import { AddCart } from './../../../shared/models/cart';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListItemsComponent } from './list-items.component';
@@ -14,7 +14,7 @@ describe('ListItemsComponent', () => {
   let itemServiceMock: Partial<ItemService>
   let cartServiceMock: Partial<CartService>
 
-  let item: addCart = {
+  let item: AddCart = {
     itemId: 1,
     quantity: 1
   }
