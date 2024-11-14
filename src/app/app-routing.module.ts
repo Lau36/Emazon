@@ -27,8 +27,6 @@ function addPermissions(path: string, component: any, role: string, header: { el
   };
 }
 
-
-
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: 'login', component: LoginPageComponent },
@@ -47,7 +45,7 @@ const routes: Routes = [
   // addPermissions('cliente/categorias', CategoryDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
   // addPermissions('cliente/marcas', BrandDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
   addPermissions('cliente/articulos', ItemCardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
-  {path: 'cliente/carrito',component: CartPageComponent,data: { header: listNavCustomerHeader }}
+  addPermissions('cliente/carrito', CartPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
 
 ];
 
