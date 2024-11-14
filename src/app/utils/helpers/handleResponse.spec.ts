@@ -1,7 +1,7 @@
-import { handleResponse, responseContext } from './handleResponse';
+import { handleResponse, ResponseContext } from './handleResponse';
 
 describe('handleResponse', () => {
-  let context: responseContext;
+  let context: ResponseContext;
 
   beforeEach(() => {
     context = {

@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListItemsComponent } from './list-items.component';
 import { ItemService } from '../../../shared/services/item.service';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CartService } from '../../../shared/services/cart.service';
 import { SUCCESSFULLY_ITEM_ADDED_TO_CART } from '../../../shared/constants/cart';
@@ -43,9 +43,7 @@ describe('ListItemsComponent', () => {
     }
 
     cartServiceMock = {
-      addItemToCart: jest.fn().mockReturnValue(of({
-        message: SUCCESSFULLY_ITEM_ADDED_TO_CART
-      }))
+      addItemToCart: jest.fn().mockReturnValue(of([]))
     }
     await TestBed.configureTestingModule({
       declarations: [ ListItemsComponent ],
@@ -86,6 +84,21 @@ describe('ListItemsComponent', () => {
     expect(cartServiceMock.addItemToCart).toHaveBeenCalledWith(item);
     expect(component.showToast).toBeTruthy;
     expect(component.message).toBe("Articulo añadido al carrito exitosamente");
+  });
+
+  it('should add item to cart fails and refactor date', () => {
+    const errorResponse = {
+      error: {
+        message: 'An error occurred on 2024-11-12T15:20:30.123'
+      }
+    };
+
+    cartServiceMock.addItemToCart = jest.fn().mockReturnValue(throwError(() => (errorResponse)));
+    component.addItemToCart(item);
+
+    expect(cartServiceMock.addItemToCart).toHaveBeenCalledTimes(1);
+    expect(component.mistakeOcurred).toBe(true);
+    expect(component.message).toBe('An error occurred on 2024-11-12');
   });
 
   it('should change page size', () => {

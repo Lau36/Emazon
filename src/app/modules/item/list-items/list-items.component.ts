@@ -140,6 +140,7 @@ export class ListItemsComponent implements OnInit {
         next: () => {
           this.showToast = true;
           this.message = SUCCESSFULLY_ITEM_ADDED_TO_CART
+          this.mistakeOcurred = false;
           hideToast2(() => {
             this.showToast = false;
           });
@@ -147,7 +148,13 @@ export class ListItemsComponent implements OnInit {
         error: (error) => {
           this.showToast = true;
           this.mistakeOcurred = true;
-          this.message = error.error.message;
+          let errorMessage = error.error.message;
+          const dateMatch = errorMessage.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+/);
+          if (dateMatch) {
+            const datePart = dateMatch[0].split('T')[0];
+            errorMessage = errorMessage.replace(dateMatch[0], datePart);
+          }
+          this.message = errorMessage;
           hideToast2(() => {
             this.showToast = false;
           });
