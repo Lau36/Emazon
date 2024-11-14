@@ -13,10 +13,11 @@ import { LoginComponent } from './login/login.component';
 import { OrganismsModule } from '../design/organisms/organisms.module';
 import { AddSuppliesComponent } from './warehouse-assistant/add-supplies/add-supplies.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
-  declarations: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, CreateItemComponent, ListItemsComponent, LoginComponent, AddSuppliesComponent, CreateUserComponent],
+  declarations: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, CreateItemComponent, ListItemsComponent, LoginComponent, AddSuppliesComponent, CreateUserComponent, CartComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
