@@ -14,6 +14,7 @@ import { listElementsNavAdmin } from './utils/adminHeader';
 import { listElementsNavWarehouseAssistant } from './utils/warehouse-assistant-header';
 import { listNavCustomerHeader } from './utils/customer-header';
 import { ItemCardPageComponent } from './pages/item-card-page/item-card-page.component';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
 
 
@@ -46,6 +47,7 @@ const routes: Routes = [
   // addPermissions('cliente/categorias', CategoryDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
   // addPermissions('cliente/marcas', BrandDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
   addPermissions('cliente/articulos', ItemCardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
+  {path: 'cliente/carrito',component: CartPageComponent,data: { header: listNavCustomerHeader }}
 
 ];
 

@@ -10,6 +10,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { AddSuppliesPageComponent } from './add-supplies-page/add-supplies-page.component';
 import { CreateCustomerPageComponent } from './create-customer-page/create-customer-page.component';
 import { ItemCardPageComponent } from './item-card-page/item-card-page.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
 
 
 
@@ -22,7 +23,8 @@ import { ItemCardPageComponent } from './item-card-page/item-card-page.component
     LoginPageComponent,
     AddSuppliesPageComponent,
     CreateCustomerPageComponent,
-    ItemCardPageComponent
+    ItemCardPageComponent,
+    CartPageComponent
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,5 @@
-import { NEXT } from '../../../shared/constants/constants';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { BACK } from '../../../shared/constants/constants';
+import { NEXT, BACK } from '../../../shared/constants/constants';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AddCart } from 'src/app/shared/models/cart';
 
 @Component({
@@ -8,7 +7,7 @@ import { AddCart } from 'src/app/shared/models/cart';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent {
 
   @Output() previousPageAction = new EventEmitter<void>();
   @Output() nextPageAction = new EventEmitter<void>();
@@ -67,8 +66,5 @@ export class PaginationComponent implements OnInit {
   }
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

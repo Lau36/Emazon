@@ -7,3 +7,4 @@ export interface addItemToCartResponse{
   status: string,
   deleted: boolean
 }
+

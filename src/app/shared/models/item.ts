@@ -23,9 +23,10 @@ export interface ItemInCart{
   description: string,
   quantityInCart: number,
   quantityInStock: number,
-  areStock: number,
+  areStock: boolean,
   nextSupplyDate: string,
   price: number,
   categories: Category[],
   brand: Brand
 }
+

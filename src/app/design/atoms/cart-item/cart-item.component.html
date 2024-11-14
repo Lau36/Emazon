@@ -1,0 +1,34 @@
+<div class="cards">
+  <div class="cards__row">
+    <p class="cards__title">Nombre:</p>
+    <p class="cards__info">{{item.name}}</p>
+  </div>
+
+  <div class="cards__row">
+    <p class="cards__title">Marca:</p>
+    <p class="cards__info">{{item.brand.name}}</p>
+  </div>
+
+  <div class="cards__row" *ngIf="item.areStock">
+    <p class="cards__title">Cantidad en stock:</p>
+    <p class="cards__info">{{item.quantityInStock}}</p>
+  </div>
+
+  <div class="cards__row" *ngIf="!item.areStock">
+    <p class="cards__title">Fecha de abastecimiento:</p>
+    <p class="cards__info">{{item.nextSupplyDate}}</p>
+  </div>
+
+  <div class="cards__row">
+    <p class="cards__title">Cantidad en carrito:</p>
+    <p class="cards__info">{{item.quantityInStock}}</p>
+  </div>
+
+  <div class="cards__row">
+    <p class="cards__title">Precio:</p>
+    <p class="cards__info">$ {{item.price}}</p>
+  </div>
+
+  <app-button content = "Eliminar"></app-button>
+</div>
+

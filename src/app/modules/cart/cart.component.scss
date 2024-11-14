@@ -1,0 +1,37 @@
+@use "../../styles/colors.scss" as colors;
+@use "../../styles/globalStyles.scss" as style;
+
+.cart {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  &__pagination {
+    flex: 1;
+    margin: 1.5em;
+    background-color: colors.$whiteColor;
+    border-radius: 20px;
+  }
+
+  &__pay {
+    flex: 0.3;
+    height: 30vh;
+    margin: 1.5em;
+    background-color: colors.$whiteColor;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__info{
+      display: flex;
+      flex-direction: row;
+    }
+
+    &__info p:first-child {
+      margin-right: 1em;
+    }
+
+  }
+}

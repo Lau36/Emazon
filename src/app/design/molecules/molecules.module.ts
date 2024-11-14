@@ -9,6 +9,7 @@ import { ModalComponent } from './modal/modal.component';
 import { FormCreateItemComponent } from './form-create-item/form-create-item.component';
 import { ItemsComponent } from './items/items.component';
 import { FormDynamicComponent } from './form-dynamic/form-dynamic.component';
+import { CartPaginationComponent } from './cart-pagination/cart-pagination.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FormDynamicComponent } from './form-dynamic/form-dynamic.component';
     ModalComponent,
     FormCreateItemComponent,
     ItemsComponent,
-    FormDynamicComponent
+    FormDynamicComponent,
+    CartPaginationComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { FormDynamicComponent } from './form-dynamic/form-dynamic.component';
     PaginationComponent,
     ModalComponent,
     FormCreateItemComponent,
-    FormDynamicComponent
+    FormDynamicComponent,
+    CartPaginationComponent
   ]
 })
 export class MoleculesModule {}

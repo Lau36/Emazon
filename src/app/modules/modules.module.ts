@@ -25,6 +25,6 @@ import { CartComponent } from './cart/cart.component';
     AtomsModule,
     OrganismsModule
 ],
-  exports: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, ListItemsComponent, CreateItemComponent, LoginComponent, AddSuppliesComponent, CreateUserComponent]
+  exports: [CreateCategoryComponent, ListCategoriesComponent, CreateBrandComponent, ListBrandsComponent, ListItemsComponent, CreateItemComponent, LoginComponent, AddSuppliesComponent, CreateUserComponent, CartComponent]
 })
 export class ModulesModule {}

@@ -1,1 +1,26 @@
-<p>cart works!</p>
+<div class="cart">
+<div class="cart__pagination">
+  <app-cart-pagination
+  (changePageSizeAction) = "onPageSizeChange($event)"
+  (changePageSortDirectionAction) = "onPageSortDirectionChange($event)"
+  (filterByCategoryNameAction) = "onPageFilterByCategoryNameSelected($event)"
+  (filterByBrandNameAction) = "onPageFilterByBrandNameSelected($event)"
+  (previousPageAction)="previusPage()"
+  (nextPageAction)="nextPage()"
+
+  [currentPage]="this.cartDataSimulated.currentPage"
+  [totalPages]="this.cartDataSimulated.totalPages"
+  [totalElements]="this.cartDataSimulated.totalElements"
+  [itemsInCart]="this.cartDataSimulated.items"
+  [optionsCategories] = "categories"
+  [optionsBrands] = "brands"
+  ></app-cart-pagination>
+</div>
+<div class="cart__pay">
+  <div class="cart__pay__info">
+    <P>Total a pagar:</P>
+    <p> ${{this.cartDataSimulated.totalPrice}}</p>
+  </div>
+  <app-button content="Pagar"></app-button>
+</div>
+</div>
