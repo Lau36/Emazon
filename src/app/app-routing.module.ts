@@ -42,8 +42,8 @@ const routes: Routes = [
   addPermissions('aux-bodega/marcas', BrandDashboardPageComponent, ROLE_AUX, listElementsNavWarehouseAssistant),
   addPermissions('aux-bodega/articulos', ItemDashboardPageComponent, ROLE_AUX, listElementsNavWarehouseAssistant),
 
-  // addPermissions('cliente/categorias', CategoryDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
-  // addPermissions('cliente/marcas', BrandDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
+  addPermissions('cliente/categorias', CategoryDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
+  addPermissions('cliente/marcas', BrandDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
   addPermissions('cliente/articulos', ItemCardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
   addPermissions('cliente/carrito', CartPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
 
