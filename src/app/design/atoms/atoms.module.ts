@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from './table/table.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { CardComponent } from './card/card.component';
+import { CartItemComponent } from './cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CardComponent } from './card/card.component';
     ToastComponent,
     TableComponent,
     DropdownComponent,
-    CardComponent
+    CardComponent,
+    CartItemComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import { CardComponent } from './card/card.component';
     ToastComponent,
     TableComponent,
     DropdownComponent,
-    CardComponent
+    CardComponent,
+    CartItemComponent
   ]
 })
 export class AtomsModule {}

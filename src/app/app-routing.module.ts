@@ -14,6 +14,7 @@ import { listElementsNavAdmin } from './utils/adminHeader';
 import { listElementsNavWarehouseAssistant } from './utils/warehouse-assistant-header';
 import { listNavCustomerHeader } from './utils/customer-header';
 import { ItemCardPageComponent } from './pages/item-card-page/item-card-page.component';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
 
 
@@ -25,8 +26,6 @@ function addPermissions(path: string, component: any, role: string, header: { el
     data: { expectedRole: role, header: header }
   };
 }
-
-
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -46,6 +45,7 @@ const routes: Routes = [
   // addPermissions('cliente/categorias', CategoryDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
   // addPermissions('cliente/marcas', BrandDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
   addPermissions('cliente/articulos', ItemCardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
+  addPermissions('cliente/carrito', CartPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
 
 ];
 

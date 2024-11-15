@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AddCart } from '../models/cart';
+import { AddCart, Cart } from '../models/cart';
 import { Observable } from 'rxjs';
 import { cartMicroservice } from '../constants/microservicesUrl';
 import { addItemToCartResponse} from '../interfaces/cart';
+import { CartPagination } from '../models/pagination';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,16 @@ export class CartService {
     .set('itemId', data.itemId)
     .set('quantity', data.quantity)
     return this.Http.post<addItemToCartResponse>(cartMicroservice+'/Cart', null, {params});
+  }
+
+  viewCart(data: CartPagination): Observable<Cart>{
+    const params = new HttpParams()
+    .set('page', data.page)
+    .set('size', data.size)
+    .set('sort', data.sort)
+    .set('sortDirection', data.sortDirection)
+    .set('filter', data.filter)
+    .set('filterName', data.filterName);
+    return this.Http.get<Cart>(cartMicroservice+'/Cart', {params});
   }
 }

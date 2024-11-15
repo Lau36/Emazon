@@ -1,0 +1,50 @@
+<div class="pagination">
+  <div class="pagination__primaryPanel">
+      <p class="pagination__text">Elementos por página:</p>
+      <app-dropdown
+        [options]="optionsSize"
+        (optionChange) = "onPageSizeSelected($event)"
+      ></app-dropdown>
+
+      <p class="pagination__text">Ordenar:</p>
+        <app-dropdown
+          [options]="optionsSort"
+          (optionChange) = "onPageSortDirectionSelected($event)"
+        ></app-dropdown>
+  </div>
+
+  <div class="pagination__dataPanel" [style.height]="tableContainerHeight">
+    <div class="pagination__dataPanel__panel">
+      <h1 class="pagination__dataPanel__text">Filtrar por:</h1>
+        <p class="pagination__dataPanel__text">Marca:</p>
+          <app-dropdown
+            [options]="optionsBrands"
+            width = "15rem"
+            (optionChange) = "onPageFilterByBrandNameSelected($event)"
+          ></app-dropdown>
+
+        <p class="pagination__dataPanel__text">Categoria:</p>
+          <app-dropdown
+            width = "15rem"
+            [options]="optionsCategories"
+            (optionChange) = "onPageFilterByCategoryNameSelected($event)"
+        ></app-dropdown>
+
+    </div>
+    <div class="pagination__dataPanel__data">
+      <ng-container *ngIf="itemsInCart.length === 0">
+        <p class="pagination__dataPanel__text">
+        No hay items en el carrito</p>
+      </ng-container>
+      <div class="pagination__card" *ngFor="let item of itemsInCart">
+        <app-cart-item [item] = 'item'></app-cart-item>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination__controls">
+    <app-button [content]="back" (action)="previousPage()" [isDisabled]="currentPage === 0"></app-button>
+    <span>Página {{currentPage + 1}} de {{totalPages}}</span>
+    <app-button [content]="next" (action)="nextPage()" [isDisabled]="currentPage >= totalPages - 1"></app-button>
+  </div>
+</div>

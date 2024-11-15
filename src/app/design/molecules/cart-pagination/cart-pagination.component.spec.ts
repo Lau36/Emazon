@@ -1,25 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardComponent } from './card.component';
+import { CartPaginationComponent } from './cart-pagination.component';
 
-describe('CardComponent', () => {
-  let component: CardComponent;
-  let fixture: ComponentFixture<CardComponent>;
+describe('CartPaginationComponent', () => {
+  let component: CartPaginationComponent;
+  let fixture: ComponentFixture<CartPaginationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardComponent ]
+      declarations: [ CartPaginationComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CardComponent);
+    fixture = TestBed.createComponent(CartPaginationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });
