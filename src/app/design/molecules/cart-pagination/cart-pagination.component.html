@@ -37,7 +37,7 @@
         No hay items en el carrito</p>
       </ng-container>
       <div class="pagination__card" *ngFor="let item of itemsInCart">
-        <app-cart-item [item] = 'item'></app-cart-item>
+        <app-cart-item [item] = 'item' (removeItemAction)="handleRemoveItem($event)" [contentButton]="contentButton"></app-cart-item>
       </div>
     </div>
   </div>

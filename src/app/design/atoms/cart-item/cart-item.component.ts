@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, EventEmitter, Input, Output} from '@angular/core';
 import { ItemInCart } from '../../../shared/models/item'
 
 @Component({
@@ -18,8 +18,14 @@ export class CartItemComponent {
     price: 0,
     categories: [{id: 0, name: ''}],
     brand: {id: 0, name: ''},
-
   };
+
+  @Input() contentButton: string = ''
+  @Output() removeItemAction = new EventEmitter<number>();
+
+  handleRemoveItem(itemId: number): void{
+    this.removeItemAction.emit(itemId)
+  }
 
   constructor() { }
 

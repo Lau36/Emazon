@@ -5,6 +5,10 @@ import { BrandService } from '../../shared/services/brand.service';
 import { CartService } from '../../shared/services/cart.service';
 import { CategoryService } from '../../shared/services/category.service';
 import { BRAND_AND_CATEGORY_NAME, BRAND_NAME, CATEGORY_NAME,  NONE } from '../../shared/constants/filter';
+import { SUCCESSFULY_ITEM_REMOVED } from '../../shared/constants/cart';
+import { hideToast2 } from '../../utils/helpers/hideToast';
+import { AN_ERROR_OCCURRED, UNKNOW_ERROR } from '../../shared/constants/constants';
+import { handleResponse } from 'src/app/utils/helpers/handleResponse';
 
 @Component({
   selector: 'app-cart',
@@ -34,6 +38,9 @@ export class CartComponent {
   brands: string[] = [];
   selectedCategory: string = '';
   selectedBrand: string = '';
+  showToast: boolean = false;
+  message: string = "";
+  mistakeOcurred: boolean = false;
 
   constructor(private categoryService: CategoryService, private brandService: BrandService, private cartService: CartService) { }
 
@@ -55,7 +62,7 @@ export class CartComponent {
         }
       },
       error: (error) => {
-        console.error("Ocurrió un error", error);
+        console.error(AN_ERROR_OCCURRED, error);
       }
     });
   }
@@ -66,7 +73,7 @@ export class CartComponent {
         this.categories.push(...response.map(category => category.categoryName));
       },
       error: (error) => {
-        console.error(error);
+        console.error(AN_ERROR_OCCURRED, error);
       }
     });
   }
@@ -77,7 +84,7 @@ export class CartComponent {
         this.brands.push(...response.map(brand => brand.name))
       },
       error: (error) => {
-        console.error(error);
+        console.error(AN_ERROR_OCCURRED, error);
       }
     });
   }
@@ -135,5 +142,28 @@ export class CartComponent {
       this.cartPagination.page = this.cartPagination.page += 1;
       this.getCartPaginated();
     }
+  }
+
+  removeItemFromCart(itemId: number): void {
+    this.cartService.removeItemFromCart(itemId).subscribe({
+      next: () => {
+        this.showToast = true;
+        this.message = SUCCESSFULY_ITEM_REMOVED
+        this.mistakeOcurred = false;
+        hideToast2(() => {
+          this.showToast = false;
+        });
+        this.getCartPaginated();
+      },
+      error: (error) => {
+        console.log("Error", error)
+        this.showToast = true;
+        this.mistakeOcurred = true;
+        this.message = error.error?.message || UNKNOW_ERROR;
+        hideToast2(() => {
+          this.showToast = false;
+        });
+      }
+    })
   }
 }

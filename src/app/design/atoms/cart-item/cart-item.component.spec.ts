@@ -20,4 +20,10 @@ describe('CartItemComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit itemId when handleRemoveItem is called', () => {
+    jest.spyOn(component.removeItemAction, 'emit');
+    component.handleRemoveItem(1);
+    expect(component.removeItemAction.emit).toHaveBeenCalledWith(1);
+  });
 });

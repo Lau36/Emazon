@@ -5,8 +5,6 @@ import { CartService } from '../../shared/services/cart.service';
 import { of, throwError } from 'rxjs';
 import { CategoryService } from '../../shared/services/category.service';
 import { BrandService } from '../../shared/services/brand.service';
-import { CategoryCreatedresponse } from '../../shared/interfaces/category';
-import { BrandCreatedResponse } from '../../shared/interfaces/brand';
 import { Cart } from '../../shared/models/cart';
 import { BRAND_NAME, CATEGORY_NAME } from '../../shared/constants/filter';
 
@@ -32,6 +30,7 @@ describe('CartComponent', () => {
 
   beforeEach(async () => {
     cartServiceMock = {
+      removeItemFromCart: jest.fn().mockReturnValue(of([])),
       viewCart: jest.fn().mockReturnValue(of(
         {
           items: [{
@@ -64,6 +63,7 @@ describe('CartComponent', () => {
           totalElements: 10
         }
       )),
+
     }
     categoryServiceMock = {
       listCategories: jest.fn().mockReturnValue(of(
@@ -185,6 +185,27 @@ describe('CartComponent', () => {
     component.nextPage();
     expect(component.cartPagination.page).toBe(1);
   });
+
+  it('should remove item from cart', () => {
+    component.removeItemFromCart(101);
+
+    expect(cartServiceMock.removeItemFromCart).toHaveBeenCalledTimes(1);
+    expect(component.message).toBe('El articulo se eliminó del carrito exitosamente');
+  });
+
+  it('should remove item from cart fails', () => {
+    const errorResponse = {
+      error: {
+        message: 'An error occurred'
+      }
+    };
+    (cartServiceMock.removeItemFromCart as jest.Mock).mockReturnValue(throwError(() => errorResponse))
+    component.removeItemFromCart(101);
+
+    expect(component.mistakeOcurred).toBe(true);
+    expect(component.message).toBe(errorResponse.error.message);
+  });
+
 
 
 });

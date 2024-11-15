@@ -15,6 +15,7 @@ export class CartPaginationComponent{
   @Output() changePageSortDirectionAction = new EventEmitter<any>();
   @Output() filterByCategoryNameAction = new EventEmitter<any>();
   @Output() filterByBrandNameAction = new EventEmitter<any>();
+  @Output() removeItemFromCartAction = new EventEmitter<number>();
 
   @Input() tableContainerHeight: string = '20%';
   @Input() currentPage: number = 0;
@@ -23,6 +24,7 @@ export class CartPaginationComponent{
   @Input() itemsInCart: ItemInCart[] = []
   @Input() optionsCategories: string[] = [''];
   @Input() optionsBrands: string[] = [''];
+  @Input() contentButton: string = '';
 
   optionsSize: number[] = [5, 10, 15, 20];
   optionsSort: string[] = ['asc', 'desc'];
@@ -52,6 +54,10 @@ export class CartPaginationComponent{
 
   nextPage(){
     this.nextPageAction.emit();
+  }
+
+  handleRemoveItem(itemId: number){
+    this.removeItemFromCartAction.emit(itemId)
   }
 
   constructor() { }

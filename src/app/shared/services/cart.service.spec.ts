@@ -15,7 +15,8 @@ describe('CartService', () => {
 
   const httpClientMock = {
     post: jest.fn(),
-    get: jest.fn()
+    get: jest.fn(),
+    delete: jest.fn()
   }
 
   const data: AddCart = {
@@ -103,6 +104,16 @@ describe('CartService', () => {
       (response) => {
         expect(httpClientMock.get).toHaveBeenCalledTimes(1);
         expect(response).toEqual(cartResponse);
+      }
+    )
+  });
+
+  it('should delete item from cart', () => {
+    httpClientMock.delete.mockReturnValue(of('Articulo eliminado exitosamente'));
+    service.removeItemFromCart(1).subscribe(
+      (response) => {
+        expect(httpClientMock.delete).toHaveBeenCalledTimes(1);
+        expect(response).toEqual('Articulo eliminado exitosamente');
       }
     )
   });

@@ -35,6 +35,6 @@
     <p class="cards__info">$ {{item.price}}</p>
   </div>
 
-  <app-button content = "Eliminar"></app-button>
+  <app-button [content] = "contentButton" (action)="handleRemoveItem(item.id)"></app-button>
 </div>
 
