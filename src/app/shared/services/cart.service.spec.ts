@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { CartService } from './cart.service';
 import { HttpClient } from '@angular/common/http';
 import { AddCart, Cart } from '../models/cart';
-import { addItemToCartResponse} from '../interfaces/cart';
+import { AddItemToCartResponse} from '../interfaces/cart';
 import { of } from 'rxjs';
 import { CartPagination } from '../models/pagination';
 
@@ -24,7 +24,7 @@ describe('CartService', () => {
     quantity: 1
   }
 
-  const addItemToCartResponse: addItemToCartResponse = {
+  const addItemToCartResponse: AddItemToCartResponse = {
     id: 9,
     userId: 33,
     itemId: 6,

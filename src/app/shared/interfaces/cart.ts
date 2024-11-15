@@ -1,4 +1,4 @@
-export interface addItemToCartResponse{
+export interface AddItemToCartResponse{
   id: number,
   userId: number,
   itemId: number,

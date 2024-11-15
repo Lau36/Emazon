@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AddCart, Cart } from '../models/cart';
 import { Observable } from 'rxjs';
 import { cartMicroservice } from '../constants/microservicesUrl';
-import { addItemToCartResponse} from '../interfaces/cart';
+import { AddItemToCartResponse} from '../interfaces/cart';
 import { CartPagination } from '../models/pagination';
 
 @Injectable({
@@ -13,11 +13,11 @@ export class CartService {
 
   constructor(private Http: HttpClient) { }
 
-  addItemToCart(data: AddCart): Observable<addItemToCartResponse>{
+  addItemToCart(data: AddCart): Observable<AddItemToCartResponse>{
     const params = new HttpParams()
     .set('itemId', data.itemId)
     .set('quantity', data.quantity)
-    return this.Http.post<addItemToCartResponse>(cartMicroservice, null, {params});
+    return this.Http.post<AddItemToCartResponse>(cartMicroservice, null, {params});
   }
 
   viewCart(data: CartPagination): Observable<Cart>{
