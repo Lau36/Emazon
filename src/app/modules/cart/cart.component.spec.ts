@@ -14,11 +14,7 @@ const categories = [
   'category3'
 ]
 
-const brands = [
-  'brand1',
-  'brand2',
-  'brand3'
-]
+const brands = ['brand1', 'brand2', 'brand3'];
 
 describe('CartComponent', () => {
   let component: CartComponent;
@@ -68,17 +64,17 @@ describe('CartComponent', () => {
     categoryServiceMock = {
       listCategories: jest.fn().mockReturnValue(of(
         [
-          'category1',
-          'category2',
-          'category3'
+          {id: 1, categoryName: 'category1', categoryDescription: 'description1'},
+          {id: 2, categoryName: 'category2', categoryDescription: 'description2'},
+          {id: 3, categoryName: 'category3', categoryDescription: 'description3'}
         ]
       )),
     }
     brandServiceMock = {
       listBrands: jest.fn().mockReturnValue(of([
-        'brand1',
-        'brand2',
-        'brand3'
+        {id: 1, name: 'brand1', description: 'a'},
+        {id: 2, name: 'brand2', description: 'b'},
+        {id: 3, name: 'brand3', description: 'c'},
       ])),
     }
     await TestBed.configureTestingModule({
@@ -149,15 +145,16 @@ describe('CartComponent', () => {
     expect(console.error).toHaveBeenCalledWith("Ocurrió un error", new Error('Error'));
   });
 
-  // it('should call getAllCategories and populate categories', () => {
-  //   component.getAllCategories();
-  //   expect(component.categories).toEqual(categories);
-  // });
+  it('should call getAllCategories and populate categories', () => {
+    expect(component.categories).toEqual(categories);
+    expect(categoryServiceMock.listCategories).toHaveBeenCalledTimes(1);
+    jest.clearAllMocks();
+  });
 
-  // it('should call getAllBrands and populate brands', () => {
-  //   component.getAllBrands();
-  //   expect(component.brands).toEqual(brands);
-  // });
+  it('should get all brands', () => {
+    expect(component.brands).toEqual(brands);
+    expect(brandServiceMock.listBrands).toHaveBeenCalledTimes(1);
+  });
 
   it('should update filters when category is selected', () => {
     component.selectedCategory = 'Electronics';
