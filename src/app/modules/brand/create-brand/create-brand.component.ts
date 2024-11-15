@@ -34,8 +34,8 @@ export class CreateBrandComponent implements OnInit {
   }
 
   constructor(
-    private fb: FormBuilder,
-    private brandService: BrandService
+    private readonly fb: FormBuilder,
+    private readonly brandService: BrandService
   ) {}
 
   ngOnInit(): void {

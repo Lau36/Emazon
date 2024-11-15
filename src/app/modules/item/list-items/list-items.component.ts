@@ -60,7 +60,7 @@ export class ListItemsComponent implements OnInit {
     {id: 'categoryName', name:'Nombre de categoría'}
   ]
 
-  constructor(private itemService: ItemService, private cartService: CartService){}
+  constructor(private readonly itemService: ItemService, private readonly cartService: CartService){}
 
   ngOnInit(): void {
     this.getItems();

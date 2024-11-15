@@ -1,6 +1,5 @@
-import { AMOUNT, CREATE, DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_NAME, ITEM_CREATED, NAME, PLACEHOLDER_REGULAR_INPUT, PRICE, REQUIRED_FIELD } from '../../../shared/constants/constants';
+import { AMOUNT, CREATE, DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_DESCRIPTION, EXCEEDES_MAXIMUN_CHARACTERS_BRAND_NAME, ITEM_CREATED, NAME, PLACEHOLDER_REGULAR_INPUT, PRICE, REQUIRED_FIELD, CREATE_ITEM } from '../../../shared/constants/constants';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CREATE_ITEM } from '../../../shared/constants/constants';
 import { CreateItem } from '../../../shared/models/item';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ItemService } from '../../../shared/services/item.service'
@@ -53,10 +52,10 @@ export class CreateItemComponent implements OnInit {
   selectedCategories: number[] = [];
 
   constructor(
-    private fb: FormBuilder,
-    private itemService: ItemService,
-    private categoryService: CategoryService,
-    private brandService: BrandService
+    private  readonly fb: FormBuilder,
+    private  readonly itemService: ItemService,
+    private  readonly categoryService: CategoryService,
+    private  readonly brandService: BrandService
   ) {}
 
   ngOnInit(): void {

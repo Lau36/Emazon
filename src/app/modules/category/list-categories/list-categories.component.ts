@@ -36,7 +36,7 @@ export class ListCategoriesComponent implements OnInit {
   }
 
   constructor(
-    private CategoryService: CategoryService
+    private readonly CategoryService: CategoryService
   ) { }
 
   ngOnInit(): void {

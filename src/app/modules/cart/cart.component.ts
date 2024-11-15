@@ -33,78 +33,78 @@ export class CartComponent {
     totalElements: 0
   }
 
-  items = [{
-    id: 101,
-    name: "Laptop X100",
-    description: "A high-performance laptop suitable for gaming and professional work.",
-    quantityInCart: 2,
-    quantityInStock: 10,
-    areStock: true,
-    nextSupplyDate: "2024-12-01",
-    price: 1200.00,
-    categories: [
-      {
-        id: 1,
-        name: "Electronics"
-      },
-      {
-        id: 2,
-        name: "Computers"
-      }
-    ],
-    brand: {
-      id: 5,
-      name: "TechBrand"
-    }
-  },
-  {
-    id: 101,
-    name: "Laptop X100",
-    description: "A high-performance laptop suitable for gaming and professional work.",
-    quantityInCart: 2,
-    quantityInStock: 10,
-    areStock: true,
-    nextSupplyDate: "2024-12-01",
-    price: 1200.00,
-    categories: [
-      {
-        id: 1,
-        name: "Electronics"
-      },
-      {
-        id: 2,
-        name: "Computers"
-      }
-    ],
-    brand: {
-      id: 5,
-      name: "TechBrand"
-    }
-  },
-  {
-    id: 101,
-    name: "Laptop X100",
-    description: "A high-performance laptop suitable for gaming and professional work.",
-    quantityInCart: 2,
-    quantityInStock: 10,
-    areStock: true,
-    nextSupplyDate: "2024-12-01",
-    price: 1200.00,
-    categories: [
-      {
-        id: 1,
-        name: "Electronics"
-      },
-      {
-        id: 2,
-        name: "Computers"
-      }
-    ],
-    brand: {
-      id: 5,
-      name: "TechBrand"
-    }
-  }]
+  // items = [{
+  //   id: 101,
+  //   name: "Laptop X100",
+  //   description: "A high-performance laptop suitable for gaming and professional work.",
+  //   quantityInCart: 2,
+  //   quantityInStock: 10,
+  //   areStock: true,
+  //   nextSupplyDate: "2024-12-01",
+  //   price: 1200.00,
+  //   categories: [
+  //     {
+  //       id: 1,
+  //       name: "Electronics"
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "Computers"
+  //     }
+  //   ],
+  //   brand: {
+  //     id: 5,
+  //     name: "TechBrand"
+  //   }
+  // },
+  // {
+  //   id: 101,
+  //   name: "Laptop X100",
+  //   description: "A high-performance laptop suitable for gaming and professional work.",
+  //   quantityInCart: 2,
+  //   quantityInStock: 10,
+  //   areStock: true,
+  //   nextSupplyDate: "2024-12-01",
+  //   price: 1200.00,
+  //   categories: [
+  //     {
+  //       id: 1,
+  //       name: "Electronics"
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "Computers"
+  //     }
+  //   ],
+  //   brand: {
+  //     id: 5,
+  //     name: "TechBrand"
+  //   }
+  // },
+  // {
+  //   id: 101,
+  //   name: "Laptop X100",
+  //   description: "A high-performance laptop suitable for gaming and professional work.",
+  //   quantityInCart: 2,
+  //   quantityInStock: 10,
+  //   areStock: true,
+  //   nextSupplyDate: "2024-12-01",
+  //   price: 1200.00,
+  //   categories: [
+  //     {
+  //       id: 1,
+  //       name: "Electronics"
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "Computers"
+  //     }
+  //   ],
+  //   brand: {
+  //     id: 5,
+  //     name: "TechBrand"
+  //   }
+  // }]
 
   categories: string[] = [];
   brands: string[] = [];
@@ -115,9 +115,9 @@ export class CartComponent {
   mistakeOcurred: boolean = false;
 
   constructor(
-    private categoryService: CategoryService,
-    private brandService: BrandService,
-    private cartService: CartService) { }
+    private readonly categoryService: CategoryService,
+    private readonly brandService: BrandService,
+    private readonly cartService: CartService) { }
 
   ngOnInit(): void {
     this.getCartPaginated();

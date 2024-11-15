@@ -1,7 +1,6 @@
 import { BrandsPaginatedResponse } from './../../../shared/interfaces/brand';
 import { BrandService } from '../../../shared/services/brand.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Pagination } from '../../../shared/models/pagination';
 
 @Component({
@@ -39,8 +38,7 @@ export class ListBrandsComponent implements OnInit {
   }
 
   constructor(
-    private brandService: BrandService,
-    private router: Router
+    private readonly brandService: BrandService
   ) { }
 
   ngOnInit(): void {

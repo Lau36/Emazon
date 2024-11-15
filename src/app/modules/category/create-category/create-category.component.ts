@@ -1,7 +1,7 @@
 import { CreateCategory } from '../../../shared/models/category';
 import { CategoryService } from '../../../shared/services/category.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CREATE, CREATE_CATEGORY, DESCRIPTION, NAME, PLACEHOLDER_REGULAR_INPUT, CATEGORY_CREATED, EXCEEDES_MAXIMUN_CHARACTERS_CATEGORY_NAME, EXCEEDES_MAXIMUN_CHARACTERS_CATEGORY_DESCRIPTION, REQUIRED_FIELD } from '../../../shared/constants/constants';
+import { CREATE, CREATE_CATEGORY, DESCRIPTION, NAME, PLACEHOLDER_REGULAR_INPUT, CATEGORY_CREATED} from '../../../shared/constants/constants';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -32,8 +32,8 @@ export class CreateCategoryComponent implements OnInit {
   }
 
   constructor(
-    private fb: FormBuilder,
-    private categoryService: CategoryService
+    private readonly fb: FormBuilder,
+    private readonly categoryService: CategoryService
   ) {}
 
   ngOnInit(): void {

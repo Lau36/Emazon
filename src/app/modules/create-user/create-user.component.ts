@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { CREATE, INVALID_FORM, USER_CREATED } from '../../shared/constants/constants';
@@ -48,8 +48,8 @@ export class CreateUserComponent implements OnInit {
   }
 
   constructor(
-    private fb: FormBuilder,
-    private userService: UserService
+    private  readonly fb: FormBuilder,
+    private  readonly userService: UserService
   ) {}
 
   ngOnInit(): void {

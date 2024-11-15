@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { listElementsNavAdmin } from '../../utils/adminHeader';
 import { UserService } from '../../shared/services/user.service';
 
@@ -7,16 +7,14 @@ import { UserService } from '../../shared/services/user.service';
   templateUrl: './create-user-aux-page.component.html',
   styleUrls: ['./create-user-aux-page.component.scss']
 })
-export class CreateUserAuxPageComponent implements OnInit {
+export class CreateUserAuxPageComponent {
   header = listElementsNavAdmin;
 
   constructor(
-    private userService: UserService
+    private  readonly userService: UserService
   ) { }
 
   service = this.userService.createAuxUser;
 
-  ngOnInit(): void {
-  }
 
 }

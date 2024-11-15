@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { HAVE_ACCOUNT, LOGIN } from '../../shared/constants/login';
 import { UserService } from '../../shared/services/user.service';
 
@@ -10,7 +10,7 @@ import { UserService } from '../../shared/services/user.service';
 export class CreateCustomerPageComponent{
 
   constructor(
-    private userService: UserService
+    private  readonly userService: UserService
   ) { }
 
   service = this.userService.createCustomerUser;

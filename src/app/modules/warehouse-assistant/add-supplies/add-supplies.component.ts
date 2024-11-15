@@ -15,9 +15,9 @@ import { SupplyService } from '../../../shared/services/supply.service';
 })
 export class AddSuppliesComponent implements OnInit {
   constructor(
-    private supplyService: SupplyService,
-    private itemService: ItemService,
-    private fb: FormBuilder
+    private  readonly supplyService: SupplyService,
+    private  readonly itemService: ItemService,
+    private  readonly fb: FormBuilder
   ) { }
 
   title: string = ADD_SUPPLY;

@@ -16,7 +16,7 @@ export class CategoryDashboardPageComponent implements OnInit {
   role: string = '';
   showCreateCategory: boolean = false;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private  readonly route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.header = this.route.snapshot.data['header']

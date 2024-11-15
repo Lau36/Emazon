@@ -18,9 +18,9 @@ import { Auth } from '../../shared/models/auth';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private authService: AuthService,
-    private fb: FormBuilder,
-    private router: Router
+    private readonly authService: AuthService,
+    private readonly fb: FormBuilder,
+    private  readonly router: Router
   ) { }
 
   title: string = LOGIN;

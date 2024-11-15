@@ -12,7 +12,7 @@ export class HeaderComponent{
   @Input() listElementsNav: {elementName: string, path:string, icon?: string}[] = []
 
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private readonly router: Router, private readonly authService: AuthService) { }
 
   logout(){
     this.authService.removeToken();
