@@ -8,7 +8,6 @@ import { BRAND_AND_CATEGORY_NAME, BRAND_NAME, CATEGORY_NAME,  NONE } from '../..
 import { SUCCESSFULY_ITEM_REMOVED } from '../../shared/constants/cart';
 import { hideToast2 } from '../../utils/helpers/hideToast';
 import { AN_ERROR_OCCURRED, UNKNOW_ERROR } from '../../shared/constants/constants';
-import { handleResponse } from 'src/app/utils/helpers/handleResponse';
 
 @Component({
   selector: 'app-cart',
@@ -34,6 +33,79 @@ export class CartComponent {
     totalElements: 0
   }
 
+  items = [{
+    id: 101,
+    name: "Laptop X100",
+    description: "A high-performance laptop suitable for gaming and professional work.",
+    quantityInCart: 2,
+    quantityInStock: 10,
+    areStock: true,
+    nextSupplyDate: "2024-12-01",
+    price: 1200.00,
+    categories: [
+      {
+        id: 1,
+        name: "Electronics"
+      },
+      {
+        id: 2,
+        name: "Computers"
+      }
+    ],
+    brand: {
+      id: 5,
+      name: "TechBrand"
+    }
+  },
+  {
+    id: 101,
+    name: "Laptop X100",
+    description: "A high-performance laptop suitable for gaming and professional work.",
+    quantityInCart: 2,
+    quantityInStock: 10,
+    areStock: true,
+    nextSupplyDate: "2024-12-01",
+    price: 1200.00,
+    categories: [
+      {
+        id: 1,
+        name: "Electronics"
+      },
+      {
+        id: 2,
+        name: "Computers"
+      }
+    ],
+    brand: {
+      id: 5,
+      name: "TechBrand"
+    }
+  },
+  {
+    id: 101,
+    name: "Laptop X100",
+    description: "A high-performance laptop suitable for gaming and professional work.",
+    quantityInCart: 2,
+    quantityInStock: 10,
+    areStock: true,
+    nextSupplyDate: "2024-12-01",
+    price: 1200.00,
+    categories: [
+      {
+        id: 1,
+        name: "Electronics"
+      },
+      {
+        id: 2,
+        name: "Computers"
+      }
+    ],
+    brand: {
+      id: 5,
+      name: "TechBrand"
+    }
+  }]
+
   categories: string[] = [];
   brands: string[] = [];
   selectedCategory: string = '';
@@ -42,7 +114,10 @@ export class CartComponent {
   message: string = "";
   mistakeOcurred: boolean = false;
 
-  constructor(private categoryService: CategoryService, private brandService: BrandService, private cartService: CartService) { }
+  constructor(
+    private categoryService: CategoryService,
+    private brandService: BrandService,
+    private cartService: CartService) { }
 
   ngOnInit(): void {
     this.getCartPaginated();

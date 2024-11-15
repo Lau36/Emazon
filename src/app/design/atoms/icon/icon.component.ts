@@ -5,15 +5,12 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './icon.component.html',
   styleUrls: ['./icon.component.scss']
 })
-export class IconComponent implements OnInit {
+export class IconComponent {
 
   @Input() width: string = '300px';
   @Input() height: string = 'auto';
   @Input() icon: string = "../../../../../assets/EmazonIcon.svg";
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

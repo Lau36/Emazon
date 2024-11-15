@@ -8,9 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CartPageComponent implements OnInit {
 
-  header: {elementName: string, path:string}[] =
+  header: {elementName: string, path:string, icon?: string}[] =
   [
-    {elementName: '', path: ''},
+    {elementName: '', path: '', icon: ''},
   ];
 
   role: string = '';

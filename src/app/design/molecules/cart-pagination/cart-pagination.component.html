@@ -31,11 +31,11 @@
         ></app-dropdown>
 
     </div>
-    <div class="pagination__dataPanel__data">
-      <ng-container *ngIf="itemsInCart.length === 0">
-        <p class="pagination__dataPanel__text">
-        No hay items en el carrito</p>
-      </ng-container>
+    <div class="pagination__noItemsInCart" *ngIf="itemsInCart.length === 0">
+      <p class="pagination__dataPanel__text">No hay artículos en el carrito :(</p>
+      <app-icon icon="../../../../assets/cart2.svg"></app-icon>
+    </div>
+    <div class="pagination__dataPanel__data" *ngIf="itemsInCart.length != 0">
       <div class="pagination__card" *ngFor="let item of itemsInCart">
         <app-cart-item [item] = 'item' (removeItemAction)="handleRemoveItem($event)" [contentButton]="contentButton"></app-cart-item>
       </div>

@@ -9,14 +9,11 @@ import { AuthService } from '../../../shared/services/auth.service';
   styleUrls: ['./header.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class HeaderComponent implements OnInit {
-  @Input() listElementsNav: {elementName: string, path:string}[] = []
+export class HeaderComponent{
+  @Input() listElementsNav: {elementName: string, path:string, icon?: string}[] = []
 
 
   constructor(private router: Router, private authService: AuthService) { }
-
-  ngOnInit(): void {
-  }
 
   logout(){
     this.authService.removeToken();

@@ -14,7 +14,11 @@
 
       <ul class="nav__list" >
         <li class="nav__list__item" *ngFor="let element of listElementsNav">
-          <a [href]="element.path" class="nav__list__item__link">{{element.elementName}}</a>
+          <a [href]="element.path" class="nav__list__item__link" *ngIf="!element.icon">{{element.elementName}}</a>
+          <a [href]="element.path" class="nav__list__item__link" *ngIf="element.icon">
+            <app-icon class="nav__list__item__link" [icon]="element.icon" width="40px" height="10%"></app-icon>
+          </a>
+
         </li>
 
         <li class="nav__list__logout">
