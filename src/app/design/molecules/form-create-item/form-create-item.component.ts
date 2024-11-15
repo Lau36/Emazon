@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './form-create-item.component.html',
   styleUrls: ['./form-create-item.component.scss']
 })
-export class FormCreateItemComponent implements OnInit {
+export class FormCreateItemComponent {
 
   @Input() form!: FormGroup;
   @Input() name: any;
@@ -58,7 +58,5 @@ export class FormCreateItemComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }

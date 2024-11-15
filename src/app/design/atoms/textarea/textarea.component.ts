@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormControl } from '@angular/forms';
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.scss']
 })
-export class TextareaComponent implements OnInit {
+export class TextareaComponent {
 
   @Input() placeholder: string = '';
   @Input() control: FormControl = new FormControl();
@@ -33,7 +33,5 @@ export class TextareaComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }

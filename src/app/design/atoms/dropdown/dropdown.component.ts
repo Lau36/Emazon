@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss']
 })
-export class DropdownComponent implements OnInit {
+export class DropdownComponent {
 
   @Input() options: unknown[] = [];
   @Input() width: string = "100px"
@@ -31,7 +31,5 @@ export class DropdownComponent implements OnInit {
     this.optionChange.emit(selectedOption ? selectedOption : selectedValue);
   }
 
-  ngOnInit(): void {
-  }
 
 }
