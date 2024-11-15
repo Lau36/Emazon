@@ -17,7 +17,7 @@ export class CartService {
     const params = new HttpParams()
     .set('itemId', data.itemId)
     .set('quantity', data.quantity)
-    return this.Http.post<addItemToCartResponse>(cartMicroservice+'/Cart', null, {params});
+    return this.Http.post<addItemToCartResponse>(cartMicroservice, null, {params});
   }
 
   viewCart(data: CartPagination): Observable<Cart>{
@@ -28,6 +28,11 @@ export class CartService {
     .set('sortDirection', data.sortDirection)
     .set('filter', data.filter)
     .set('filterName', data.filterName);
-    return this.Http.get<Cart>(cartMicroservice+'/Cart', {params});
+    return this.Http.get<Cart>(cartMicroservice, {params});
+  }
+
+  removeItemFromCart(itemId: number): Observable<string>{
+    const params = new HttpParams().set('itemId', itemId);
+    return this.Http.delete<string>(cartMicroservice, {params});
   }
 }
