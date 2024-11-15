@@ -46,6 +46,7 @@ const routes: Routes = [
   // addPermissions('cliente/marcas', BrandDashboardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
   addPermissions('cliente/articulos', ItemCardPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
   addPermissions('cliente/carrito', CartPageComponent, ROLE_CUSTOMER, listNavCustomerHeader),
+  {path: 'cliente/carrito2', component: CartPageComponent }
 
 ];
 

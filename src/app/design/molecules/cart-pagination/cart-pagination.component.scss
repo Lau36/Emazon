@@ -16,6 +16,12 @@
     max-width: 90%;
   }
 
+  &__noItemsInCart{
+    flex: 1;
+    @include styles.display(flex, center, center);
+    flex-direction: column;
+  }
+
   &__dataPanel{
     display: flex;
     width: 100%;
