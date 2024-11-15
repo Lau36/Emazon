@@ -33,6 +33,6 @@ export class CartService {
 
   removeItemFromCart(itemId: number): Observable<string>{
     const params = new HttpParams().set('itemId', itemId);
-    return this.Http.delete<string>(cartMicroservice, {params});
+    return this.Http.delete<string>(cartMicroservice, {params, responseType: 'text' as 'json'});
   }
 }
