@@ -8,10 +8,10 @@
   (previousPageAction)="previusPage()"
   (nextPageAction)="nextPage()"
 
-  [currentPage]="this.cartDataSimulated.currentPage"
-  [totalPages]="this.cartDataSimulated.totalPages"
-  [totalElements]="this.cartDataSimulated.totalElements"
-  [itemsInCart]="this.cartDataSimulated.items"
+  [currentPage]="this.cartResponse.currentPage"
+  [totalPages]="this.cartResponse.totalPages"
+  [totalElements]="this.cartResponse.totalElements"
+  [itemsInCart]="this.cartResponse.items"
   [optionsCategories] = "categories"
   [optionsBrands] = "brands"
   ></app-cart-pagination>
@@ -19,7 +19,7 @@
 <div class="cart__pay">
   <div class="cart__pay__info">
     <P>Total a pagar:</P>
-    <p> ${{this.cartDataSimulated.totalPrice}}</p>
+    <p> ${{this.cartResponse.totalPrice}}</p>
   </div>
   <app-button content="Pagar"></app-button>
 </div>

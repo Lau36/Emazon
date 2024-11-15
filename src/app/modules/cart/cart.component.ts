@@ -4,6 +4,7 @@ import { CartPagination } from '../../shared/models/pagination';
 import { BrandService } from '../../shared/services/brand.service';
 import { CartService } from '../../shared/services/cart.service';
 import { CategoryService } from '../../shared/services/category.service';
+import { BRAND_AND_CATEGORY_NAME, BRAND_NAME, CATEGORY_NAME,  NONE } from '../../shared/constants/filter';
 
 @Component({
   selector: 'app-cart',
@@ -12,67 +13,13 @@ import { CategoryService } from '../../shared/services/category.service';
 })
 export class CartComponent {
 
-  cartDataSimulated: Cart = {
-    items: [
-      {
-        id: 1,
-        name: "Laptop Pro 15",
-        description: "Laptop de alto rendimiento con pantalla de 15 pulgadas.",
-        quantityInCart: 2,
-        quantityInStock: 5,
-        areStock: true,
-        nextSupplyDate: "2024-12-15",
-        price: 1500,
-        categories: [
-          { id: 101, name: "Electronics" },
-          { id: 102, name: "Laptops" }
-        ],
-        brand: { id: 1, name: "TechBrand" }
-      },
-      {
-        id: 2,
-        name: "Wireless Mouse",
-        description: "Mouse inalámbrico ergonómico con batería de larga duración.",
-        quantityInCart: 1,
-        quantityInStock: 15,
-        areStock: true,
-        nextSupplyDate: "2024-11-20",
-        price: 50,
-        categories: [
-          { id: 103, name: "Accessories" },
-          { id: 104, name: "Peripherals" }
-        ],
-        brand: { id: 2, name: "GadgetWorld" }
-      },
-      {
-        id: 3,
-        name: "Monitor 4K Ultra HD",
-        description: "Monitor con resolución 4K y pantalla de 27 pulgadas.",
-        quantityInCart: 1,
-        quantityInStock: 0,
-        areStock: false,
-        nextSupplyDate: "2024-12-05",
-        price: 400,
-        categories: [
-          { id: 101, name: "Electronics" },
-          { id: 105, name: "Monitors" }
-        ],
-        brand: { id: 3, name: "DisplayMaster" }
-      }
-    ],
-    totalPrice: 3.450,
-    currentPage: 1,
-    totalPages: 1,
-    totalElements: 3
-  };
-
   cartPagination: CartPagination = {
     page: 0,
     size: 5,
     sort: 'name',
     sortDirection: 'asc',
-    filter: 'brandName',
-    filterName: 'apple'
+    filter: 'none',
+    filterName: 'none'
   }
 
   cartResponse: Cart = {
@@ -83,8 +30,10 @@ export class CartComponent {
     totalElements: 0
   }
 
-  categories: string[] = [''];
-  brands: string[] = [''];
+  categories: string[] = [];
+  brands: string[] = [];
+  selectedCategory: string = '';
+  selectedBrand: string = '';
 
   constructor(private categoryService: CategoryService, private brandService: BrandService, private cartService: CartService) { }
 
@@ -145,14 +94,33 @@ export class CartComponent {
     this.getCartPaginated();
   }
 
-  onPageFilterByCategoryNameSelected(option: string){
-    this.cartPagination.filter = 'categoryName';
-    this.cartPagination.filterName = option;
+  onPageFilterByCategoryNameSelected(option: string) {
+    this.selectedCategory = option;
+    this.updateFilters();
   }
 
-  onPageFilterByBrandNameSelected(option: string){
-    this.cartPagination.filter = 'brandName';
-    this.cartPagination.filterName = option;
+  onPageFilterByBrandNameSelected(option: string) {
+    this.selectedBrand = option;
+    this.updateFilters();
+  }
+
+  updateFilters() {
+    if (this.selectedCategory && this.selectedBrand) {
+      this.cartPagination.filter = BRAND_AND_CATEGORY_NAME;
+      this.cartPagination.filterName = `${this.selectedCategory},${this.selectedBrand}`;
+    }
+    else if (this.selectedCategory ){
+      this.cartPagination.filter = CATEGORY_NAME;
+      this.cartPagination.filterName = this.selectedCategory;
+    }
+    else if (this.selectedBrand ){
+      this.cartPagination.filter = BRAND_NAME;
+      this.cartPagination.filterName = this.selectedBrand;
+    }
+    else {
+      this.cartPagination.filter = NONE;
+    }
+    this.getCartPaginated();
   }
 
   previusPage(){
@@ -168,6 +136,4 @@ export class CartComponent {
       this.getCartPaginated();
     }
   }
-
-
 }

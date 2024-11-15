@@ -8,6 +8,12 @@
     <p class="cards__title">Marca:</p>
     <p class="cards__info">{{item.brand.name}}</p>
   </div>
+  <div class="cards__row">
+    <p class="cards__title">Categorias:</p>
+    <ng-container *ngFor="let category of item.categories">
+      <p class="cards__info">{{category.name}},</p>
+    </ng-container>
+  </div>
 
   <div class="cards__row" *ngIf="item.areStock">
     <p class="cards__title">Cantidad en stock:</p>

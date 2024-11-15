@@ -20,14 +20,14 @@
           <app-dropdown
             [options]="optionsBrands"
             width = "15rem"
-            (optionChange) = "onPageFilterByCategoryNameSelected($event)"
+            (optionChange) = "onPageFilterByBrandNameSelected($event)"
           ></app-dropdown>
 
         <p class="pagination__dataPanel__text">Categoria:</p>
           <app-dropdown
             width = "15rem"
             [options]="optionsCategories"
-            (optionChange) = "onPageFilterByBrandNameSelected($event)"
+            (optionChange) = "onPageFilterByCategoryNameSelected($event)"
         ></app-dropdown>
 
     </div>

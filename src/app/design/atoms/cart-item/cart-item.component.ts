@@ -1,5 +1,5 @@
 import { Component, Input} from '@angular/core';
-import { ItemInCart } from 'src/app/shared/models/item';
+import { ItemInCart } from '../../../shared/models/item'
 
 @Component({
   selector: 'app-cart-item',
