@@ -6,7 +6,7 @@ import { of, throwError } from 'rxjs';
 import { CategoryService } from '../../shared/services/category.service';
 import { BrandService } from '../../shared/services/brand.service';
 import { Cart } from '../../shared/models/cart';
-import { BRAND_NAME, CATEGORY_NAME } from '../../shared/constants/filter';
+import { BRAND_AND_CATEGORY_NAME, BRAND_NAME, CATEGORY_NAME } from '../../shared/constants/filter';
 
 const categories = [
   'category1',
@@ -168,6 +168,14 @@ describe('CartComponent', () => {
     component.updateFilters();
     expect(component.cartPagination.filter).toBe(BRAND_NAME);
     expect(component.cartPagination.filterName).toBe('Brand A');
+  });
+
+  it('should update filters when brand and category is selected', () => {
+    component.selectedBrand = 'Brand A';
+    component.selectedCategory = 'Electronics';
+    component.updateFilters();
+    expect(component.cartPagination.filter).toBe(BRAND_AND_CATEGORY_NAME);
+    expect(component.cartPagination.filterName).toBe('Electronics,Brand A');
   });
 
   it('should navigate to the previous page if page > 0', () => {
