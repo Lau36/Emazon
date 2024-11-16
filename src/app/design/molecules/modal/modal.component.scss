@@ -11,26 +11,24 @@
   background: rgba(0, 0, 0, 0.6);
   z-index: 1000;
 
-  .modal__content {
+  &__content {
     position: relative;
     background: colors.$whiteColor;
-    padding: 10px;
+    padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    height: auto;
-  }
 
-  .content__close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border: none;
-    background: none;
-    font-size: 20px;
-    cursor: pointer;
+    &__closeButton{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: none;
+      background: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
   }
 }
-
 
 
 
