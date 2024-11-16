@@ -27,6 +27,8 @@ export class CreateUserComponent implements OnInit {
     contentLink: ''
   }
 
+  @Input() width: string = '800px';
+
 
   contentButton: string = CREATE;
 
@@ -69,7 +71,7 @@ export class CreateUserComponent implements OnInit {
         content: 'Nombre',
         placeholder: 'Escriba aquí',
         control: this.name,
-        width: '23.5rem',
+        width: '90%',
         height: '1rem',
         fontSize: '0.8rem',
         type: "text"
@@ -79,7 +81,7 @@ export class CreateUserComponent implements OnInit {
         content: 'Apellido',
         placeholder: 'Escriba aquí',
         control: this.lastName,
-        width: '23.5rem',
+        width: '90%',
         height: '1rem',
         fontSize: '0.8rem',
         type: "text"
@@ -89,7 +91,7 @@ export class CreateUserComponent implements OnInit {
         content: 'Número de cédula',
         placeholder: 'Escriba aquí',
         control: this.identification,
-        width: '23.5rem',
+        width: '90%',
         height: '1rem',
         fontSize: '0.8rem',
         type: "number"
@@ -99,7 +101,7 @@ export class CreateUserComponent implements OnInit {
         content: 'Celular',
         placeholder: 'Escriba aquí',
         control: this.phoneNumber,
-        width: '23.5rem',
+        width: '90%',
         height: '1rem',
         fontSize: '0.8rem',
         type: "text"
@@ -109,7 +111,7 @@ export class CreateUserComponent implements OnInit {
         content: 'Fecha de nacimiento',
         placeholder: 'Escriba aquí',
         control: this.birthDate,
-        width: '23.5rem',
+        width: '90%',
         height: '1rem',
         fontSize: '0.8rem',
         type: "date"
@@ -119,7 +121,7 @@ export class CreateUserComponent implements OnInit {
         content: 'Correo electronico',
         placeholder: 'Escriba aquí',
         control: this.email,
-        width: '23.5rem',
+        width: '90%',
         height: '1rem',
         fontSize: '0.8rem',
         type: "text"
@@ -129,7 +131,7 @@ export class CreateUserComponent implements OnInit {
         content: 'Contraseña',
         placeholder: 'Escriba aquí',
         control: this.password,
-        width: '23.5rem',
+        width: '90%',
         height: '1rem',
         fontSize: '0.8rem',
         type: "password"

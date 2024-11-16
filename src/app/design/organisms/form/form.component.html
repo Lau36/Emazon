@@ -1,4 +1,4 @@
-<div class="form" [formGroup]="form">
+<div [style.width]="width" class="form" [formGroup]="form">
   <app-loader *ngIf="isLoading"></app-loader>
 
   <div *ngIf="!isLoading">

@@ -25,6 +25,8 @@ export class FormComponent {
   @Input() pathLink: string = '';
   @Input() contentLink: string = '';
 
+  @Input() width: string = '100%';
+
   onSubmit() {
     this.submitForm.emit();
   }

@@ -15,12 +15,13 @@ export class CreateCustomerPageComponent{
 
   service = this.userService.createCustomerUser;
 
-  infoLink: {showLink: boolean, info: string, pathLink: string, contentLink: string} =
+  infoLink: {showLink: boolean, info: string, pathLink: string, contentLink: string, width?: string} =
   {
     showLink: true,
     info: HAVE_ACCOUNT,
     pathLink: 'login',
-    contentLink: LOGIN
+    contentLink: LOGIN,
+    width: '100%'
   }
 
 }
