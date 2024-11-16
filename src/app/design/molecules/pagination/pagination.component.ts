@@ -30,6 +30,8 @@ export class PaginationComponent {
   @Input() optionsShortBytoShow: [] = [];
   @Input() optionsShortBy: {id: string, name:string}[]  = [];
 
+  @Input() height:string = '50vh'
+
   @Output() addItemToCartAction = new EventEmitter<AddCart>();
 
 

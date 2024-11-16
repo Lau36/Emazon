@@ -25,6 +25,7 @@
     [showItems]="showItemsCard"
     [showTable]="showItemsTable"
     (addItemToCartAction)="addItemToCart($event)"
+    height="65vh"
     ></app-pagination>
     <app-toast *ngIf="showToast" [message]="message" [error]="mistakeOcurred"></app-toast>
   </div>
