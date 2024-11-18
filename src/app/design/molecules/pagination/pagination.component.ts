@@ -16,9 +16,9 @@ export class PaginationComponent {
   @Input() currentPage: number = 0;
   @Input() totalPages: number = 0;
   @Input() totalElements: number = 0;
-  @Output() changePageSizeAction = new EventEmitter<any>();
-  @Output() changePageSortDirectionAction = new EventEmitter<any>();
-  @Output() changePageSortByAction = new EventEmitter<any>();
+  @Output() changePageSizeAction = new EventEmitter<number>();
+  @Output() changePageSortDirectionAction = new EventEmitter<string>();
+  @Output() changePageSortByAction = new EventEmitter<string>();
   @Input() tableContainerHeight: string = '20%';
 
   @Input() showItems: boolean = false;
@@ -43,16 +43,16 @@ export class PaginationComponent {
 
 
 
-  onPageSizeSelected(option: any){
-    this.changePageSizeAction.emit(Number(option));
+  onPageSizeSelected(option: number){
+    this.changePageSizeAction.emit(option);
   }
 
-  onPageSortDirectionSelected(option: any){
-    this.changePageSortDirectionAction.emit(String(option));
+  onPageSortDirectionSelected(option: string){
+    this.changePageSortDirectionAction.emit(option);
   }
 
-  onPageSortBySelected(option: any){
-    this.changePageSortByAction.emit(String(option));
+  onPageSortBySelected(option: string){
+    this.changePageSortByAction.emit(option);
   }
 
   addItemToCart(item: AddCart){

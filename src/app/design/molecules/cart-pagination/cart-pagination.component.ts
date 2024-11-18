@@ -11,10 +11,10 @@ export class CartPaginationComponent{
 
   @Output() previousPageAction = new EventEmitter<void>();
   @Output() nextPageAction = new EventEmitter<void>();
-  @Output() changePageSizeAction = new EventEmitter<any>();
-  @Output() changePageSortDirectionAction = new EventEmitter<any>();
-  @Output() filterByCategoryNameAction = new EventEmitter<any>();
-  @Output() filterByBrandNameAction = new EventEmitter<any>();
+  @Output() changePageSizeAction = new EventEmitter<number>();
+  @Output() changePageSortDirectionAction = new EventEmitter<string>();
+  @Output() filterByCategoryNameAction = new EventEmitter<string>();
+  @Output() filterByBrandNameAction = new EventEmitter<string>();
   @Output() removeItemFromCartAction = new EventEmitter<number>();
 
   @Input() tableContainerHeight: string = '20%';
@@ -32,20 +32,20 @@ export class CartPaginationComponent{
   next = NEXT;
 
 
-  onPageSizeSelected(option: any){
-    this.changePageSizeAction.emit(Number(option));
+  onPageSizeSelected(option: number){
+    this.changePageSizeAction.emit(option);
   }
 
-  onPageSortDirectionSelected(option: any){
-    this.changePageSortDirectionAction.emit(String(option));
+  onPageSortDirectionSelected(option: string){
+    this.changePageSortDirectionAction.emit(option);
   }
 
-  onPageFilterByCategoryNameSelected(option: any){
-    this.filterByCategoryNameAction.emit(String(option));
+  onPageFilterByCategoryNameSelected(option: string){
+    this.filterByCategoryNameAction.emit(option);
   }
 
-  onPageFilterByBrandNameSelected(option: any){
-    this.filterByBrandNameAction.emit(String(option));
+  onPageFilterByBrandNameSelected(option: string){
+    this.filterByBrandNameAction.emit(option);
   }
 
   previousPage(){
