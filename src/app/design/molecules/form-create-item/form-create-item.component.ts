@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-form-create-item',
@@ -9,10 +9,10 @@ import { FormGroup } from '@angular/forms';
 export class FormCreateItemComponent {
 
   @Input() form!: FormGroup;
-  @Input() name: any;
+  @Input() name!: FormControl;
   @Input() description: any;
-  @Input() price: any;
-  @Input() amount: any;
+  @Input() price!: FormControl;
+  @Input() amount!: FormControl;
   @Input() title: string = "";
   @Input() type: string = "";
 
@@ -48,8 +48,8 @@ export class FormCreateItemComponent {
     this.toggleCategorySelectionAction.emit(categorySelected);
   }
 
-  onBrandChange(event: any){
-    this.brandSelected.emit(Number(event));
+  onBrandChange(event: number){
+    this.brandSelected.emit(event);
   }
 
   onSubmit() {
