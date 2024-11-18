@@ -12,9 +12,7 @@ export class ListBrandsComponent implements OnInit {
 
   @Input() showCreateBrand: boolean = false;
 
-  brandList: any[] = [];
-
-  response: any[] = [];
+  brandList: {id:number, name:string, description:string}[] = [];
 
   isModalVisible: boolean = false;
 
