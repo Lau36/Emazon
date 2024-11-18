@@ -3,6 +3,7 @@ import { CategoryService } from '../../../shared/services/category.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CREATE, CREATE_CATEGORY, DESCRIPTION, NAME, PLACEHOLDER_REGULAR_INPUT, CATEGORY_CREATED} from '../../../shared/constants/constants';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { formFields } from '../../../shared/interfaces/formFields';
 
 @Component({
   selector: 'app-create-category',
@@ -24,7 +25,7 @@ export class CreateCategoryComponent implements OnInit {
   showToast: boolean = false;
   mistakeOcurred: boolean = false;
   message: string = '';
-  formFields: any[] = []
+  formFields: formFields[] = []
 
   createCategory: CreateCategory = {
     categoryName: '',

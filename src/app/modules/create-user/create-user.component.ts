@@ -7,6 +7,7 @@ import { User } from '../../shared/models/user';
 import { UserService } from '../../shared/services/user.service';
 import { handleResponse } from '../../utils/helpers/handleResponse';
 import { hideToast } from '../../utils/helpers/hideToast';
+import { formFields } from '../../shared/interfaces/formFields';
 
 @Component({
   selector: 'app-create-user',
@@ -37,7 +38,7 @@ export class CreateUserComponent implements OnInit {
   showToast: boolean = false;
   mistakeOcurred: boolean = false;
   message: string = '';
-  formFields: any[] = []
+  formFields: formFields[] = []
 
   createUser: User = {
     name: '',

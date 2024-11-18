@@ -3,7 +3,7 @@ import { BRAND_CREATED, CREATE, CREATE_BRAND, DESCRIPTION, NAME, PLACEHOLDER_REG
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CreateBrand } from '../../../shared/models/brand';
 import { BrandService } from '../../../shared/services/brand.service';
-import { formFields } from '../../../shared/interfaces/interfaces';
+import { formFields } from '../../../shared/interfaces/formFields';
 
 @Component({
   selector: 'app-create-branch',

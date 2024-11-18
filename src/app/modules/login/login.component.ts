@@ -9,6 +9,7 @@ import { CORRECT_LOGIN, DONT_HAVE_ACCOUNT, EMAIL, LOGIN, PASSWORD, REGISTER } fr
 import { jwtDecode } from 'jwt-decode';
 import { hideToast } from '../../utils/helpers/hideToast';
 import { Auth } from '../../shared/models/auth';
+import { formFields } from '../../shared/interfaces/formFields';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
   createAccountMessageLink: string = REGISTER;
   dontHaveAccountMessage: string = DONT_HAVE_ACCOUNT
 
-  formFields: any[] = [];
+  formFields: formFields[] = [];
 
   login: Auth = {
     email: '',

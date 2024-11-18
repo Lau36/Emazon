@@ -7,6 +7,7 @@ import { ItemService } from '../../../shared/services/item.service';
 import { handleResponse } from '../../../utils/helpers/handleResponse';
 import { hideToast } from '../../../utils/helpers/hideToast';
 import { SupplyService } from '../../../shared/services/supply.service';
+import { formFields } from '../../../shared/interfaces/formFields';
 
 @Component({
   selector: 'app-add-supplies',
@@ -28,7 +29,7 @@ export class AddSuppliesComponent implements OnInit {
   contentButton: string = ADD;
   message: string = '';
 
-  formFields: any[] = [];
+  formFields: formFields[] = [];
 
   items: {id: number, name: string}[] = [];
 
@@ -47,7 +48,7 @@ export class AddSuppliesComponent implements OnInit {
       {
         typeField: 'dropdown',
         content: ITEM,
-        placeholder: null,
+        placeholder: '',
         control: this.itemId,
         width: '100%',
         height: '1rem',
