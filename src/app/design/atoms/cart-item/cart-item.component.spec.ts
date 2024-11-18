@@ -26,4 +26,22 @@ describe('CartItemComponent', () => {
     component.handleRemoveItem(1);
     expect(component.removeItemAction.emit).toHaveBeenCalledWith(1);
   });
+
+  it('should refactor date', () => {
+    component.item = {
+      id: 0,
+      name: '',
+      description: '',
+      quantityInCart: 0,
+      quantityInStock: 0,
+      areStock: true,
+      nextSupplyDate: '2024-12-18T11:42:23.504204',
+      price: 0,
+      categories: [{id: 0, name: ''}],
+      brand: {id: 0, name: ''},
+    };
+    component.refactorDate();
+    expect(component.item.nextSupplyDate).toBe('2024-12-18');
+  });
+
 });

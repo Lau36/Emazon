@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { ItemInCart } from '../../../shared/models/item'
 
 @Component({
@@ -6,7 +6,7 @@ import { ItemInCart } from '../../../shared/models/item'
   templateUrl: './cart-item.component.html',
   styleUrls: ['./cart-item.component.scss']
 })
-export class CartItemComponent {
+export class CartItemComponent implements OnInit{
   @Input() item: ItemInCart = {
     id: 0,
     name: '',
@@ -20,6 +20,8 @@ export class CartItemComponent {
     brand: {id: 0, name: ''},
   };
 
+  date: string = ''
+
   @Input() contentButton: string = ''
   @Output() removeItemAction = new EventEmitter<number>();
 
@@ -27,6 +29,15 @@ export class CartItemComponent {
     this.removeItemAction.emit(itemId)
   }
 
+  refactorDate(): void{
+    const newDate = this.item.nextSupplyDate.split('T')[0]
+    this.item.nextSupplyDate = newDate
+  }
+
   constructor() { }
+
+  ngOnInit(): void {
+    this.refactorDate();
+  }
 
 }
