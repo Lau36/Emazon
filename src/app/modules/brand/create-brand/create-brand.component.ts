@@ -3,6 +3,7 @@ import { BRAND_CREATED, CREATE, CREATE_BRAND, DESCRIPTION, NAME, PLACEHOLDER_REG
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CreateBrand } from '../../../shared/models/brand';
 import { BrandService } from '../../../shared/services/brand.service';
+import { formFields } from '../../../shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-create-branch',
@@ -26,7 +27,7 @@ export class CreateBrandComponent implements OnInit {
   message: string = '';
   required: string = REQUIRED_FIELD;
 
-  formFields: any[] = [];
+  formFields: formFields[] = [];
 
   createBrand: CreateBrand = {
     name: '',
