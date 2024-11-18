@@ -1,0 +1,16 @@
+<div class="container-create-brand">
+  <div class="form-create-brand ">
+    <app-form
+    [form]="form"
+    [title]="title"
+    [isLoading]="isLoading"
+    [contentButton]="contentButton"
+    [showToast]="showToast"
+    [mistakeOcurred]="mistakeOcurred"
+    [message]="message"
+    [isDisabled]="form.invalid || isLoading"
+    [formFields]="formFields"
+    (submitForm)="onSubmit()"
+    ></app-form>
+  </div>
+</div>

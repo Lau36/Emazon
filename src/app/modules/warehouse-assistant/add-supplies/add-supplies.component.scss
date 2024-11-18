@@ -1,0 +1,15 @@
+@use "../../../styles/colors.scss" as colors;
+@use "../../../styles/globalStyles.scss" as style;
+
+.form{
+  display: flex;
+  flex-direction: column;
+
+  &__addSupply{
+    @include style.display(flex, center, center);
+    margin-top: 5%;
+    flex: 1;
+    padding: 30px;
+  }
+
+}

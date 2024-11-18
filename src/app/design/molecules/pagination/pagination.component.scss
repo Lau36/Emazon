@@ -1,0 +1,56 @@
+@use "../../../styles/colors.scss" as colors;
+@use "../../../styles/globalStyles.scss" as styles;
+
+.pagination{
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+
+  &__panel{
+    @include styles.display(flex, flex-end, center);
+  }
+
+  &__text{
+    @include styles.display(flex, none, center);
+    margin: 0;
+    margin-right: 1%;
+    margin-left: 20px;
+    font-size: 1rem;
+  }
+
+  &__data{
+    margin-top: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+
+    &::-webkit-scrollbar {
+      width: 11px;
+      margin: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius: 20px;
+      background: colors.$options-scrollbar-track-color;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: colors.$options-scrollbar-thumb-color;
+      border-radius: 20px;
+      border: 2px solid colors.$options-scrollbar-track-color;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: colors.$options-scrollbar-thumb-hover-color;
+
+    }
+  }
+
+  &__controls{
+    @include styles.display(flex, space-between, none);
+    margin-top: 20px;
+  }
+
+
+}
+

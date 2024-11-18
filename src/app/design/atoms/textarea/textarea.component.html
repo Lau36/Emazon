@@ -1,0 +1,15 @@
+<textarea
+  class="textarea"
+  [ngClass]="{'error': control.errors && (control.touched || control.dirty)}"
+  [placeholder]="placeholder"
+  [formControl]="control"
+  [style.width]="width"
+  [style.height]="height"
+  [style.font-size]="fontSize"
+  ></textarea>
+
+<span class="span-class" *ngIf="control.errors && (control.touched || control.dirty)">
+  <ng-container *ngFor="let error of errorMessages()">
+    {{ error }}
+  </ng-container>
+</span>

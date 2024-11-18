@@ -1,0 +1,13 @@
+@use "../../../styles/colors.scss" as colors;
+@use "../../../styles/globalStyles.scss" as style;
+
+.container-create-item{
+  display: flex;
+  flex-direction: column;
+
+  .form-create-item{
+    @include style.display(flex, center, center);
+    flex: 1;
+  }
+
+}

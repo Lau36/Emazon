@@ -1,0 +1,14 @@
+@use "../../../styles/colors.scss" as colors;
+@use "../../../styles/globalStyles.scss" as styles;
+
+.pagination-categories-container{
+  margin: 10vmin;
+  background-color: colors.$whiteColor;
+  border-radius: 20px;
+
+  .button-create-category-container{
+    @include styles.display(flex, flex-end, flex-end);
+    padding: 0.7%;
+  }
+
+}

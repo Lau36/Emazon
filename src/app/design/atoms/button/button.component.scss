@@ -1,0 +1,27 @@
+
+@use "../../../styles/colors.scss" as colors;
+@use "../../../styles/globalStyles.scss" as style;
+
+.button{
+  @include style.display(flex, center, center);
+  font-family: style.$fontApp;
+  background-color: colors.$backgroundHeaderColor;
+  color: colors.$whiteColor;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+
+  &:hover{
+    background-color: colors.$hoverButtonColor;
+  }
+
+  &:active{
+    background-color: colors.$clickColor;
+  }
+
+  &:disabled {
+    background-color: colors.$grayColor;
+    cursor: not-allowed;
+  }
+}

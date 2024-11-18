@@ -1,0 +1,17 @@
+<div class="container-create-category">
+  <div class="form-create-category">
+    <app-form
+    [form]="form"
+    [title]="title"
+    [isLoading]="isLoading"
+    [contentButton]="contentButton"
+    [showToast]="showToast"
+    [mistakeOcurred]="mistakeOcurred"
+    [message]="message"
+    [isDisabled]="form.invalid || isLoading"
+    [formFields]="formFields"
+    (submitForm)="onSubmit()"
+    ></app-form>
+  </div>
+</div>
+

@@ -1,0 +1,37 @@
+<div [style.height]="height" class="pagination">
+  <div class="pagination__panel">
+  <h1 class="pagination__text">Elementos por página</h1>
+  <app-dropdown
+  [options]="optionsSize"
+  (optionChange) = "onPageSizeSelected($event)"
+  ></app-dropdown>
+
+    <h1 class="pagination__text">Ordenar</h1>
+    <app-dropdown
+    [options]="optionsSort"
+    (optionChange) = "onPageSortDirectionSelected($event)"
+    ></app-dropdown>
+
+  <ng-container *ngIf="showSortBy" >
+    <h1 class="pagination__text">Ordenar por</h1>
+    <app-dropdown
+    [options]="optionsShortBy"
+    (optionChange) = "onPageSortBySelected($event)"
+    ></app-dropdown>
+  </ng-container>
+  </div>
+
+  <div class="pagination__data" [style.height]="tableContainerHeight">
+    <app-table *ngIf="showTable" [data]="data" [columns]="tableColumns"></app-table>
+    <app-items *ngIf="showItems" [items]="items" (addItem) = "addItemToCart($event)"></app-items>
+  </div>
+
+  <div class="pagination__controls">
+    <app-button [content]="back" (action)="previousPage()" [isDisabled]="currentPage === 0"></app-button>
+    <span>Página {{currentPage + 1}} de {{totalPages}}</span>
+    <app-button [content]="next" (action)="nextPage()" [isDisabled]="currentPage >= totalPages - 1"></app-button>
+  </div>
+</div>
+
+
+

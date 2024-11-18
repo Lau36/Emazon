@@ -1,0 +1,12 @@
+@use "../../../styles/globalStyles.scss" as style;
+
+.container-create-brand{
+  display: flex;
+  flex-direction: column;
+
+  .form-create-brand{
+    @include style.display(flex, center, center);
+    flex: 1;
+  }
+
+}

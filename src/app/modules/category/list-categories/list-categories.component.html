@@ -1,0 +1,23 @@
+<div class="pagination-categories-container">
+  <div class="button-create-category-container" *ngIf="showCreateCategory">
+      <app-button content="Crear categoría" (action)="openModal()"></app-button>
+      <app-modal width="410px" [isVisible]="isModalVisible" (close)="closeModal()">
+      <app-create-category (categoryCreated)="closeModal()"></app-create-category>
+      </app-modal>
+    </div>
+  <div class="pagination-container">
+    <app-pagination
+    (changePageSizeAction) = "onPageSizeChange($event)"
+    (changePageSortDirectionAction) = " onPageSortDirectionChange($event)"
+    (previousPageAction)="previusPage()"
+    (nextPageAction)="nextPage()"
+    [data]="categoriesList"
+    [currentPage]="this.responseListCategories.currentPage"
+    [totalPages]="this.responseListCategories.totalPages"
+    [totalElements]="this.responseListCategories.totalElements"
+    [tableColumns] = "tableColumns"
+    ></app-pagination>
+  </div>
+</div>
+
+

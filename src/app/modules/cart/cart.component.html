@@ -1,0 +1,30 @@
+<div class="cart">
+<div class="cart__pagination">
+  <app-cart-pagination
+  (changePageSizeAction) = "onPageSizeChange($event)"
+  (changePageSortDirectionAction) = "onPageSortDirectionChange($event)"
+  (filterByCategoryNameAction) = "onPageFilterByCategoryNameSelected($event)"
+  (filterByBrandNameAction) = "onPageFilterByBrandNameSelected($event)"
+  (previousPageAction)="previusPage()"
+  (nextPageAction)="nextPage()"
+
+  [currentPage]="this.cartResponse.currentPage"
+  [totalPages]="this.cartResponse.totalPages"
+  [totalElements]="this.cartResponse.totalElements"
+  [itemsInCart]="this.cartResponse.items"
+  [optionsCategories] = "categories"
+  [optionsBrands] = "brands"
+
+  contentButton="Eliminar"
+  (removeItemFromCartAction)="removeItemFromCart($event)"
+  ></app-cart-pagination>
+</div>
+<div class="cart__pay">
+  <div class="cart__pay__info">
+    <P>Total a pagar:</P>
+    <p> ${{this.cartResponse.totalPrice}}</p>
+  </div>
+  <app-button content="Pagar"></app-button>
+</div>
+<app-toast *ngIf="showToast" [message]="message" [error]="mistakeOcurred"></app-toast>
+</div>

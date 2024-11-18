@@ -1,0 +1,32 @@
+<div class="cards">
+  <div class="cards__row">
+    <h1>Nombre:</h1>
+    <p>{{name}}</p>
+  </div>
+
+  <!-- <div class="cards__row">
+    <h1>Descripción:</h1>
+    <p>{{description}}</p>
+  </div> -->
+
+  <div class="cards__row">
+    <h1>Cantidad en stock:</h1>
+    <p>{{quantityInStock}}</p>
+  </div>
+
+  <div class="cards__row">
+    <h1>Precio:</h1>
+    <p>$ {{price}}</p>
+  </div>
+
+  <div class="cards__row">
+    <h1>Marca:</h1>
+    <p>{{brand.name}}</p>
+  </div>
+
+  <div class="cards__row">
+    <div class="cards__categories">
+      <span class="cards__categories-tag" *ngFor="let category of categories">{{category.name}}</span>
+    </div>
+  </div>
+</div>

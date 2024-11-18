@@ -1,0 +1,22 @@
+<div>
+  <div class="form-create-user">
+    <app-form
+    [form]="form"
+    [title]="formTitle"
+    [isLoading]="isLoading"
+    [contentButton]="contentButton"
+    [showToast]="showToast"
+    [mistakeOcurred]="mistakeOcurred"
+    [message]="message"
+    [isDisabled]="form.invalid || isLoading"
+    [formFields]="formFields"
+    (submitForm)="onSubmit()"
+    [showLink]=infoLink.showLink
+    [contentLink]="infoLink.contentLink"
+    [info]="infoLink.info"
+    [pathLink]="infoLink.pathLink"
+    [width]="width"
+    ></app-form>
+  </div>
+</div>
+

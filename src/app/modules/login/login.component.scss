@@ -1,0 +1,9 @@
+@use "../../styles/globalStyles.scss" as styles;
+
+.login{
+  .login__form{
+    @include styles.display(flex, center, center);
+    padding: 30px;
+  }
+
+}

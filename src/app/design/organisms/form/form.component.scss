@@ -1,0 +1,75 @@
+@use "../../../styles/colors.scss" as colors;
+@use "../../../styles/globalStyles.scss" as style;
+
+.form{
+  background-color: colors.$whiteColor;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  &__tittle{
+    @include style.display(flex, center, center);
+  }
+
+  &__fields {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &.form__multi-column {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__item {
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+
+  &__button{
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+
+    app-button{
+      width: 100%;
+    }
+  }
+
+  &__createAccount{
+    color: colors.$linkColor;
+    @include style.display(flex, center, center);
+    margin-top: 1vh;
+
+    &-link{
+      color: colors.$linkColor;
+      margin-left: 0.2rem;
+    }
+  }
+}
+
+@media(max-width: 750px){
+
+  .form{
+    width: 100%;
+    padding: 20px;
+
+    &__title{
+      font-size: 1rem;
+    }
+
+    &__fields{
+      &.form__multi-column{
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+}

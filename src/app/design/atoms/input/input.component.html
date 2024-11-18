@@ -1,0 +1,19 @@
+<input
+  class="input-create"
+  [ngClass]="{'input-error': control.errors && (control.touched || control.dirty)}"
+  [placeholder]="placeholder"
+  [formControl]="control"
+  [style.width]="width"
+  [style.height]="height"
+  [style.font-size]="fontSize"
+  [type]="type"
+/>
+
+<span class="span-class-input" *ngIf="control.errors && (control.touched || control.dirty)">
+  <ng-container *ngFor="let error of errorMessages()">
+    {{ error }}
+  </ng-container>
+</span>
+
+
+

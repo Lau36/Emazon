@@ -1,0 +1,37 @@
+<div [style.width]="width" class="form" [formGroup]="form">
+  <app-loader *ngIf="isLoading"></app-loader>
+
+  <div *ngIf="!isLoading">
+    <h1 class="form__tittle">{{title}}</h1>
+
+    <div class="form__fields" [ngClass]="{'form__multi-column': formFields.length > 4}">
+    <ng-container *ngFor="let field of formFields">
+
+      <div class="form__item">
+        <app-text-component [content]="field.content"></app-text-component>
+        <ng-container [ngSwitch]="field.typeField">
+        <app-dropdown
+          *ngSwitchCase="'dropdown'"
+          [width]="field.width"
+          [options]="data"
+          (optionChange) = "onOptionChange($event)"
+        ></app-dropdown>
+        <app-form-dynamic [field]="field"
+        *ngSwitchDefault
+        ></app-form-dynamic>
+        </ng-container>
+      </div>
+    </ng-container>
+    </div>
+
+    <app-toast *ngIf="showToast" [message]="message" [error]="mistakeOcurred"></app-toast>
+
+    <div class="form__button">
+      <app-button [content]="contentButton" (action)="onSubmit()" [isDisabled]="isDisabled"></app-button>
+    </div>
+    <div *ngIf="showLink" class="form__createAccount">
+      <app-text-component [content]="info"></app-text-component>
+      <a [href]="pathLink" class="form__createAccount-link">{{contentLink}}</a>
+    </div>
+  </div>
+</div>
