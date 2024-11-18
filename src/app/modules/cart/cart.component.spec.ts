@@ -6,7 +6,7 @@ import { of, throwError } from 'rxjs';
 import { CategoryService } from '../../shared/services/category.service';
 import { BrandService } from '../../shared/services/brand.service';
 import { Cart } from '../../shared/models/cart';
-import { BRAND_AND_CATEGORY_NAME, BRAND_NAME, CATEGORY_NAME } from '../../shared/constants/filter';
+import { BRAND_AND_CATEGORY_NAME, BRAND_NAME, CATEGORY_NAME, NONE } from '../../shared/constants/filter';
 
 const categories = [
   'category1',
@@ -176,6 +176,37 @@ describe('CartComponent', () => {
     component.updateFilters();
     expect(component.cartPagination.filter).toBe(BRAND_AND_CATEGORY_NAME);
     expect(component.cartPagination.filterName).toBe('Electronics,Brand A');
+  });
+
+  it('should update the filters to none when no filter has been selected.', () => {
+    component.updateFilters();
+    expect(component.cartPagination.filter).toBe(NONE);
+  });
+
+  it('should change the sort direction and reset page to 0 on sort direction change', () => {
+    component.onPageSortDirectionChange('desc');
+    expect(component.cartPagination.sortDirection).toBe('desc');
+    expect(component.cartPagination.page).toBe(0);
+  });
+
+  it('should update the selected category and call updateFilters', () => {
+    const updateFilters= jest.spyOn(component, 'updateFilters');
+    component.onPageFilterByCategoryNameSelected('category1');
+    expect(component.selectedCategory).toBe('category1');
+    expect(updateFilters).toHaveBeenCalled();
+  });
+
+  it('should update the selected brand and call updateFilters', () => {
+    const updateFilters = jest.spyOn(component, 'updateFilters');
+    component.onPageFilterByBrandNameSelected('brand1');
+    expect(component.selectedBrand).toBe('brand1');
+    expect(updateFilters).toHaveBeenCalled();
+  });
+
+  it('should change the page size and reset page to 0 on page size change', () => {
+    component.onPageSizeChange(10);
+    expect(component.cartPagination.size).toBe(10);
+    expect(component.cartPagination.page).toBe(0);
   });
 
   it('should navigate to the previous page if page > 0', () => {
