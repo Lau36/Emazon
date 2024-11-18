@@ -24,7 +24,7 @@ describe('PaginationComponent', () => {
   it('should emit changePageSizeAction with a number when onPageSizeSelected is called', () => {
     jest.spyOn(component.changePageSizeAction, 'emit');
 
-    component.onPageSizeSelected('10');
+    component.onPageSizeSelected(10);
 
     expect(component.changePageSizeAction.emit).toHaveBeenCalledWith(10);
   });
@@ -40,7 +40,7 @@ describe('PaginationComponent', () => {
   it('should emit changePageSortByAction with a string when onPageSortBySelected is called', () => {
     jest.spyOn(component.changePageSortByAction, 'emit');
 
-    component.onPageSortBySelected('name'); 
+    component.onPageSortBySelected('name');
 
     expect(component.changePageSortByAction.emit).toHaveBeenCalledWith('name');
   });

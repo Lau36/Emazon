@@ -24,7 +24,7 @@ describe('CartPaginationComponent', () => {
   it('should emit changePageSizeAction with a number when onPageSizeSelected is called', () => {
     jest.spyOn(component.changePageSizeAction, 'emit');
 
-    component.onPageSizeSelected('10');
+    component.onPageSizeSelected(10);
 
     expect(component.changePageSizeAction.emit).toHaveBeenCalledWith(10);
   });
